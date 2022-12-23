@@ -1,7 +1,8 @@
 library macos_window_utils;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'widgets/titlebar_safe_area.dart';
+export 'macos/macos_blur_view_state.dart';
+export 'macos/macos_toolbar_style.dart';
+export 'macos/visual_effect_view_properties.dart';
+export 'window_effect.dart';
+export 'window_manipulator.dart';
