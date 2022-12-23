@@ -26,7 +26,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         let args: [String: Any] = call.arguments as? [String: Any] ?? [:]
         
         switch (methodName) {
-        case "Initialize":
+        case "initialize":
             if #available(macOS 10.14, *) {
                 let material = EffectIDToMaterialConverter.getMaterialFromEffectID(effectID: 0)
                 
@@ -37,7 +37,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "SetEffect":
+        case "setEffect":
             if #available(macOS 10.14, *) {
                 let effectID = args["effect"] as! NSNumber
                 let material = EffectIDToMaterialConverter.getMaterialFromEffectID(effectID: effectID)
@@ -49,31 +49,31 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "HideWindowControls":
+        case "hideWindowControls":
             MainFlutterWindowManipulator.hideZoomButton()
             MainFlutterWindowManipulator.hideMiniaturizeButton()
             MainFlutterWindowManipulator.hideCloseButton()
             result(true)
             break
             
-        case "ShowWindowControls":
+        case "showWindowControls":
             MainFlutterWindowManipulator.showZoomButton()
             MainFlutterWindowManipulator.showMiniaturizeButton()
             MainFlutterWindowManipulator.showCloseButton()
             result(true)
             break
             
-        case "EnterFullscreen":
+        case "enterFullscreen":
             MainFlutterWindowManipulator.enterFullscreen()
             result(true)
             break
             
-        case "ExitFullscreen":
+        case "exitFullscreen":
             MainFlutterWindowManipulator.exitFullscreen()
             result(true)
             break
             
-        case "OverrideMacOSBrightness":
+        case "overrideMacOSBrightness":
             if #available(macOS 10.14, *) {
                 let dark = args["dark"] as! Bool
                 
@@ -84,172 +84,172 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "SetDocumentEdited":
+        case "setDocumentEdited":
             MainFlutterWindowManipulator.setDocumentEdited()
             result(true)
             break
             
-        case "SetDocumentUnedited":
+        case "setDocumentUnedited":
             MainFlutterWindowManipulator.setDocumentUnedited()
             result(true)
             break
             
-        case "SetRepresentedFile":
+        case "setRepresentedFile":
             let filename = args["filename"] as! String
             
             MainFlutterWindowManipulator.setRepresentedFilename(filename: filename)
             result(true)
             break
             
-        case "SetRepresentedURL":
+        case "setRepresentedURL":
             let url = args["url"] as! String
             
             MainFlutterWindowManipulator.setRepresentedFilename(filename: url)
             result(true)
             break
             
-        case "GetTitlebarHeight":
+        case "getTitlebarHeight":
             let titlebarHeight = MainFlutterWindowManipulator.getTitlebarHeight() as NSNumber
             result(titlebarHeight)
             break
             
-        case "HideTitle":
+        case "hideTitle":
             MainFlutterWindowManipulator.hideTitle()
             result(true)
             break
 
-        case "ShowTitle":
+        case "showTitle":
             MainFlutterWindowManipulator.showTitle()
             result(true)
             break
 
-        case "MakeTitlebarTransparent":
+        case "makeTitlebarTransparent":
             MainFlutterWindowManipulator.makeTitlebarTransparent()
             result(true)
             break
 
-        case "MakeTitlebarOpaque":
+        case "makeTitlebarOpaque":
             MainFlutterWindowManipulator.makeTitlebarOpaque()
             result(true)
             break
 
-        case "EnableFullSizeContentView":
+        case "enableFullSizeContentView":
             MainFlutterWindowManipulator.enableFullSizeContentView()
             result(true)
             break
 
-        case "DisableFullSizeContentView":
+        case "disableFullSizeContentView":
             MainFlutterWindowManipulator.disableFullSizeContentView()
             result(true)
             break
 
-        case "ZoomWindow":
+        case "zoomWindow":
             MainFlutterWindowManipulator.zoomWindow()
             result(true)
             break
 
-        case "UnzoomWindow":
+        case "unzoomWindow":
             MainFlutterWindowManipulator.unzoomWindow()
             result(true)
             break
 
-        case "IsWindowZoomed":
+        case "isWindowZoomed":
             let isWindowZoomed = MainFlutterWindowManipulator.isWindowZoomed()
             result(isWindowZoomed)
             break
 
-        case "IsWindowFullscreened":
+        case "isWindowFullscreened":
             let isWindowFullscreened = MainFlutterWindowManipulator.isWindowFullscreened()
             result(isWindowFullscreened)
             break
 
-        case "HideZoomButton":
+        case "hideZoomButton":
             MainFlutterWindowManipulator.hideZoomButton()
             result(true)
             break
 
-        case "ShowZoomButton":
+        case "showZoomButton":
             MainFlutterWindowManipulator.showZoomButton()
             result(true)
             break
 
-        case "HideMiniaturizeButton":
+        case "hideMiniaturizeButton":
             MainFlutterWindowManipulator.hideMiniaturizeButton()
             result(true)
             break
 
-        case "ShowMiniaturizeButton":
+        case "showMiniaturizeButton":
             MainFlutterWindowManipulator.showMiniaturizeButton()
             result(true)
             break
 
-        case "HideCloseButton":
+        case "hideCloseButton":
             MainFlutterWindowManipulator.hideCloseButton()
             result(true)
             break
 
-        case "ShowCloseButton":
+        case "showCloseButton":
             MainFlutterWindowManipulator.showCloseButton()
             result(true)
             break
 
-        case "EnableZoomButton":
+        case "enableZoomButton":
             MainFlutterWindowManipulator.enableZoomButton()
             result(true)
             break
 
-        case "DisableZoomButton":
+        case "disableZoomButton":
             MainFlutterWindowManipulator.disableZoomButton()
             result(true)
             break
 
-        case "EnableMiniaturizeButton":
+        case "enableMiniaturizeButton":
             MainFlutterWindowManipulator.enableMiniaturizeButton()
             result(true)
             break
 
-        case "DisableMiniaturizeButton":
+        case "disableMiniaturizeButton":
             MainFlutterWindowManipulator.disableMiniaturizeButton()
             result(true)
             break
 
-        case "EnableCloseButton":
+        case "enableCloseButton":
             MainFlutterWindowManipulator.enableCloseButton()
             result(true)
             break
 
-        case "DisableCloseButton":
+        case "disableCloseButton":
             MainFlutterWindowManipulator.disableCloseButton()
             result(true)
             break
 
-        case "IsWindowInLiveResize":
+        case "isWindowInLiveResize":
             let isWindowInLiveResize = MainFlutterWindowManipulator.isWindowInLiveResize()
             result(isWindowInLiveResize)
             break
 
-        case "SetWindowAlphaValue":
+        case "setWindowAlphaValue":
             let alphaValue = args["value"] as! NSNumber
             MainFlutterWindowManipulator.setWindowAlphaValue(alphaValue: alphaValue as! CGFloat)
             result(true)
             break
 
-        case "IsWindowVisible":
+        case "isWindowVisible":
             let isWindowVisible = MainFlutterWindowManipulator.isWindowVisible()
             result(isWindowVisible)
             break
             
-        case "SetWindowBackgroundColorToDefaultColor":
+        case "setWindowBackgroundColorToDefaultColor":
             MainFlutterWindowManipulator.setWindowBackgroundColorToDefaultColor()
             result(true)
             break
             
-        case "SetWindowBackgroundColorToClear":
+        case "setWindowBackgroundColorToClear":
             MainFlutterWindowManipulator.setWindowBackgroundColorToClear()
             result(true)
             break
             
-        case "SetBlurViewState":
+        case "setBlurViewState":
             let blurViewStateString = args["state"] as! String
             let state = blurViewStateString == "active"   ? NSVisualEffectView.State.active :
                         blurViewStateString == "inactive" ? NSVisualEffectView.State.inactive :
@@ -258,7 +258,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "AddVisualEffectSubview":
+        case "addVisualEffectSubview":
             let visualEffectSubview = VisualEffectSubview()
             let visualEffectSubviewId = MainFlutterWindowManipulator.addVisualEffectSubview(visualEffectSubview)
             
@@ -272,7 +272,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(visualEffectSubviewId)
             break
             
-        case "UpdateVisualEffectSubviewProperties":
+        case "updateVisualEffectSubviewProperties":
             let visualEffectSubviewId = args["visualEffectSubviewId"] as! UInt
             let visualEffectSubview = MainFlutterWindowManipulator.getVisualEffectSubview(visualEffectSubviewId)
             
@@ -288,26 +288,26 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(visualEffectSubview != nil)
             break
             
-        case "RemoveVisualEffectSubview":
+        case "removeVisualEffectSubview":
             let visualEffectSubviewId = args["visualEffectSubviewId"] as! UInt
             MainFlutterWindowManipulator.removeVisualEffectSubview(visualEffectSubviewId)
             
             result(true)
             break
             
-        case "AddToolbar":
+        case "addToolbar":
             MainFlutterWindowManipulator.addToolbar()
             
             result(true)
             break
             
-        case "RemoveToolbar":
+        case "removeToolbar":
             MainFlutterWindowManipulator.removeToolbar()
             
             result(true)
             break
             
-        case "SetToolbarStyle":
+        case "setToolbarStyle":
             let toolbarStyleName = args["toolbarStyle"] as! String
             
             if #available(macOS 11.0, *) {
@@ -323,49 +323,49 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "EnableShadow":
+        case "enableShadow":
             MainFlutterWindowManipulator.enableShadow()
 
             result(true)
             break
 
-        case "DisableShadow":
+        case "disableShadow":
             MainFlutterWindowManipulator.disableShadow()
 
             result(true)
             break
 
-        case "InvalidateShadows":
+        case "invalidateShadows":
             MainFlutterWindowManipulator.invalidateShadows()
 
             result(true)
             break
 
-        case "AddEmptyMaskImage":
+        case "addEmptyMaskImage":
             MainFlutterWindowManipulator.addEmptyMaskImage()
 
             result(true)
             break
 
-        case "RemoveMaskImage":
+        case "removeMaskImage":
             MainFlutterWindowManipulator.removeMaskImage()
 
             result(true)
             break
             
-        case "IgnoreMouseEvents":
+        case "ignoreMouseEvents":
             MainFlutterWindowManipulator.ignoreMouseEvents()
 
             result(true)
             break
             
-        case "AcknowledgeMouseEvents":
+        case "acknowledgeMouseEvents":
             MainFlutterWindowManipulator.acknowledgeMouseEvents()
 
             result(true)
             break
             
-        case "SetSubtitle":
+        case "setSubtitle":
             let subtitle = args["subtitle"] as! String
             if #available(macOS 11.0, *) {
                 MainFlutterWindowManipulator.setSubtitle(subtitle)
