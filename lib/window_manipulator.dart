@@ -242,11 +242,6 @@ class WindowManipulator {
 
   /// Gets whether the window is currently being resized by the user.
   static Future<bool> isWindowInLiveResize() async {
-    if (!Platform.isMacOS) {
-      throw UnsupportedError(
-          'isWindowInLiveResize() is only available on macOS.');
-    }
-
     await _kCompleter.future;
     return await _kChannel.invokeMethod('isWindowInLiveResize');
   }
@@ -261,10 +256,6 @@ class WindowManipulator {
 
   /// Gets if the window is visible.
   static Future<bool> isWindowVisible() async {
-    if (!Platform.isMacOS) {
-      throw UnsupportedError('isWindowVisible() is only available on macOS.');
-    }
-
     await _kCompleter.future;
     return await _kChannel.invokeMethod('isWindowVisible');
   }
