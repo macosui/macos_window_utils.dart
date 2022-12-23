@@ -8,9 +8,9 @@ import 'package:macos_window_utils/window_effect.dart';
 
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
-  static final MethodChannel _kChannel =
+  static final MethodChannel _methodChannel =
       const MethodChannel('com.adrian_samoticha/macos_window_utils');
-  static final Completer<void> _kCompleter = Completer<void>();
+  static final Completer<void> _completer = Completer<void>();
 
   /// Initializes the [WindowManipulator] class.
   ///
@@ -23,8 +23,8 @@ class WindowManipulator {
   /// }
   /// ```
   static Future<void> initialize() async {
-    await _kChannel.invokeMethod('initialize');
-    _kCompleter.complete();
+    await _methodChannel.invokeMethod('initialize');
+    _completer.complete();
   }
 
   /// Sets specified effect for the window.
@@ -43,8 +43,8 @@ class WindowManipulator {
   /// );
   /// ```
   static Future<void> setEffect({required WindowEffect effect}) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod(
+    await _completer.future;
+    await _methodChannel.invokeMethod(
       'setEffect',
       {'effect': effect.index},
     );
@@ -57,62 +57,62 @@ class WindowManipulator {
   /// the titlebar. If the full-size content view is disabled, this value will
   /// be 0.
   static Future<double> getTitlebarHeight() async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod('getTitlebarHeight');
+    await _completer.future;
+    return await _methodChannel.invokeMethod('getTitlebarHeight');
   }
 
   /// Sets the document to be edited.
   ///
   /// This will change the appearance of the close button on the titlebar.
   static Future<void> setDocumentEdited() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setDocumentEdited');
+    await _completer.future;
+    await _methodChannel.invokeMethod('setDocumentEdited');
   }
 
   /// Sets the document to be unedited.
   static Future<void> setDocumentUnedited() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setDocumentUnedited');
+    await _completer.future;
+    await _methodChannel.invokeMethod('setDocumentUnedited');
   }
 
   /// Sets the represented file of the window.
   static Future<void> setRepresentedFilename(String filename) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setRepresentedFile', {
+    await _completer.future;
+    await _methodChannel.invokeMethod('setRepresentedFile', {
       'filename': filename,
     });
   }
 
   /// Sets the represented URL of the window.
   static Future<void> setRepresentedUrl(String url) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setRepresentedURL', {
+    await _completer.future;
+    await _methodChannel.invokeMethod('setRepresentedURL', {
       'url': url,
     });
   }
 
   /// Hides the titlebar of the window.
   static Future<void> hideTitle() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('hideTitle');
+    await _completer.future;
+    await _methodChannel.invokeMethod('hideTitle');
   }
 
   /// Shows the titlebar of the window.
   static Future<void> showTitle() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('showTitle');
+    await _completer.future;
+    await _methodChannel.invokeMethod('showTitle');
   }
 
   /// Makes the window's titlebar transparent.
   static Future<void> makeTitlebarTransparent() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('makeTitlebarTransparent');
+    await _completer.future;
+    await _methodChannel.invokeMethod('makeTitlebarTransparent');
   }
 
   /// Makes the window's titlebar opaque.
   static Future<void> makeTitlebarOpaque() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('makeTitlebarOpaque');
+    await _completer.future;
+    await _methodChannel.invokeMethod('makeTitlebarOpaque');
   }
 
   /// Enables the window's full-size content view.
@@ -121,162 +121,162 @@ class WindowManipulator {
   /// It is recommended to enable the full-size content view when making
   /// the titlebar transparent.
   static Future<void> enableFullSizeContentView() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('enableFullSizeContentView');
+    await _completer.future;
+    await _methodChannel.invokeMethod('enableFullSizeContentView');
   }
 
   /// Disables the window's full-size content view.
   static Future<void> disableFullSizeContentView() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('disableFullSizeContentView');
+    await _completer.future;
+    await _methodChannel.invokeMethod('disableFullSizeContentView');
   }
 
   /// Zooms the window.
   static Future<void> zoomWindow() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('zoomWindow');
+    await _completer.future;
+    await _methodChannel.invokeMethod('zoomWindow');
   }
 
   /// Unzooms the window.
   static Future<void> unzoomWindow() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('unzoomWindow');
+    await _completer.future;
+    await _methodChannel.invokeMethod('unzoomWindow');
   }
 
   /// Returns if the window is zoomed.
   static Future<bool> isWindowZoomed() async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod('isWindowZoomed');
+    await _completer.future;
+    return await _methodChannel.invokeMethod('isWindowZoomed');
   }
 
   /// Returns if the window is fullscreened.
   static Future<bool> isWindowFullscreened() async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod('isWindowFullscreened');
+    await _completer.future;
+    return await _methodChannel.invokeMethod('isWindowFullscreened');
   }
 
   /// Hides the window's zoom button.
   static Future<void> hideZoomButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('hideZoomButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('hideZoomButton');
   }
 
   /// Shows the window's zoom button.
   ///
   /// The zoom button is visible by default.
   static Future<void> showZoomButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('showZoomButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('showZoomButton');
   }
 
   /// Hides the window's miniaturize button.
   static Future<void> hideMiniaturizeButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('hideMiniaturizeButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('hideMiniaturizeButton');
   }
 
   /// Shows the window's miniaturize button.
   ///
   /// The miniaturize button is visible by default.
   static Future<void> showMiniaturizeButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('showMiniaturizeButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('showMiniaturizeButton');
   }
 
   /// Hides the window's close button.
   static Future<void> hideCloseButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('hideCloseButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('hideCloseButton');
   }
 
   /// Shows the window's close button.
   ///
   /// The close button is visible by default.
   static Future<void> showCloseButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('showCloseButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('showCloseButton');
   }
 
   /// Enables the window's zoom button.
   ///
   /// The zoom button is enabled by default.
   static Future<void> enableZoomButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('enableZoomButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('enableZoomButton');
   }
 
   /// Disables the window's zoom button.
   static Future<void> disableZoomButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('disableZoomButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('disableZoomButton');
   }
 
   /// Enables the window's miniaturize button.
   ///
   /// The miniaturize button is enabled by default.
   static Future<void> enableMiniaturizeButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('enableMiniaturizeButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('enableMiniaturizeButton');
   }
 
   /// Disables the window's miniaturize button.
   static Future<void> disableMiniaturizeButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('disableMiniaturizeButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('disableMiniaturizeButton');
   }
 
   /// Enables the window's close button.
   ///
   /// The close button is enabled by default.
   static Future<void> enableCloseButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('enableCloseButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('enableCloseButton');
   }
 
   /// Disables the window's close button.
   static Future<void> disableCloseButton() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('disableCloseButton');
+    await _completer.future;
+    await _methodChannel.invokeMethod('disableCloseButton');
   }
 
   /// Gets whether the window is currently being resized by the user.
   static Future<bool> isWindowInLiveResize() async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod('isWindowInLiveResize');
+    await _completer.future;
+    return await _methodChannel.invokeMethod('isWindowInLiveResize');
   }
 
   /// Sets the window's alpha value.
   static Future<void> setWindowAlphaValue(double value) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setWindowAlphaValue', <String, dynamic>{
+    await _completer.future;
+    await _methodChannel.invokeMethod('setWindowAlphaValue', <String, dynamic>{
       'value': value,
     });
   }
 
   /// Gets if the window is visible.
   static Future<bool> isWindowVisible() async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod('isWindowVisible');
+    await _completer.future;
+    return await _methodChannel.invokeMethod('isWindowVisible');
   }
 
   /// Sets the window background color to the default (opaque) window color.
   ///
   /// This method mainly affects the window's titlebar.
   static Future<void> setWindowBackgroundColorToDefaultColor() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setWindowBackgroundColorToDefaultColor');
+    await _completer.future;
+    await _methodChannel.invokeMethod('setWindowBackgroundColorToDefaultColor');
   }
 
   /// Sets the window background color to clear.
   static Future<void> setWindowBackgroundColorToClear() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setWindowBackgroundColorToClear');
+    await _completer.future;
+    await _methodChannel.invokeMethod('setWindowBackgroundColorToClear');
   }
 
   /// Sets the blur view state.
   static Future<void> setBlurViewState(MacOSBlurViewState state) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setBlurViewState', <String, dynamic>{
+    await _completer.future;
+    await _methodChannel.invokeMethod('setBlurViewState', <String, dynamic>{
       'state': state.toString().split('.').last,
     });
   }
@@ -285,8 +285,8 @@ class WindowManipulator {
   /// ID.
   static Future<int> addVisualEffectSubview(
       VisualEffectSubviewProperties properties) async {
-    await _kCompleter.future;
-    return await _kChannel.invokeMethod(
+    await _completer.future;
+    return await _methodChannel.invokeMethod(
         'addVisualEffectSubview', properties.toMap());
   }
 
@@ -294,8 +294,8 @@ class WindowManipulator {
   static Future<void> updateVisualEffectSubviewProperties(
       int visualEffectSubviewId,
       VisualEffectSubviewProperties properties) async {
-    await _kCompleter.future;
-    await _kChannel
+    await _completer.future;
+    await _methodChannel
         .invokeMethod('updateVisualEffectSubviewProperties', <String, dynamic>{
       'visualEffectSubviewId': visualEffectSubviewId,
       ...properties.toMap(),
@@ -305,8 +305,9 @@ class WindowManipulator {
   /// Removes a visual effect subview from the application's window.
   static Future<void> removeVisualEffectSubview(
       int visualEffectSubviewId) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('removeVisualEffectSubview', <String, dynamic>{
+    await _completer.future;
+    await _methodChannel
+        .invokeMethod('removeVisualEffectSubview', <String, dynamic>{
       'visualEffectSubviewId': visualEffectSubviewId,
     });
   }
@@ -315,8 +316,8 @@ class WindowManipulator {
   static Future<void> overrideMacOSBrightness({
     required bool dark,
   }) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod(
+    await _completer.future;
+    await _methodChannel.invokeMethod(
       'overrideMacOSBrightness',
       {
         'dark': dark,
@@ -326,14 +327,14 @@ class WindowManipulator {
 
   /// Adds a toolbar to the window.
   static Future<void> addToolbar() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('addToolbar');
+    await _completer.future;
+    await _methodChannel.invokeMethod('addToolbar');
   }
 
   /// Removes the window's toolbar.
   static Future<void> removeToolbar() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('removeToolbar');
+    await _completer.future;
+    await _methodChannel.invokeMethod('removeToolbar');
   }
 
   /// Sets the window's toolbar style.
@@ -348,22 +349,22 @@ class WindowManipulator {
   /// ```
   static Future<void> setToolbarStyle(
       {required MacOSToolbarStyle toolbarStyle}) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setToolbarStyle', {
+    await _completer.future;
+    await _methodChannel.invokeMethod('setToolbarStyle', {
       'toolbarStyle': toolbarStyle.name,
     });
   }
 
   /// Enables the window's shadow.
   static Future<void> enableShadow() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('enableShadow');
+    await _completer.future;
+    await _methodChannel.invokeMethod('enableShadow');
   }
 
   /// Disables the window's shadow.
   static Future<void> disableShadow() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('disableShadow');
+    await _completer.future;
+    await _methodChannel.invokeMethod('disableShadow');
   }
 
   /// Invalidates the window's shadow.
@@ -371,8 +372,8 @@ class WindowManipulator {
   /// This is a fairly technical method and is included here for
   /// completeness' sake. Normally, it should not be necessary to use it.
   static Future<void> invalidateShadows() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('invalidateShadows');
+    await _completer.future;
+    await _methodChannel.invokeMethod('invalidateShadows');
   }
 
   /// Adds an empty mask image to the window's view.
@@ -384,14 +385,14 @@ class WindowManipulator {
   /// enabled when using an empty mask image can cause visual artifacts
   /// and performance issues.
   static Future<void> addEmptyMaskImage() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('addEmptyMaskImage');
+    await _completer.future;
+    await _methodChannel.invokeMethod('addEmptyMaskImage');
   }
 
   /// Removes the window's mask image.
   static Future<void> removeMaskImage() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('removeMaskImage');
+    await _completer.future;
+    await _methodChannel.invokeMethod('removeMaskImage');
   }
 
   /// Makes a window fully transparent (with no blur effect).
@@ -420,8 +421,8 @@ class WindowManipulator {
   /// may be desirable when used in conjunction with
   /// `Window.makeWindowFullyTransparent()`.
   static Future<void> ignoreMouseEvents() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('ignoreMouseEvents');
+    await _completer.future;
+    await _methodChannel.invokeMethod('ignoreMouseEvents');
   }
 
   /// Makes the window acknowledge mouse events.
@@ -430,16 +431,16 @@ class WindowManipulator {
   /// may be desirable when used in conjunction with
   /// `Window.makeWindowFullyTransparent()`.
   static Future<void> acknowledgeMouseEvents() async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('acknowledgeMouseEvents');
+    await _completer.future;
+    await _methodChannel.invokeMethod('acknowledgeMouseEvents');
   }
 
   /// Sets the subtitle of the window.
   ///
   /// To remove the subtitle, pass an empty string to this method.
   static Future<void> setSubtitle(String subtitle) async {
-    await _kCompleter.future;
-    await _kChannel.invokeMethod('setSubtitle', {
+    await _completer.future;
+    await _methodChannel.invokeMethod('setSubtitle', {
       'subtitle': subtitle,
     });
   }
