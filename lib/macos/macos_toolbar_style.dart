@@ -1,4 +1,4 @@
-/// Available toolbar styles (macOS only).
+/// Available toolbar styles.
 enum MacOSToolbarStyle {
   /// A style indicating that the system determines the toolbar’s appearance and
   /// location.

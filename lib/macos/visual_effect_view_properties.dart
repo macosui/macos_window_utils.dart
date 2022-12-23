@@ -1,6 +1,6 @@
 import 'package:macos_window_utils/macos_window_utils.dart';
 
-/// Visual effect subview properties (macOS only).
+/// Visual effect subview properties.
 ///
 /// All values may be set to null if they should not be overwritten.
 class VisualEffectSubviewProperties {

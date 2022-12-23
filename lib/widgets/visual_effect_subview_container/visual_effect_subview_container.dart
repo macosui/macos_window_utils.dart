@@ -5,7 +5,6 @@ import 'visual_effect_subview_container_resize_event_relay.dart';
 import 'visual_effect_subview_container_with_global_key.dart';
 
 /// A container that applies a visual effect subview to its content
-/// (macOS only).
 class VisualEffectSubviewContainer extends StatefulWidget {
   final Widget child;
   final double alphaValue;

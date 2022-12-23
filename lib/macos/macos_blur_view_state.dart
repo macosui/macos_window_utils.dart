@@ -1,4 +1,4 @@
-/// Available blurView states (macOS only).
+/// Available blurView states.
 enum MacOSBlurViewState {
   /// The backdrop should always appear active.
   active,
