@@ -26,7 +26,7 @@ public class MacOSWindowUtilsViewController: NSViewController {
         newVisualEffectView.blendingMode = .behindWindow
         newVisualEffectView.state = .followsWindowActiveState
         if #available(macOS 10.14, *) {
-            newVisualEffectView.material = .underWindowBackground
+            newVisualEffectView.material = .windowBackground
         }
         self.view = newVisualEffectView
     }

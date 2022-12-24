@@ -27,13 +27,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         
         switch (methodName) {
         case "initialize":
-            if #available(macOS 10.14, *) {
-                let material = EffectIDToMaterialConverter.getMaterialFromEffectID(effectID: 0)
-                
-                MainFlutterWindowManipulator.setEffect(material: material)
-            } else {
-                MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
-            }
+            // nothing to do here
             result(true)
             break
             
