@@ -331,8 +331,8 @@ public class MainFlutterWindowManipulator {
             return
         }
         
-        let blurryContainerViewController = self.mainFlutterWindow?.contentViewController as! BlurryContainerViewController;
-        (blurryContainerViewController.view as! NSVisualEffectView).state = state
+        let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
+        (macOSWindowUtilsViewController.view as! NSVisualEffectView).state = state
     }
     
     @available(macOS 10.14, *)
@@ -354,8 +354,8 @@ public class MainFlutterWindowManipulator {
             return
         }
         
-        let blurryContainerViewController = self.mainFlutterWindow!.contentViewController as! BlurryContainerViewController;
-        (blurryContainerViewController.view as! NSVisualEffectView).material = material
+        let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
+        (macOSWindowUtilsViewController.view as! NSVisualEffectView).material = material
         
         self.mainFlutterWindow!.invalidateShadow()
     }
@@ -373,18 +373,18 @@ public class MainFlutterWindowManipulator {
     }
     
     public static func addVisualEffectSubview(_ visualEffectSubview: VisualEffectSubview) -> UInt {
-        let blurryContainerViewController = self.mainFlutterWindow?.contentViewController as! BlurryContainerViewController;
-        return blurryContainerViewController.addVisualEffectSubview(visualEffectSubview)
+        let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
+        return macOSWindowUtilsViewController.addVisualEffectSubview(visualEffectSubview)
     }
     
     public static func getVisualEffectSubview(_ subviewId: UInt) -> VisualEffectSubview? {
-        let blurryContainerViewController = self.mainFlutterWindow?.contentViewController as! BlurryContainerViewController;
-        return blurryContainerViewController.getVisualEffectSubview(subviewId)
+        let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
+        return macOSWindowUtilsViewController.getVisualEffectSubview(subviewId)
     }
     
     public static func removeVisualEffectSubview(_ subviewId: UInt) {
-        let blurryContainerViewController = self.mainFlutterWindow?.contentViewController as! BlurryContainerViewController;
-        blurryContainerViewController.removeVisualEffectSubview(subviewId)
+        let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
+        macOSWindowUtilsViewController.removeVisualEffectSubview(subviewId)
     }
     
     public static func addToolbar() {
@@ -452,8 +452,8 @@ public class MainFlutterWindowManipulator {
             return
         }
         
-        let blurryContainerViewController = self.mainFlutterWindow!.contentViewController as! BlurryContainerViewController;
-        (blurryContainerViewController.view as! NSVisualEffectView).maskImage = NSImage()
+        let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
+        (macOSWindowUtilsViewController.view as! NSVisualEffectView).maskImage = NSImage()
     }
     
     public static func removeMaskImage() {
@@ -462,8 +462,8 @@ public class MainFlutterWindowManipulator {
             return
         }
         
-        let blurryContainerViewController = self.mainFlutterWindow!.contentViewController as! BlurryContainerViewController;
-        (blurryContainerViewController.view as! NSVisualEffectView).maskImage = nil
+        let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
+        (macOSWindowUtilsViewController.view as! NSVisualEffectView).maskImage = nil
     }
     
     public static func ignoreMouseEvents() {

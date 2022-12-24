@@ -1,5 +1,5 @@
 //
-//  BlurryContainerViewController.swift
+//  MacOSWindowUtilsViewController.swift
 //  macos_window_utils
 //
 //  Created by Adrian Samoticha on 21.10.22.
@@ -8,7 +8,7 @@
 import Foundation
 import FlutterMacOS
 
-public class BlurryContainerViewController: NSViewController {
+public class MacOSWindowUtilsViewController: NSViewController {
     public let flutterViewController = FlutterViewController()
     private var visualEffectSubviewRegistry = VisualEffectSubviewRegistry()
 
