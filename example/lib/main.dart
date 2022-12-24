@@ -1,3 +1,4 @@
+import 'package:example/main_area/main_area.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/window_manipulator.dart';
 
@@ -39,15 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       child: DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                'Nothing to see here just yet.',
-              ),
-            ],
-          ),
+        child: const SafeArea(
+          child: MainArea(),
         ),
       ),
     );
