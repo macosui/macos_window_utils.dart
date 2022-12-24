@@ -273,7 +273,7 @@ class WindowManipulator {
     await _methodChannel.invokeMethod('setWindowBackgroundColorToClear');
   }
 
-  /// Sets the `NSVisualEffectViewState` view state.
+  /// Sets the `NSVisualEffectView` state.
   static Future<void> setNSVisualEffectViewState(
       NSVisualEffectViewState state) async {
     await _completer.future;
