@@ -18,7 +18,7 @@ class VisualEffectSubviewContainerWithGlobalKey extends StatefulWidget {
   final double? cornerRadius;
   final int cornerMask;
   final WindowEffect effect;
-  final MacOSBlurViewState state;
+  final NSVisualEffectViewState state;
   final EdgeInsets padding;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
 

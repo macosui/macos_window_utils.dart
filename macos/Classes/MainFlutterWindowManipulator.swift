@@ -325,7 +325,7 @@ public class MainFlutterWindowManipulator {
         self.mainFlutterWindow!.backgroundColor = .clear
     }
     
-    public static func setBlurViewState(state: NSVisualEffectView.State) {
+    public static func setNSVisualEffectViewState(state: NSVisualEffectView.State) {
         if (self.mainFlutterWindow == nil) {
             printNotStartedWarning()
             return

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:macos_window_utils/macos/macos_blur_view_state.dart';
+import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/macos/macos_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/window_effect.dart';
@@ -273,10 +273,12 @@ class WindowManipulator {
     await _methodChannel.invokeMethod('setWindowBackgroundColorToClear');
   }
 
-  /// Sets the blur view state.
-  static Future<void> setBlurViewState(MacOSBlurViewState state) async {
+  /// Sets the `NSVisualEffectViewState` view state.
+  static Future<void> setNSVisualEffectViewState(
+      NSVisualEffectViewState state) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setBlurViewState', <String, dynamic>{
+    await _methodChannel
+        .invokeMethod('setNSVisualEffectViewState', <String, dynamic>{
       'state': state.toString().split('.').last,
     });
   }

@@ -249,12 +249,12 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "setBlurViewState":
-            let blurViewStateString = args["state"] as! String
-            let state = blurViewStateString == "active"   ? NSVisualEffectView.State.active :
-                        blurViewStateString == "inactive" ? NSVisualEffectView.State.inactive :
-                                                            NSVisualEffectView.State.followsWindowActiveState
-            MainFlutterWindowManipulator.setBlurViewState(state: state)
+        case "setNSVisualEffectViewState":
+            let nsVisualEffectViewStateString = args["state"] as! String
+            let state = nsVisualEffectViewStateString == "active"   ? NSVisualEffectView.State.active :
+                        nsVisualEffectViewStateString == "inactive" ? NSVisualEffectView.State.inactive :
+                                                                      NSVisualEffectView.State.followsWindowActiveState
+            MainFlutterWindowManipulator.setNSVisualEffectViewState(state: state)
             result(true)
             break
             

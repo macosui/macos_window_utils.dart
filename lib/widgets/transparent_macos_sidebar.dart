@@ -27,14 +27,14 @@ class TransparentMacOSSidebar extends StatelessWidget {
   final Widget child;
   final double alphaValue;
   final WindowEffect effect;
-  final MacOSBlurViewState state;
+  final NSVisualEffectViewState state;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
 
   const TransparentMacOSSidebar(
       {Key? key,
       this.alphaValue = 1.0,
       this.effect = WindowEffect.sidebar,
-      this.state = MacOSBlurViewState.followsWindowActiveState,
+      this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.resizeEventRelay,
       required this.child})
       : super(key: key);

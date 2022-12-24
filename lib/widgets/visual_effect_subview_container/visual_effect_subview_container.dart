@@ -11,7 +11,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   final double? cornerRadius;
   final int cornerMask;
   final WindowEffect effect;
-  final MacOSBlurViewState state;
+  final NSVisualEffectViewState state;
   final EdgeInsets padding;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
 
@@ -57,7 +57,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
       this.cornerRadius,
       this.cornerMask = 0xf,
       required this.effect,
-      this.state = MacOSBlurViewState.followsWindowActiveState,
+      this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.padding = EdgeInsets.zero,
       this.resizeEventRelay})
       : super(key: key);

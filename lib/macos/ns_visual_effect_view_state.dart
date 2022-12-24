@@ -1,5 +1,5 @@
-/// Available blurView states.
-enum MacOSBlurViewState {
+/// Available `NSVisualEffectViewState` states.
+enum NSVisualEffectViewState {
   /// The backdrop should always appear active.
   active,
 

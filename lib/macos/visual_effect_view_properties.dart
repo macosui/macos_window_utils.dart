@@ -31,7 +31,7 @@ class VisualEffectSubviewProperties {
   final WindowEffect? effect;
 
   /// The state of the subview.
-  final MacOSBlurViewState? state;
+  final NSVisualEffectViewState? state;
 
   VisualEffectSubviewProperties(
       {this.frameWidth,
