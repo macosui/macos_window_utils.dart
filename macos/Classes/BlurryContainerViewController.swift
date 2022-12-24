@@ -21,14 +21,14 @@ public class BlurryContainerViewController: NSViewController {
     }
 
     override public func loadView() {
-        let blurView = NSVisualEffectView()
-        blurView.autoresizingMask = [.width, .height]
-        blurView.blendingMode = .behindWindow
-        blurView.state = .followsWindowActiveState
+        let newVisualEffectView = NSVisualEffectView()
+        newVisualEffectView.autoresizingMask = [.width, .height]
+        newVisualEffectView.blendingMode = .behindWindow
+        newVisualEffectView.state = .followsWindowActiveState
         if #available(macOS 10.14, *) {
-            blurView.material = .underWindowBackground
+            newVisualEffectView.material = .underWindowBackground
         }
-        self.view = blurView
+        self.view = newVisualEffectView
     }
 
     override public func viewDidLoad() {
