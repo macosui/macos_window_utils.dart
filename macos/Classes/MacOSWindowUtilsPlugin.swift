@@ -6,7 +6,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     private var channel: FlutterMethodChannel!
     
     private static func printUnsupportedMacOSVersionWarning() {
-        print("Warning: Transparency effects are not supported for your macOS Deployment Target.")
+        print("Warning: This feature is not supported on your macOS version.")
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
