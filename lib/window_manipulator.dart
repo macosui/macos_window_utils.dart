@@ -27,7 +27,7 @@ class WindowManipulator {
     _completer.complete();
   }
 
-  /// Sets specified material for the window's subview.
+  /// Modifies the window's subview's material property.
   ///
   /// Examples:
   ///
