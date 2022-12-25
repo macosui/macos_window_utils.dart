@@ -29,23 +29,39 @@ class _MainAreaState extends State<MainArea> {
 
   @override
   Widget build(BuildContext context) {
-    return KeyboardListener(
+    return Focus(
       focusNode: _focusNode,
       autofocus: true,
-      onKeyEvent: (value) {
-        if (value is KeyDownEvent || value is KeyRepeatEvent) {
-          if (value.logicalKey == LogicalKeyboardKey.arrowDown) {
+      onKeyEvent: (FocusNode _, KeyEvent event) {
+        if (event is KeyDownEvent || event is KeyRepeatEvent) {
+          if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
             setState(() {
               _addToSelectedIndex(1);
             });
+
+            return KeyEventResult.handled;
           }
 
-          if (value.logicalKey == LogicalKeyboardKey.arrowUp) {
+          if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
             setState(() {
               _addToSelectedIndex(-1);
             });
+
+            return KeyEventResult.handled;
           }
         }
+
+        if (event is KeyDownEvent) {
+          if (event.logicalKey == LogicalKeyboardKey.enter) {
+            final commands = CommandListProvider.getCommands();
+            final selectedCommand = commands[_selectedIndex];
+            selectedCommand.function();
+
+            return KeyEventResult.handled;
+          }
+        }
+
+        return KeyEventResult.ignored;
       },
       child: Column(
         children: [
