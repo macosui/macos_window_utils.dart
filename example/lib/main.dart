@@ -8,23 +8,57 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  Brightness? _brightness;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    _brightness = WidgetsBinding.instance.window.platformBrightness;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    if (mounted) {
+      setState(() {
+        _brightness = WidgetsBinding.instance.window.platformBrightness;
+      });
+    }
+
+    super.didChangePlatformBrightness();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return CupertinoApp(
       title: 'macos_window_utils demo',
       theme: CupertinoThemeData(
-        barBackgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
-        scaffoldBackgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+        barBackgroundColor: const Color.fromRGBO(0, 0, 0, 0.0),
+        scaffoldBackgroundColor: const Color.fromRGBO(0, 0, 0, 0.0),
         textTheme: CupertinoTextThemeData(
           textStyle: TextStyle(
             fontSize: 14,
+            color: _brightness == Brightness.dark
+                ? const Color.fromRGBO(255, 255, 255, 1.0)
+                : const Color.fromRGBO(0, 0, 0, 1.0),
           ),
         ),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
