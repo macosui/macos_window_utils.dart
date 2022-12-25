@@ -25,6 +25,7 @@ class CommandList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(child: _buildScrollView()),
         _buildDescriptionBox(),
