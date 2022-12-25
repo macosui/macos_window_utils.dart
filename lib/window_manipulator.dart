@@ -14,7 +14,7 @@ class WindowManipulator {
 
   /// Initializes the [WindowManipulator] class.
   ///
-  /// _Example_
+  /// Example:
   /// ```dart
   /// Future<void> main() async {
   ///   WidgetsFlutterBinding.ensureInitialized();
