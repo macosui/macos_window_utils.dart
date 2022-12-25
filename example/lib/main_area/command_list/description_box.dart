@@ -43,6 +43,11 @@ class DescriptionBox extends StatelessWidget {
         data: text!,
         padding: _defaultPadding,
         styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+        styleSheet: MarkdownStyleSheet(
+          code: const TextStyle(
+            backgroundColor: Color.fromRGBO(128, 128, 128, 0.4),
+          ),
+        ),
       ),
     );
   }
