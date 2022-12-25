@@ -9,11 +9,13 @@ class CommandListEntry extends StatefulWidget {
       {super.key,
       required this.index,
       required this.selectedIndex,
-      required this.command});
+      required this.command,
+      required this.select});
 
   final int index;
   final int selectedIndex;
   final Command command;
+  final void Function() select;
 
   @override
   State<CommandListEntry> createState() => _CommandListEntryState();
@@ -72,17 +74,20 @@ class _CommandListEntryState extends State<CommandListEntry> {
       _ensureVisible();
     }
 
-    return Container(
-      key: _globalKey,
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-          color: _getBackgroundColor(isIndexOdd: widget.index.isOdd)),
-      child: Text(
-        widget.command.name,
-        softWrap: false,
-        overflow: TextOverflow.ellipsis,
-        style: _getTextStyle(
-          context: context,
+    return GestureDetector(
+      onTap: _isSelected ? widget.command.function : widget.select,
+      child: Container(
+        key: _globalKey,
+        padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+            color: _getBackgroundColor(isIndexOdd: widget.index.isOdd)),
+        child: Text(
+          widget.command.name,
+          softWrap: false,
+          overflow: TextOverflow.ellipsis,
+          style: _getTextStyle(
+            context: context,
+          ),
         ),
       ),
     );

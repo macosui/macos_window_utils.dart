@@ -57,6 +57,9 @@ class _MainAreaState extends State<MainArea> {
               searchTerm: _searchTerm,
               selectedIndex: _legalSelectedIndex,
               commands: CommandListProvider.getCommands(),
+              setIndex: (int newIndex) => setState(() {
+                _selectedIndex = newIndex;
+              }),
             ),
           ),
         ],

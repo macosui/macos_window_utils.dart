@@ -9,11 +9,13 @@ class CommandList extends StatelessWidget {
       {super.key,
       required this.commands,
       required this.searchTerm,
-      required this.selectedIndex});
+      required this.selectedIndex,
+      required this.setIndex});
 
   final List<Command> commands;
   final String searchTerm;
   final int selectedIndex;
+  final void Function(int) setIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class CommandList extends StatelessWidget {
                 index: index,
                 selectedIndex: selectedIndex,
                 command: command,
+                select: () => setIndex(index),
               );
 
               return MapEntry(index, widget);
