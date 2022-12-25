@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/macos/macos_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
-import 'package:macos_window_utils/ns_visual_effect_view_material.dart';
+import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
