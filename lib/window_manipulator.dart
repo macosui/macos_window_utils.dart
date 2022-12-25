@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/macos/macos_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
-import 'package:macos_window_utils/window_effect.dart';
+import 'package:macos_window_utils/ns_visual_effect_view_material.dart';
 
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
@@ -27,26 +27,27 @@ class WindowManipulator {
     _completer.complete();
   }
 
-  /// Sets specified effect for the window.
+  /// Sets specified material for the window's subview.
   ///
   /// Examples:
   ///
   /// ```dart
-  /// await Window.setEffect(
-  ///   effect: WindowEffect.windowBackground,
+  /// await Window.setMaterial(
+  ///   material: NSVisualEffectViewMaterial.windowBackground,
   /// );
   /// ```
   ///
   /// ```dart
-  /// await Window.setEffect(
-  ///   effect: WindowEffect.sidebar,
+  /// await Window.setMaterial(
+  ///   material: NSVisualEffectViewMaterial.sidebar,
   /// );
   /// ```
-  static Future<void> setEffect({required WindowEffect effect}) async {
+  static Future<void> setMaterial(
+      {required NSVisualEffectViewMaterial material}) async {
     await _completer.future;
     await _methodChannel.invokeMethod(
-      'setEffect',
-      {'effect': effect.index},
+      'setMaterial',
+      {'material': material.index},
     );
   }
 

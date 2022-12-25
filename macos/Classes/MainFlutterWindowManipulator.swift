@@ -360,11 +360,6 @@ public class MainFlutterWindowManipulator {
         self.mainFlutterWindow!.invalidateShadow()
     }
     
-    @available(macOS 10.14, *)
-    public static func setEffect(material: NSVisualEffectView.Material) {
-        setMaterial(material: material)
-    }
-    
     public static func getTitlebarHeight() -> CGFloat {
         let windowFrameHeight = (self.mainFlutterWindow!.contentView?.frame.height)!
         let contentLayoutRectHeight = self.mainFlutterWindow!.contentLayoutRect.height

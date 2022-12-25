@@ -10,7 +10,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   final double alphaValue;
   final double? cornerRadius;
   final int cornerMask;
-  final WindowEffect effect;
+  final NSVisualEffectViewMaterial effect;
   final NSVisualEffectViewState state;
   final EdgeInsets padding;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;

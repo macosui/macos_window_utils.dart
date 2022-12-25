@@ -28,7 +28,7 @@ class VisualEffectSubviewProperties {
   final int? cornerMask;
 
   /// The effect/material of the subview.
-  final WindowEffect? effect;
+  final NSVisualEffectViewMaterial? effect;
 
   /// The state of the subview.
   final NSVisualEffectViewState? state;

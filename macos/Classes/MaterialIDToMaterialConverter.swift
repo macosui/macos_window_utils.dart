@@ -7,9 +7,9 @@
 
 import Foundation
 
-public class EffectIDToMaterialConverter {
+public class MaterialIDToMaterialConverter {
     @available(macOS 10.14, *)
-    public static func getMaterialFromEffectID(effectID: NSNumber) -> NSVisualEffectView.Material {
+    public static func getMaterialFromMaterialID(effectID: NSNumber) -> NSVisualEffectView.Material {
         switch (effectID) {
         case 0: // titlebar
             return NSVisualEffectView.Material.titlebar

@@ -59,7 +59,7 @@ class VisualEffectSubviewProperties {
         }
         
         let effectID = effectArgument as! NSNumber
-        return EffectIDToMaterialConverter.getMaterialFromEffectID(effectID: effectID)
+        return MaterialIDToMaterialConverter.getMaterialFromMaterialID(effectID: effectID)
     }
     
     /// Decodes the “state” argument and returns the associated NSVisualEffectView.State if it is not nil. Returns nil otherwise.

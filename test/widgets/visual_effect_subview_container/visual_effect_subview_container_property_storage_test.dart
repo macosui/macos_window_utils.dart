@@ -179,23 +179,23 @@ void main() {
       (tester) async {
     final storage = VisualEffectSubviewContainerPropertyStorage();
     storage.updateProperties(VisualEffectSubviewProperties(
-      effect: WindowEffect.windowBackground,
+      effect: NSVisualEffectViewMaterial.windowBackground,
     ));
 
     final delta0 = storage.getDeltaProperties(VisualEffectSubviewProperties(
-      effect: WindowEffect.windowBackground,
+      effect: NSVisualEffectViewMaterial.windowBackground,
     ));
 
     expect(delta0, VisualEffectSubviewProperties());
 
     final delta1 = storage.getDeltaProperties(VisualEffectSubviewProperties(
-      effect: WindowEffect.sidebar,
+      effect: NSVisualEffectViewMaterial.sidebar,
     ));
 
     expect(
         delta1,
         VisualEffectSubviewProperties(
-          effect: WindowEffect.sidebar,
+          effect: NSVisualEffectViewMaterial.sidebar,
         ));
   });
 }

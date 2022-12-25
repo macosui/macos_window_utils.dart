@@ -31,12 +31,12 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "setEffect":
+        case "setMaterial":
             if #available(macOS 10.14, *) {
-                let effectID = args["effect"] as! NSNumber
-                let material = EffectIDToMaterialConverter.getMaterialFromEffectID(effectID: effectID)
+                let materialID = args["material"] as! NSNumber
+                let material = MaterialIDToMaterialConverter.getMaterialFromMaterialID(effectID: materialID)
                 
-                MainFlutterWindowManipulator.setEffect(material: material)
+                MainFlutterWindowManipulator.setMaterial(material: material)
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }

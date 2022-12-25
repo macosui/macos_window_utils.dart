@@ -26,14 +26,14 @@ import 'package:macos_window_utils/widgets/visual_effect_subview_container/visua
 class TransparentMacOSSidebar extends StatelessWidget {
   final Widget child;
   final double alphaValue;
-  final WindowEffect effect;
+  final NSVisualEffectViewMaterial effect;
   final NSVisualEffectViewState state;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
 
   const TransparentMacOSSidebar(
       {Key? key,
       this.alphaValue = 1.0,
-      this.effect = WindowEffect.sidebar,
+      this.effect = NSVisualEffectViewMaterial.sidebar,
       this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.resizeEventRelay,
       required this.child})
