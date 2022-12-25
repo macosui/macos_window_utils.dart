@@ -1,3 +1,4 @@
+import 'package:example/main_area/command_list/description_box.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'command.dart';
@@ -17,14 +18,32 @@ class CommandList extends StatelessWidget {
   final int selectedIndex;
   final void Function(int) setIndex;
 
+  List<Command> get _filteredCommands => commands
+      .where((Command command) => command.name.contains(searchTerm))
+      .toList();
+
   @override
   Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(child: _buildScrollView()),
+        _buildDescriptionBox(),
+      ],
+    );
+  }
+
+  Widget _buildDescriptionBox() => SizedBox(
+        width: 233.0,
+        child: DescriptionBox(
+          text: _filteredCommands[selectedIndex].description,
+        ),
+      );
+
+  Widget _buildScrollView() {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: commands
-            .where((Command command) => command.name.contains(searchTerm))
-            .toList()
+        children: _filteredCommands
             .asMap()
             .map((int index, Command command) {
               final widget = CommandListEntry(

@@ -6,6 +6,7 @@ class CommandListProvider {
       // TODO: return real commands
       return Command(
         name: 'foo $index',
+        description: index % 2 == 0 ? 'This is a **description**.' : null,
         function: () {},
       );
     });
