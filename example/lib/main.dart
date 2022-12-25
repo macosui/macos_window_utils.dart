@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
       theme: CupertinoThemeData(
         barBackgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
         scaffoldBackgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+        textTheme: CupertinoTextThemeData(
+          textStyle: TextStyle(
+            fontSize: 14,
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
