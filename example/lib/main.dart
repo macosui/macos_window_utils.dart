@@ -1,5 +1,6 @@
 import 'package:example/main_area/main_area.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:macos_window_utils/macos_window_utils.dart';
 import 'package:macos_window_utils/window_manipulator.dart';
 
 void main() async {
@@ -73,14 +74,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('macos_window_utils demo'),
-      ),
-      child: DefaultTextStyle(
-        style: CupertinoTheme.of(context).textTheme.textStyle,
-        child: const SafeArea(
-          child: MainArea(),
+    return TitlebarSafeArea(
+      child: CupertinoPageScaffold(
+        navigationBar: const CupertinoNavigationBar(
+          middle: Text('macos_window_utils demo'),
+        ),
+        child: DefaultTextStyle(
+          style: CupertinoTheme.of(context).textTheme.textStyle,
+          child: SafeArea(
+            child: MainArea(
+              setState: setState,
+            ),
+          ),
         ),
       ),
     );

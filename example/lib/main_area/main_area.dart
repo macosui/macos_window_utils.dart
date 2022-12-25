@@ -7,7 +7,10 @@ import 'command_list_provider.dart';
 class MainArea extends StatefulWidget {
   const MainArea({
     Key? key,
+    required this.setState,
   }) : super(key: key);
+
+  final void Function(void Function()) setState;
 
   @override
   State<MainArea> createState() => _MainAreaState();
@@ -43,7 +46,7 @@ class _MainAreaState extends State<MainArea> {
           }
 
           if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-            setState(() {
+            widget.setState(() {
               _addToSelectedIndex(-1);
             });
 
@@ -53,9 +56,11 @@ class _MainAreaState extends State<MainArea> {
 
         if (event is KeyDownEvent) {
           if (event.logicalKey == LogicalKeyboardKey.enter) {
-            final commands = CommandListProvider.getCommands();
-            final selectedCommand = commands[_selectedIndex];
-            selectedCommand.function();
+            setState(() {
+              final commands = CommandListProvider.getCommands();
+              final selectedCommand = commands[_selectedIndex];
+              selectedCommand.function();
+            });
 
             return KeyEventResult.handled;
           }
