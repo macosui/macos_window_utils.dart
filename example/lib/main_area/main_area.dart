@@ -18,8 +18,14 @@ class _MainAreaState extends State<MainArea> {
   String _searchTerm = '';
   int _selectedIndex = 0;
 
-  int get _legalSelectedIndex =>
-      _selectedIndex.clamp(0, CommandListProvider.getCommands().length - 1);
+  void _setSelectedIndex(int newIndex) {
+    _selectedIndex =
+        newIndex.clamp(0, CommandListProvider.getCommands().length - 1);
+  }
+
+  void _addToSelectedIndex(int value) {
+    _setSelectedIndex(_selectedIndex + value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +36,13 @@ class _MainAreaState extends State<MainArea> {
         if (value is KeyDownEvent || value is KeyRepeatEvent) {
           if (value.logicalKey == LogicalKeyboardKey.arrowDown) {
             setState(() {
-              _selectedIndex = _legalSelectedIndex + 1;
+              _addToSelectedIndex(1);
             });
           }
 
           if (value.logicalKey == LogicalKeyboardKey.arrowUp) {
             setState(() {
-              _selectedIndex = _legalSelectedIndex - 1;
+              _addToSelectedIndex(-1);
             });
           }
         }
@@ -55,10 +61,10 @@ class _MainAreaState extends State<MainArea> {
           Expanded(
             child: CommandList(
               searchTerm: _searchTerm,
-              selectedIndex: _legalSelectedIndex,
+              selectedIndex: _selectedIndex,
               commands: CommandListProvider.getCommands(),
               setIndex: (int newIndex) => setState(() {
-                _selectedIndex = newIndex;
+                _setSelectedIndex(newIndex);
               }),
             ),
           ),
