@@ -291,7 +291,7 @@ class WindowManipulator {
     await _completer.future;
     await _methodChannel
         .invokeMethod('setNSVisualEffectViewState', <String, dynamic>{
-      'state': state.toString().split('.').last,
+      'state': state.name,
     });
   }
 
