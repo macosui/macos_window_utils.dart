@@ -89,8 +89,8 @@ Depending on your use case, you may want to extend the area of the window that F
 To do so, enable the full-size content view with the following Dart code:
 
 ```dart
-Window.makeTitlebarTransparent();
-Window.enableFullSizeContentView();
+WindowManipulator.makeTitlebarTransparent();
+WindowManipulator.enableFullSizeContentView();
 ```
 
 When you decide to do this, it is recommended to wrap your application (or parts of it) in a `TitlebarSafeArea` widget as follows:
