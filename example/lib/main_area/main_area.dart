@@ -27,6 +27,11 @@ class _MainAreaState extends State<MainArea> {
       .toList();
 
   void _setSelectedIndex(int newIndex) {
+    if (_filteredCommands.isEmpty) {
+      _selectedIndex = 0;
+      return;
+    }
+
     _selectedIndex = newIndex.clamp(0, _filteredCommands.length - 1);
   }
 

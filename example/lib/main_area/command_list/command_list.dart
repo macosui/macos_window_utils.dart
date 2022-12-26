@@ -27,12 +27,18 @@ class CommandList extends StatelessWidget {
     );
   }
 
-  Widget _buildDescriptionBox() => SizedBox(
-        width: 233.0,
-        child: DescriptionBox(
-          text: commands[selectedIndex].description,
-        ),
-      );
+  Widget _buildDescriptionBox() {
+    if (commands.isEmpty) {
+      return Container();
+    }
+
+    return SizedBox(
+      width: 233.0,
+      child: DescriptionBox(
+        text: commands[selectedIndex].description,
+      ),
+    );
+  }
 
   Widget _buildScrollView() {
     return SingleChildScrollView(
