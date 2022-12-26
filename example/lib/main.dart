@@ -3,7 +3,6 @@ import 'package:example/sidebar_content.dart';
 import 'package:example/util/transparent_sidebar_and_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
-import 'package:macos_window_utils/widgets/transparent_macos_sidebar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
