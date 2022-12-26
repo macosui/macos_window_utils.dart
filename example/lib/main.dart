@@ -1,6 +1,9 @@
 import 'package:example/main_area/main_area.dart';
+import 'package:example/sidebar_content.dart';
+import 'package:example/util/transparent_sidebar_and_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
+import 'package:macos_window_utils/widgets/transparent_macos_sidebar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,18 +74,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isSidebarOpen = false;
+
   @override
   Widget build(BuildContext context) {
-    return TitlebarSafeArea(
-      child: CupertinoPageScaffold(
-        navigationBar: const CupertinoNavigationBar(
-          middle: Text('macos_window_utils demo'),
-        ),
-        child: DefaultTextStyle(
-          style: CupertinoTheme.of(context).textTheme.textStyle,
-          child: SafeArea(
-            child: MainArea(
-              setState: setState,
+    return TransparentSidebarAndContent(
+      isOpen: _isSidebarOpen,
+      width: 280.0,
+      sidebarBuilder: () => const TitlebarSafeArea(
+        child: SidebarContent(),
+      ),
+      child: TitlebarSafeArea(
+        child: CupertinoPageScaffold(
+          navigationBar: CupertinoNavigationBar(
+            middle: const Text('macos_window_utils demo'),
+            leading: CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: const Icon(
+                CupertinoIcons.sidebar_left,
+              ),
+              onPressed: () => setState(() {
+                _isSidebarOpen = !_isSidebarOpen;
+              }),
+            ),
+          ),
+          child: DefaultTextStyle(
+            style: CupertinoTheme.of(context).textTheme.textStyle,
+            child: SafeArea(
+              child: MainArea(
+                setState: setState,
+              ),
             ),
           ),
         ),
