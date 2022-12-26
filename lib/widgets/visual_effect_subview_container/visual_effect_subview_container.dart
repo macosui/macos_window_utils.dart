@@ -10,7 +10,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   final double alphaValue;
   final double? cornerRadius;
   final int cornerMask;
-  final NSVisualEffectViewMaterial effect;
+  final NSVisualEffectViewMaterial material;
   final NSVisualEffectViewState state;
   final EdgeInsets padding;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
@@ -36,7 +36,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   ///
   /// ```dart
   /// VisualEffectSubviewContainer(
-  ///   effect: WindowEffect.hudWindow,
+  ///   material: NSVisualEffectViewMaterial.hudWindow,
   ///   cornerRadius: 32.0,
   ///   cornerMask: VisualEffectSubviewContainer.topLeftCorner +
   ///       VisualEffectSubviewContainer.topRightCorner +
@@ -56,7 +56,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
       this.alphaValue = 1.0,
       this.cornerRadius,
       this.cornerMask = 0xf,
-      required this.effect,
+      required this.material,
       this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.padding = EdgeInsets.zero,
       this.resizeEventRelay})
@@ -79,7 +79,7 @@ class _VisualEffectSubviewContainerState
       alphaValue: widget.alphaValue,
       cornerRadius: widget.cornerRadius,
       cornerMask: widget.cornerMask,
-      effect: widget.effect,
+      material: widget.material,
       state: widget.state,
       padding: widget.padding,
       resizeEventRelay: widget.resizeEventRelay,

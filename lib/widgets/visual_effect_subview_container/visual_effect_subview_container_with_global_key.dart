@@ -11,7 +11,7 @@ class VisualEffectSubviewContainerWithGlobalKey extends StatefulWidget {
   final double alphaValue;
   final double? cornerRadius;
   final int cornerMask;
-  final NSVisualEffectViewMaterial effect;
+  final NSVisualEffectViewMaterial material;
   final NSVisualEffectViewState state;
   final EdgeInsets padding;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
@@ -35,7 +35,7 @@ class VisualEffectSubviewContainerWithGlobalKey extends StatefulWidget {
       this.alphaValue = 1.0,
       this.cornerRadius,
       this.cornerMask = 0xf,
-      required this.effect,
+      required this.material,
       required this.state,
       required this.padding,
       this.resizeEventRelay})
@@ -56,7 +56,7 @@ class _VisualEffectSubviewContainerWithGlobalKeyState
       alphaValue: widget.alphaValue,
       cornerRadius: widget.cornerRadius,
       cornerMask: widget.cornerMask,
-      effect: widget.effect,
+      material: widget.material,
     );
   }
 
@@ -132,7 +132,7 @@ class _VisualEffectSubviewContainerWithGlobalKeyState
       alphaValue: widget.alphaValue,
       cornerMask: widget.cornerMask,
       cornerRadius: widget.cornerRadius,
-      effect: widget.effect,
+      material: widget.material,
       state: widget.state,
     );
 

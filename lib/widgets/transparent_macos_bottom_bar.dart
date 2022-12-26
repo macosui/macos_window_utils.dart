@@ -6,7 +6,7 @@ import 'package:macos_window_utils/widgets/visual_effect_subview_container/visua
 class TransparentMacOSBottomBar extends StatelessWidget {
   final Widget child;
   final double alphaValue;
-  final NSVisualEffectViewMaterial effect;
+  final NSVisualEffectViewMaterial material;
   final NSVisualEffectViewState state;
   final VisualEffectSubviewContainerResizeEventRelay? resizeEventRelay;
 
@@ -33,7 +33,7 @@ class TransparentMacOSBottomBar extends StatelessWidget {
   const TransparentMacOSBottomBar(
       {Key? key,
       this.alphaValue = 1.0,
-      this.effect = NSVisualEffectViewMaterial.sidebar,
+      this.material = NSVisualEffectViewMaterial.sidebar,
       this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.resizeEventRelay,
       required this.child})
@@ -43,7 +43,7 @@ class TransparentMacOSBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return VisualEffectSubviewContainer(
       alphaValue: alphaValue,
-      effect: effect,
+      material: material,
       resizeEventRelay: resizeEventRelay,
       state: state,
       // Due to the fact that visual effect subviews cannot be updated while the

@@ -50,9 +50,9 @@ class VisualEffectSubviewProperties {
         return CACornerMask(cornerMaskArray)
     }
     
-    /// Decodes the “effect” argument and returns the associated NSVisualEffectView.Material if it is not nil. Returns nil otherwise.
+    /// Decodes the “material” argument and returns the associated NSVisualEffectView.Material if it is not nil. Returns nil otherwise.
     private static func getMaterialFromArgs(_ args: [String: Any]) -> NSVisualEffectView.Material? {
-        let effectArgument = args["effect"]
+        let effectArgument = args["material"]
         
         if (effectArgument == nil) {
             return nil

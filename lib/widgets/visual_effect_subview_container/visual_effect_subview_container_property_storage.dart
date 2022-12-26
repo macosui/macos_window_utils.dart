@@ -24,7 +24,8 @@ class VisualEffectSubviewContainerPropertyStorage {
         newProperties.cornerRadius != _currentProperties.cornerRadius;
     final hasCornerMaskChanged =
         newProperties.cornerMask != _currentProperties.cornerMask;
-    final hasEffectChanged = newProperties.effect != _currentProperties.effect;
+    final hasEffectChanged =
+        newProperties.material != _currentProperties.material;
     final hasStateChanged = newProperties.state != _currentProperties.state;
 
     return _VisualEffectSubviewContainerPropertyChange(
@@ -69,7 +70,7 @@ class VisualEffectSubviewContainerPropertyStorage {
     final cornerMask =
         propertyChange.hasCornerMaskChanged ? newProperties.cornerMask : null;
     final effect =
-        propertyChange.hasEffectChanged ? newProperties.effect : null;
+        propertyChange.hasEffectChanged ? newProperties.material : null;
     final state = propertyChange.hasStateChanged ? newProperties.state : null;
 
     return VisualEffectSubviewProperties(
@@ -80,7 +81,7 @@ class VisualEffectSubviewContainerPropertyStorage {
       alphaValue: alphaValue,
       cornerRadius: cornerRadius,
       cornerMask: cornerMask,
-      effect: effect,
+      material: effect,
       state: state,
     );
   }
@@ -99,7 +100,7 @@ class VisualEffectSubviewContainerPropertyStorage {
       cornerRadius:
           newProperties.cornerRadius ?? _currentProperties.cornerRadius,
       cornerMask: newProperties.cornerMask ?? _currentProperties.cornerMask,
-      effect: newProperties.effect ?? _currentProperties.effect,
+      material: newProperties.material ?? _currentProperties.material,
       state: newProperties.state ?? _currentProperties.state,
     );
   }

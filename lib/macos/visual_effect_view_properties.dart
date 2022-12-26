@@ -25,7 +25,7 @@ class VisualEffectSubviewProperties {
   final int? cornerMask;
 
   /// The effect/material of the subview.
-  final NSVisualEffectViewMaterial? effect;
+  final NSVisualEffectViewMaterial? material;
 
   /// The state of the subview.
   final NSVisualEffectViewState? state;
@@ -41,7 +41,7 @@ class VisualEffectSubviewProperties {
       this.alphaValue,
       this.cornerRadius,
       this.cornerMask,
-      this.effect,
+      this.material,
       this.state});
 
   static const topLeftCorner = 1 << 0;
@@ -57,7 +57,7 @@ class VisualEffectSubviewProperties {
       alphaValue == null &&
       cornerRadius == null &&
       cornerMask == null &&
-      effect == null &&
+      material == null &&
       state == null;
 
   /// Creates a map in which the properties of this instance are contained.
@@ -94,8 +94,8 @@ class VisualEffectSubviewProperties {
       result['cornerMask'] = cornerMask;
     }
 
-    if (effect != null) {
-      result['effect'] = effect!.index;
+    if (material != null) {
+      result['material'] = material!.index;
     }
 
     if (state != null) {
@@ -115,7 +115,7 @@ class VisualEffectSubviewProperties {
         alphaValue == other.alphaValue &&
         cornerRadius == other.cornerRadius &&
         cornerMask == other.cornerMask &&
-        effect == other.effect &&
+        material == other.material &&
         state == other.state;
   }
 
@@ -128,12 +128,12 @@ class VisualEffectSubviewProperties {
         alphaValue.hashCode ^
         cornerRadius.hashCode ^
         cornerMask.hashCode ^
-        effect.hashCode ^
+        material.hashCode ^
         state.hashCode;
   }
 
   @override
   String toString() {
-    return '$frameWidth $frameHeight $frameX $frameY $alphaValue $cornerRadius $cornerMask $effect $state';
+    return '$frameWidth $frameHeight $frameX $frameY $alphaValue $cornerRadius $cornerMask $material $state';
   }
 }
