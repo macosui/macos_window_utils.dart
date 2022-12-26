@@ -22,7 +22,8 @@ class _MainAreaState extends State<MainArea> {
   int _selectedIndex = 0;
 
   List<Command> get _filteredCommands => CommandListProvider.getCommands()
-      .where((Command command) => command.name.contains(_searchTerm))
+      .where((Command command) =>
+          command.name.toLowerCase().contains(_searchTerm.toLowerCase()))
       .toList();
 
   void _setSelectedIndex(int newIndex) {
