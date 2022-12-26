@@ -1,7 +1,6 @@
 import 'package:example/main_area/main_area.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
-import 'package:macos_window_utils/window_manipulator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
