@@ -395,8 +395,8 @@ class WindowManipulator {
   /// This will effectively disable the `NSVisualEffectView`'s effect.
   ///
   /// **Warning:** It is recommended to disable the window's shadow using
-  /// `WindowManipulator.disableShadow()` when using this method. Keeping the shadow
-  /// enabled when using an empty mask image can cause visual artifacts
+  /// `WindowManipulator.disableShadow()` when using this method. Keeping the
+  /// shadow enabled when using an empty mask image can cause visual artifacts
   /// and performance issues.
   static Future<void> addEmptyMaskImage() async {
     await _completer.future;
