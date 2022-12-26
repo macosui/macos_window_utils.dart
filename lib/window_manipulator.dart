@@ -433,7 +433,7 @@ class WindowManipulator {
   ///
   /// This method can be used to make parts of the window click-through, which
   /// may be desirable when used in conjunction with
-  /// `Window.makeWindowFullyTransparent()`.
+  /// `makeWindowFullyTransparent()`.
   static Future<void> ignoreMouseEvents() async {
     await _completer.future;
     await _methodChannel.invokeMethod('ignoreMouseEvents');
@@ -443,7 +443,7 @@ class WindowManipulator {
   ///
   /// This method can be used to make parts of the window click-through, which
   /// may be desirable when used in conjunction with
-  /// `Window.makeWindowFullyTransparent()`.
+  /// `makeWindowFullyTransparent()`.
   static Future<void> acknowledgeMouseEvents() async {
     await _completer.future;
     await _methodChannel.invokeMethod('acknowledgeMouseEvents');
