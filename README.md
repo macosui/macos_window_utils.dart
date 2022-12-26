@@ -107,8 +107,7 @@ Additionally, it may be worth considering to split your sidebar and your main vi
 app. This is because macOS has a feature called “wallpaper tinting,” which is enabled by default. This feature allows windows to
 blend in with the desktop wallpaper:
 
-TODO: insert image here
-
+<img width="1680" alt="macos_wallpaper_tinting" src="https://user-images.githubusercontent.com/86920182/209585269-bcdcd7fe-1077-4a90-b11e-2cf44e17e479.png">
 
 To achieve the same effect in your Flutter application, you can set the window's window effect to `WindowEffect.solid` and wrap
 your sidebar widget with a `TransparentMacOSSidebar` widget like so:
