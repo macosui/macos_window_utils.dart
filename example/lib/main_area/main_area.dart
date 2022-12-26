@@ -21,9 +21,12 @@ class _MainAreaState extends State<MainArea> {
   String _searchTerm = '';
   int _selectedIndex = 0;
 
+  List<Command> get _filteredCommands => CommandListProvider.getCommands()
+      .where((Command command) => command.name.contains(_searchTerm))
+      .toList();
+
   void _setSelectedIndex(int newIndex) {
-    _selectedIndex =
-        newIndex.clamp(0, CommandListProvider.getCommands().length - 1);
+    _selectedIndex = newIndex.clamp(0, _filteredCommands.length - 1);
   }
 
   void _addToSelectedIndex(int value) {
@@ -74,16 +77,15 @@ class _MainAreaState extends State<MainArea> {
             padding: const EdgeInsets.all(8.0),
             child: CupertinoSearchTextField(
               onChanged: (value) => setState(() {
-                _selectedIndex = 0;
+                _setSelectedIndex(0);
                 _searchTerm = value;
               }),
             ),
           ),
           Expanded(
             child: CommandList(
-              searchTerm: _searchTerm,
               selectedIndex: _selectedIndex,
-              commands: CommandListProvider.getCommands(),
+              commands: _filteredCommands,
               setIndex: (int newIndex) => setState(() {
                 _setSelectedIndex(newIndex);
               }),

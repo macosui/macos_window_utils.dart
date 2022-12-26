@@ -9,18 +9,12 @@ class CommandList extends StatelessWidget {
   const CommandList(
       {super.key,
       required this.commands,
-      required this.searchTerm,
       required this.selectedIndex,
       required this.setIndex});
 
   final List<Command> commands;
-  final String searchTerm;
   final int selectedIndex;
   final void Function(int) setIndex;
-
-  List<Command> get _filteredCommands => commands
-      .where((Command command) => command.name.contains(searchTerm))
-      .toList();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +30,7 @@ class CommandList extends StatelessWidget {
   Widget _buildDescriptionBox() => SizedBox(
         width: 233.0,
         child: DescriptionBox(
-          text: _filteredCommands[selectedIndex].description,
+          text: commands[selectedIndex].description,
         ),
       );
 
@@ -44,7 +38,7 @@ class CommandList extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _filteredCommands
+        children: commands
             .asMap()
             .map((int index, Command command) {
               final widget = CommandListEntry(
