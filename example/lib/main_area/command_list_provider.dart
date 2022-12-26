@@ -183,10 +183,16 @@ class CommandListProvider {
       ),
       Command(
         name: 'overrideMacOSBrightness(dark: false)',
+        description: '**Warning:** Calling this method does not inform the '
+            'Flutter framework of the theme changes. The app will continue '
+            'using its default theme settings.',
         function: () => WindowManipulator.overrideMacOSBrightness(dark: false),
       ),
       Command(
         name: 'overrideMacOSBrightness(dark: true)',
+        description: '**Warning:** Calling this method does not inform the '
+            'Flutter framework of the theme changes. The app will continue '
+            'using its default theme settings.',
         function: () => WindowManipulator.overrideMacOSBrightness(dark: true),
       ),
       Command(
