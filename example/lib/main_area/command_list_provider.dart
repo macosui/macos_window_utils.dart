@@ -17,6 +17,14 @@ class CommandListProvider {
         );
       }),
       Command(
+        name: 'enterFullscreen()',
+        function: () => WindowManipulator.enterFullscreen(),
+      ),
+      Command(
+        name: 'exitFullscreen()',
+        function: () => WindowManipulator.exitFullscreen(),
+      ),
+      Command(
         name: 'setDocumentEdited()',
         description: 'Sets the document to be edited.\n\n'
             'This changes the appearance of the close button on the '
