@@ -121,7 +121,7 @@ TransparentMacOSSidebar(
 **Note:** The widget will automatically resize the `NSVisualEffectView` when a resize is detected in the widget's `build` method.
 If you are animating your sidebar's size using a `TweenAnimationBuilder`, please make sure that the `TransparentMacOSSidebar` widget
 is built *within* the `TweenAnimationBuilder`'s `build` method, in order to guarantee that a rebuild is triggered when the size
-changes. For reference, there is a working example in the `sidebar_frame.dart` file of the `example` project.
+changes. For reference, there is a working example in the `transparent_sidebar_and_content.dart` file of the `example` project.
 
 ## Usage
 
