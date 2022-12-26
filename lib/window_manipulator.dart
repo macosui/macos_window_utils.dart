@@ -42,8 +42,7 @@ class WindowManipulator {
   ///   material: NSVisualEffectViewMaterial.sidebar,
   /// );
   /// ```
-  static Future<void> setMaterial(
-      {required NSVisualEffectViewMaterial material}) async {
+  static Future<void> setMaterial(NSVisualEffectViewMaterial material) async {
     await _completer.future;
     await _methodChannel.invokeMethod(
       'setMaterial',

@@ -9,11 +9,10 @@ class CommandListProvider {
       ...List.generate(NSVisualEffectViewMaterial.values.length, (int index) {
         final currentMaterial = NSVisualEffectViewMaterial.values[index];
         return Command(
-          name: 'setMaterial(material: ${currentMaterial.toString()})',
+          name: 'setMaterial(${currentMaterial.toString()})',
           description:
               'Changes the window\'s subview\'s material property to `${currentMaterial.name}`.',
-          function: () =>
-              WindowManipulator.setMaterial(material: currentMaterial),
+          function: () => WindowManipulator.setMaterial(currentMaterial),
         );
       }),
       Command(
