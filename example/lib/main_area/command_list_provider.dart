@@ -270,9 +270,9 @@ class CommandListProvider {
             'This will effectively disable the `NSVisualEffectView`\'s effect.'
             '\n\n'
             '**Warning:** It is recommended to disable the window\'s shadow '
-            'using `Window.disableShadow()` when using this method. Keeping '
-            'the shadow enabled when using an empty mask image can cause '
-            'visual artifacts and performance issues.',
+            'using `WindowManipulator.disableShadow()` when using this method. '
+            'Keeping the shadow enabled when using an empty mask image can '
+            'cause visual artifacts and performance issues.',
         function: () => WindowManipulator.addEmptyMaskImage(),
       ),
       Command(

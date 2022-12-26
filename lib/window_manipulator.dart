@@ -32,13 +32,13 @@ class WindowManipulator {
   /// Examples:
   ///
   /// ```dart
-  /// await Window.setMaterial(
+  /// await WindowManipulator.setMaterial(
   ///   material: NSVisualEffectViewMaterial.windowBackground,
   /// );
   /// ```
   ///
   /// ```dart
-  /// await Window.setMaterial(
+  /// await WindowManipulator.setMaterial(
   ///   material: NSVisualEffectViewMaterial.sidebar,
   /// );
   /// ```
@@ -358,8 +358,8 @@ class WindowManipulator {
   ///
   /// Usage example:
   /// ```dart
-  /// Window.addToolbar();
-  /// Window.setToolbarStyle(MacOSToolbarStyle.unified);
+  /// WindowManipulator.addToolbar();
+  /// WindowManipulator.setToolbarStyle(MacOSToolbarStyle.unified);
   /// ```
   static Future<void> setToolbarStyle(
       {required MacOSToolbarStyle toolbarStyle}) async {
@@ -395,7 +395,7 @@ class WindowManipulator {
   /// This will effectively disable the `NSVisualEffectView`'s effect.
   ///
   /// **Warning:** It is recommended to disable the window's shadow using
-  /// `Window.disableShadow()` when using this method. Keeping the shadow
+  /// `WindowManipulator.disableShadow()` when using this method. Keeping the shadow
   /// enabled when using an empty mask image can cause visual artifacts
   /// and performance issues.
   static Future<void> addEmptyMaskImage() async {
