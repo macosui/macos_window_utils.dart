@@ -51,6 +51,16 @@ class WindowManipulator {
     );
   }
 
+  /// Makes the Flutter window fullscreen.
+  static Future<void> enterFullscreen() async {
+    await _methodChannel.invokeMethod('enterFullscreen');
+  }
+
+  /// Restores the Flutter window back to normal from fullscreen mode.
+  static Future<void> exitFullscreen() async {
+    await _methodChannel.invokeMethod('exitFullscreen');
+  }
+
   /// Gets the height of the titlebar.
   ///
   /// This value is used to determine the [[TitlebarSafeArea]] widget.
