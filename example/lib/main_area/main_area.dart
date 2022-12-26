@@ -61,7 +61,7 @@ class _MainAreaState extends State<MainArea> {
         if (event is KeyDownEvent) {
           if (event.logicalKey == LogicalKeyboardKey.enter) {
             setState(() {
-              final commands = CommandListProvider.getCommands();
+              final commands = _filteredCommands;
               final selectedCommand = commands[_selectedIndex];
               selectedCommand.function();
             });
