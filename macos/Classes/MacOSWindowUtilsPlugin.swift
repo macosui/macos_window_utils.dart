@@ -43,20 +43,6 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
-        case "hideWindowControls":
-            MainFlutterWindowManipulator.hideZoomButton()
-            MainFlutterWindowManipulator.hideMiniaturizeButton()
-            MainFlutterWindowManipulator.hideCloseButton()
-            result(true)
-            break
-            
-        case "showWindowControls":
-            MainFlutterWindowManipulator.showZoomButton()
-            MainFlutterWindowManipulator.showMiniaturizeButton()
-            MainFlutterWindowManipulator.showCloseButton()
-            result(true)
-            break
-            
         case "enterFullscreen":
             MainFlutterWindowManipulator.enterFullscreen()
             result(true)
