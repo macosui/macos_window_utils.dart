@@ -136,8 +136,6 @@ Future<void> main() async {
 
 Afterwards, call any method of the `WindowManipulator` class to manipulate your application's window.
 
-## Additional information
+## License
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+MIT License
