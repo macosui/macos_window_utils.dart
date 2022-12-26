@@ -6,12 +6,6 @@ import 'package:macos_window_utils/widgets/visual_effect_subview_container/visua
 
 import 'visual_effect_subview_container_property_storage.dart';
 
-/// A visual effect subview container which needs to be provided a global key.
-///
-/// This widget is intended to be used by the [VisualEffectSubviewContainer]
-/// widget. As a user of the [macos_window_utils] package it is recommended to
-/// use that widget instead, as it takes care of the global key creation by
-/// itself.
 class VisualEffectSubviewContainerWithGlobalKey extends StatefulWidget {
   final Widget child;
   final double alphaValue;
@@ -29,6 +23,12 @@ class VisualEffectSubviewContainerWithGlobalKey extends StatefulWidget {
   static const bottomLeftCorner =
       VisualEffectSubviewProperties.bottomLeftCorner;
 
+  /// A visual effect subview container which needs to be provided a global key.
+  ///
+  /// This widget is intended to be used by the [VisualEffectSubviewContainer]
+  /// widget. As a user of the [macos_window_utils] package it is recommended to
+  /// use that widget instead, as it takes care of the global key creation by
+  /// itself.
   const VisualEffectSubviewContainerWithGlobalKey(
       {required GlobalKey key,
       required this.child,

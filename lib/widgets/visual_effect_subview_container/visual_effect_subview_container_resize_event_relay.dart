@@ -1,17 +1,17 @@
-/// A resize event relay for the [VisualEffectSubviewContainer] widget.
-///
-/// This class is used to manually relay resize events to [VisualEffectSubviewContainer]
-/// widgets. By default, a [VisualEffectSubviewContainer] widget triggers an
-/// update whenever its `build` method runs. If desired, it can be provided a
-/// [VisualEffectSubviewContainerResizeEventRelay] in order to control the
-/// container's update behavior manually. When a resize event relay is provided,
-/// calling its `onResize()` method will forcefully update the container's
-/// visual effect subview.
 class VisualEffectSubviewContainerResizeEventRelay {
   /// If true, the [VisualEffectSubviewContainer] will not automatically trigger
   /// update events when its `build` method runs.
   final bool disableUpdateOnBuild;
 
+  /// A resize event relay for the [VisualEffectSubviewContainer] widget.
+  ///
+  /// This class is used to manually relay resize events to [VisualEffectSubviewContainer]
+  /// widgets. By default, a [VisualEffectSubviewContainer] widget triggers an
+  /// update whenever its `build` method runs. If desired, it can be provided a
+  /// [VisualEffectSubviewContainerResizeEventRelay] in order to control the
+  /// container's update behavior manually. When a resize event relay is provided,
+  /// calling its `onResize()` method will forcefully update the container's
+  /// visual effect subview.
   VisualEffectSubviewContainerResizeEventRelay(
       {required this.disableUpdateOnBuild});
 

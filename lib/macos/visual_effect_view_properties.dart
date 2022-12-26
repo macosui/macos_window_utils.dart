@@ -1,8 +1,5 @@
 import 'package:macos_window_utils/macos_window_utils.dart';
 
-/// Visual effect subview properties.
-///
-/// All values may be set to null if they should not be overwritten.
 class VisualEffectSubviewProperties {
   /// The width of the subview's frame.
   final double? frameWidth;
@@ -33,6 +30,9 @@ class VisualEffectSubviewProperties {
   /// The state of the subview.
   final NSVisualEffectViewState? state;
 
+  /// Visual effect subview properties.
+  ///
+  /// All values may be set to null if they should not be overwritten.
   VisualEffectSubviewProperties(
       {this.frameWidth,
       this.frameHeight,
