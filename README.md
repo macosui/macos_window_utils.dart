@@ -18,7 +18,7 @@ and the Flutter guide for
 **macos_window_utils** offers, among other things, the following features:
 
 + Methods to set the application window's material.
-+ methods to enter/exit fullscreen mode or (un)zoom the window.
++ Methods to enter/exit fullscreen mode or (un)zoom the window.
 + Methods to mark a window as “document edited”.
 + Methods to set represented filenames and URLs.
 + Methods to hide/show the window's title.
