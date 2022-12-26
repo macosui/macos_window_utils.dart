@@ -1,5 +1,5 @@
 /// Available toolbar styles.
-enum MacOSToolbarStyle {
+enum NSWindowToolbarStyle {
   /// A style indicating that the system determines the toolbar’s appearance and
   /// location.
   automatic,

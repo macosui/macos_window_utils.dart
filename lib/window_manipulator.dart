@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
-import 'package:macos_window_utils/macos/macos_toolbar_style.dart';
+import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 
@@ -359,10 +359,10 @@ class WindowManipulator {
   /// Usage example:
   /// ```dart
   /// WindowManipulator.addToolbar();
-  /// WindowManipulator.setToolbarStyle(MacOSToolbarStyle.unified);
+  /// WindowManipulator.setToolbarStyle(NSWindowToolbarStyle.unified);
   /// ```
   static Future<void> setToolbarStyle(
-      {required MacOSToolbarStyle toolbarStyle}) async {
+      {required NSWindowToolbarStyle toolbarStyle}) async {
     await _completer.future;
     await _methodChannel.invokeMethod('setToolbarStyle', {
       'toolbarStyle': toolbarStyle.name,

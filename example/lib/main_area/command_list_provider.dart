@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:macos_window_utils/macos/macos_toolbar_style.dart';
+import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/window_manipulator.dart';
@@ -198,47 +198,48 @@ class CommandListProvider {
         function: () => WindowManipulator.removeToolbar(),
       ),
       Command(
-        name: 'setToolbarStyle(toolbarStyle: MacOSToolbarStyle.automatic)',
+        name: 'setToolbarStyle(toolbarStyle: NSWindowToolbarStyle.automatic)',
         description: 'Sets the window\'s toolbar style.\n\n'
             'For this method to have an effect, the window needs to have had a '
             'toolbar added with the `addToolbar` method beforehand.\n\n'
             '**Description:** A style indicating that the system determines '
             'the toolbar’s appearance and location.',
         function: () => WindowManipulator.setToolbarStyle(
-            toolbarStyle: MacOSToolbarStyle.automatic),
+            toolbarStyle: NSWindowToolbarStyle.automatic),
       ),
       Command(
-        name: 'setToolbarStyle(toolbarStyle: MacOSToolbarStyle.expanded)',
+        name: 'setToolbarStyle(toolbarStyle: NSWindowToolbarStyle.expanded)',
         description: 'Sets the window\'s toolbar style.\n\n'
             'For this method to have an effect, the window needs to have had a '
             'toolbar added with the `addToolbar` method beforehand.\n\n'
             '**Description:** A style indicating that the toolbar appears '
             'below the window title.',
         function: () => WindowManipulator.setToolbarStyle(
-            toolbarStyle: MacOSToolbarStyle.expanded),
+            toolbarStyle: NSWindowToolbarStyle.expanded),
       ),
       Command(
-        name: 'setToolbarStyle(toolbarStyle: MacOSToolbarStyle.preference)',
+        name: 'setToolbarStyle(toolbarStyle: NSWindowToolbarStyle.preference)',
         description: 'Sets the window\'s toolbar style.\n\n'
             'For this method to have an effect, the window needs to have had a '
             'toolbar added with the `addToolbar` method beforehand.\n\n'
             '**Description:** A style indicating that the toolbar appears '
             'below the window title with toolbar items centered in the toolbar.',
         function: () => WindowManipulator.setToolbarStyle(
-            toolbarStyle: MacOSToolbarStyle.preference),
+            toolbarStyle: NSWindowToolbarStyle.preference),
       ),
       Command(
-        name: 'setToolbarStyle(toolbarStyle: MacOSToolbarStyle.unified)',
+        name: 'setToolbarStyle(toolbarStyle: NSWindowToolbarStyle.unified)',
         description: 'Sets the window\'s toolbar style.\n\n'
             'For this method to have an effect, the window needs to have had a '
             'toolbar added with the `addToolbar` method beforehand.\n\n'
             '**Description:** A style indicating that the toolbar appears '
             'next to the window title.',
         function: () => WindowManipulator.setToolbarStyle(
-            toolbarStyle: MacOSToolbarStyle.unified),
+            toolbarStyle: NSWindowToolbarStyle.unified),
       ),
       Command(
-        name: 'setToolbarStyle(toolbarStyle: MacOSToolbarStyle.unifiedCompact)',
+        name:
+            'setToolbarStyle(toolbarStyle: NSWindowToolbarStyle.unifiedCompact)',
         description: 'Sets the window\'s toolbar style.\n\n'
             'For this method to have an effect, the window needs to have had a '
             'toolbar added with the `addToolbar` method beforehand.\n\n'
@@ -246,7 +247,7 @@ class CommandListProvider {
             'next to the window title and with reduced margins to allow more '
             'focus on the window’s contents.',
         function: () => WindowManipulator.setToolbarStyle(
-            toolbarStyle: MacOSToolbarStyle.unifiedCompact),
+            toolbarStyle: NSWindowToolbarStyle.unifiedCompact),
       ),
       Command(
         name: 'enableShadow()',
