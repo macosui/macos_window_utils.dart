@@ -32,6 +32,10 @@ and the Flutter guide for
 + Methods to enable/disable the window's shadow.
 + Methods and widgets to add, remove, and modify visual effect subviews.
 
+Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
+
+<img width="857" alt="screenshot of example project" src="https://user-images.githubusercontent.com/86920182/209587744-b21f2cd1-07a4-43ee-99c8-7cce1d89482d.png">
+
 ## Getting started
 
 Open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
