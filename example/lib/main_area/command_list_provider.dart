@@ -14,8 +14,8 @@ class CommandListProvider {
         final currentMaterial = NSVisualEffectViewMaterial.values[index];
         return Command(
           name: 'setMaterial(${currentMaterial.toString()})',
-          description:
-              'Changes the window\'s subview\'s material property to `${currentMaterial.name}`.',
+          description: 'Changes the window\'s subview\'s material property to '
+              '`${currentMaterial.name}`.',
           function: () => WindowManipulator.setMaterial(currentMaterial),
         );
       }),
