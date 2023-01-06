@@ -13,12 +13,12 @@ class TransparentMacOSSidebar extends StatelessWidget {
   /// A widget that applies a visual effect subview to a child widget that
   /// represents the application's sidebar.
   ///
-  /// The `alphaValue` is applied to the visual effect subview. It does not affect
-  /// the opacity of the `child`.
+  /// The [alphaValue] is applied to the visual effect subview. It does not
+  /// affect the opacity of the [child].
   ///
   /// By default, a [TransparentMacOSSidebar] updates its visual effect view
-  /// whenever its `build` method runs. If manual control over its update behavior
-  /// is desired, it can be supplied a
+  /// whenever its `build` method runs. If manual control over its update
+  /// behavior is desired, it can be supplied a
   /// [VisualEffectSubviewContainerResizeEventRelay] through which its update
   /// behavior can be controlled manually.
   ///

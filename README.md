@@ -38,7 +38,13 @@ Additionally, the package ships with an example project that showcases the plugi
 
 ## Getting started
 
-Open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
+First, install the package via the following command:
+
+```
+flutter pub add macos_window_utils
+```
+
+Afterwards, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
 
 Insert `import macos_window_utils` at the top of the file.
 Then, replace the code above the `super.awakeFromNib()`-line with the following code:
@@ -86,7 +92,11 @@ class MainFlutterWindow: NSWindow {
 }
 ```
 
-Now press ⇧ + ⌘ + O once more and search for `Runner.xcodeproj`. Go to `info` > `Deployment Target` and set the `macOS Deployment Target` to `10.13` or above.
+Now press ⇧ + ⌘ + O once more and search for `Runner.xcodeproj`. Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.14.6` or above:
+
+```podspec
+platform :osx, '10.14.6'
+```
 
 Depending on your use case, you may want to extend the area of the window that Flutter can draw to to the entire window, such that you are able to draw onto the window's title bar as well (for example when you're only trying to make the sidebar transparent while the rest of the window is meant to stay opaque).
 
