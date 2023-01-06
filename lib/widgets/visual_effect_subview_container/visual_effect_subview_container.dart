@@ -26,13 +26,15 @@ class VisualEffectSubviewContainer extends StatefulWidget {
 
   /// Creates a [VisualEffectSubviewContainer].
   ///
-  /// The `alphaValue` is applied to the visual effect subview. It does not
-  /// affect the opacity of the `child`. Similarly, the `padding` only affects
-  /// the subview, and does not affect the `child` either.
+  /// The [alphaValue] is applied to the visual effect subview. It does not
+  /// affect the opacity of the [child]. Similarly, the [padding] only affects
+  /// the subview, and does not affect the [child] either.
   ///
-  /// The `cornerRadius` argument specifies the radius of the visual effect
+  /// The [cornerRadius] argument specifies the radius of the visual effect
   /// view's corners. Which corners are affected is dependent on the
-  /// `cornerMask` argument. Usage example:
+  /// [cornerMask] argument.
+  ///
+  /// Usage example:
   ///
   /// ```dart
   /// VisualEffectSubviewContainer(
@@ -46,7 +48,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   /// ```
   ///
   /// By default, a [VisualEffectSubviewContainer] updates its visual effect
-  /// view whenever its `build` method runs. If manual control over its update
+  /// view whenever its [build] method runs. If manual control over its update
   /// behavior is desired, it can be supplied a
   /// [VisualEffectSubviewContainerResizeEventRelay] through which its update
   /// behavior can be controlled manually.
