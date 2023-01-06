@@ -86,7 +86,7 @@ class MainFlutterWindow: NSWindow {
 }
 ```
 
-Now press ⇧ + ⌘ + O once more and search for `Runner.xcodeproj`. Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.4.6` or above:
+Now press ⇧ + ⌘ + O once more and search for `Runner.xcodeproj`. Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.14.6` or above:
 
 ```podspec
 platform :osx, '10.14.6'
