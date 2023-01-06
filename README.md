@@ -38,7 +38,13 @@ Additionally, the package ships with an example project that showcases the plugi
 
 ## Getting started
 
-Open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
+First, install the package via the following command:
+
+```
+flutter pub add macos_window_utils
+```
+
+Afterwards, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
 
 Insert `import macos_window_utils` at the top of the file.
 Then, replace the code above the `super.awakeFromNib()`-line with the following code:
