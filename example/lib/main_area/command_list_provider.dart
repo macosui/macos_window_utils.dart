@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:macos_window_utils/macos/ns_window_level.dart';
+import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
@@ -375,6 +376,24 @@ class CommandListProvider {
             'application isn\'t active, without changing either the key window '
             'or the main window.',
         function: () => WindowManipulator.orderFrontRegardless(),
+      ),
+      Command(
+        name: 'removeFromStyleMask(NSWindowStyleMask.titled); '
+            'insertIntoStyleMask(NSWindowStyleMask.borderless)',
+        description: 'Makes the window non-titled and borderless.',
+        function: () {
+          WindowManipulator.removeFromStyleMask(NSWindowStyleMask.titled);
+          WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.borderless);
+        },
+      ),
+      Command(
+        name: 'insertIntoStyleMask(NSWindowStyleMask.titled); '
+            'removeFromStyleMask(NSWindowStyleMask.borderless)',
+        description: 'Makes the window titled and non-borderless.',
+        function: () {
+          WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.titled);
+          WindowManipulator.removeFromStyleMask(NSWindowStyleMask.borderless);
+        },
       ),
     ];
   }
