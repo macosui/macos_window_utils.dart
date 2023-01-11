@@ -383,6 +383,20 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             MainFlutterWindowManipulator.orderFrontRegardless()
             result(true)
             
+        case "insertIntoStyleMask":
+            let styleMaskName = args["styleMask"] as! String
+            let styleMask = StyleMaskNameToStyleMaskConverter.getStyleMaskFromName(styleMaskName)
+            
+            MainFlutterWindowManipulator.insertIntoStyleMask(styleMask)
+            result(true)
+            
+        case "removeFromStyleMask":
+            let styleMaskName = args["styleMask"] as! String
+            let styleMask = StyleMaskNameToStyleMaskConverter.getStyleMaskFromName(styleMaskName)
+            
+            MainFlutterWindowManipulator.removeFromStyleMask(styleMask)
+            result(true)
+            
         default:
             result(FlutterMethodNotImplemented)
             break

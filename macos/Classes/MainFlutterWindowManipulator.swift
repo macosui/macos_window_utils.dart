@@ -534,4 +534,22 @@ public class MainFlutterWindowManipulator {
         
         self.mainFlutterWindow!.orderFrontRegardless()
     }
+    
+    public static func insertIntoStyleMask(_ styleMask: NSWindow.StyleMask) {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.styleMask.insert(styleMask)
+    }
+    
+    public static func removeFromStyleMask(_ styleMask: NSWindow.StyleMask) {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.styleMask.remove(styleMask)
+    }
 }

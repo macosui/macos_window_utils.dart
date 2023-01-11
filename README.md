@@ -31,6 +31,8 @@ and the Flutter guide for
 + A method that makes the window fully transparent (with no blur effect).
 + Methods to enable/disable the window's shadow.
 + Methods and widgets to add, remove, and modify visual effect subviews.
++ Methods to set the window's level as well as reorder the window within its level.
++ Methods to modify the window's style mask.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
+import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
@@ -512,5 +513,37 @@ class WindowManipulator {
   static Future<void> orderFrontRegardless() async {
     await _completer.future;
     await _methodChannel.invokeMethod('orderFrontRegardless');
+  }
+
+  /// Enables a flag that describes the window's current style, such as if it's
+  /// resizable or in full-screen mode.
+  ///
+  /// Usage example:
+  /// ```dart
+  /// // Make window non-titled and borderless.
+  /// WindowManipulator.removeFromStyleMask(NSWindowStyleMask.titled);
+  /// WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.borderless);
+  /// ```
+  static Future<void> insertIntoStyleMask(NSWindowStyleMask styleMask) async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('insertIntoStyleMask', {
+      'styleMask': styleMask.name,
+    });
+  }
+
+  /// Disables a flag that describes the window's current style, such as if it's
+  /// resizable or in full-screen mode.
+  ///
+  /// Usage example:
+  /// ```dart
+  /// // Make window non-titled and borderless.
+  /// WindowManipulator.removeFromStyleMask(NSWindowStyleMask.titled);
+  /// WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.borderless);
+  /// ```
+  static Future<void> removeFromStyleMask(NSWindowStyleMask styleMask) async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('removeFromStyleMask', {
+      'styleMask': styleMask.name,
+    });
   }
 }
