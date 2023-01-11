@@ -520,7 +520,9 @@ class WindowManipulator {
   ///
   /// Usage example:
   /// ```dart
-  /// WindowManipulator.removeFromStyleMask()
+  /// // Make window non-titled and borderless.
+  /// WindowManipulator.removeFromStyleMask(NSWindowStyleMask.titled);
+  /// WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.borderless);
   /// ```
   static Future<void> insertIntoStyleMask(NSWindowStyleMask styleMask) async {
     await _completer.future;
@@ -531,6 +533,13 @@ class WindowManipulator {
 
   /// Disables a flag that describes the window's current style, such as if it's
   /// resizable or in full-screen mode.
+  ///
+  /// Usage example:
+  /// ```dart
+  /// // Make window non-titled and borderless.
+  /// WindowManipulator.removeFromStyleMask(NSWindowStyleMask.titled);
+  /// WindowManipulator.insertIntoStyleMask(NSWindowStyleMask.borderless);
+  /// ```
   static Future<void> removeFromStyleMask(NSWindowStyleMask styleMask) async {
     await _completer.future;
     await _methodChannel.invokeMethod('removeFromStyleMask', {
