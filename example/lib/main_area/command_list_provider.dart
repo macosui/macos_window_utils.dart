@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
@@ -331,6 +332,24 @@ class CommandListProvider {
         description: 'Passing an empty string to `setSubtitle` removes the '
             'subtitle.',
         function: () => WindowManipulator.setSubtitle(''),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.floating)',
+        description: 'Sets the window to appear in front of all normal-level '
+            'windows.',
+        function: () => WindowManipulator.setLevel(NSWindowLevel.floating),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.normal.withOffset(-1))',
+        description: 'Sets the window to appear in behind all normal-level '
+            'windows.',
+        function: () =>
+            WindowManipulator.setLevel(NSWindowLevel.normal.withOffset(-1)),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.normal)',
+        description: 'Resets the window\'s level to the default value.',
+        function: () => WindowManipulator.setLevel(NSWindowLevel.normal),
       ),
     ];
   }
