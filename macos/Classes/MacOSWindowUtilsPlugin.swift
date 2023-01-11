@@ -367,6 +367,22 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             result(true)
             
+        case "orderOut":
+            MainFlutterWindowManipulator.orderOut()
+            result(true)
+            
+        case "orderBack":
+            MainFlutterWindowManipulator.orderBack()
+            result(true)
+            
+        case "orderFront":
+            MainFlutterWindowManipulator.orderFront()
+            result(true)
+            
+        case "orderFrontRegardless":
+            MainFlutterWindowManipulator.orderFrontRegardless()
+            result(true)
+            
         default:
             result(FlutterMethodNotImplemented)
             break

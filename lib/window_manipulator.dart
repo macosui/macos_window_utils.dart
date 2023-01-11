@@ -486,4 +486,31 @@ class WindowManipulator {
       'offset': level.offset,
     });
   }
+
+  /// Removes the window from the screen list, which hides the window.
+  static Future<void> orderOut() async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('orderOut');
+  }
+
+  /// Moves the window to the back of its level in the screen list, without
+  /// changing either the key window or the main window.
+  static Future<void> orderBack() async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('orderBack');
+  }
+
+  /// Moves the window to the front of its level in the screen list, without
+  /// changing either the key window or the main window.
+  static Future<void> orderFront() async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('orderFront');
+  }
+
+  /// Moves the window to the front of its level, even if its application isn't
+  /// active, without changing either the key window or the main window.
+  static Future<void> orderFrontRegardless() async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('orderFrontRegardless');
+  }
 }
