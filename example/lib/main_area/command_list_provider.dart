@@ -351,6 +351,31 @@ class CommandListProvider {
         description: 'Resets the window\'s level to the default value.',
         function: () => WindowManipulator.setLevel(NSWindowLevel.normal),
       ),
+      Command(
+        name: 'orderOut()',
+        description: 'Removes the window from the screen list, which hides the '
+            'window.',
+        function: () => WindowManipulator.orderOut(),
+      ),
+      Command(
+        name: 'orderBack()',
+        description: 'Moves the window to the back of its level in the screen '
+            'list, without changing either the key window or the main window.',
+        function: () => WindowManipulator.orderBack(),
+      ),
+      Command(
+        name: 'orderFront()',
+        description: 'Moves the window to the front of its level in the screen '
+            'list, without changing either the key window or the main window.',
+        function: () => WindowManipulator.orderFront(),
+      ),
+      Command(
+        name: 'orderFrontRegardless()',
+        description: 'Moves the window to the front of its level, even if its '
+            'application isn\'t active, without changing either the key window '
+            'or the main window.',
+        function: () => WindowManipulator.orderFrontRegardless(),
+      ),
     ];
   }
 }
