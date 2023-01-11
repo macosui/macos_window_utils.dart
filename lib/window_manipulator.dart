@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
+import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
@@ -456,6 +457,33 @@ class WindowManipulator {
     await _completer.future;
     await _methodChannel.invokeMethod('setSubtitle', {
       'subtitle': subtitle,
+    });
+  }
+
+  /// Sets the level of the window.
+  ///
+  /// Each level in the list groups windows within it in front of those in all
+  /// preceding groups. Floating windows, for example, appear in front of all
+  /// normal-level windows. When a window enters a new level, it’s ordered in
+  /// front of all its peers in that level.
+  ///
+  /// Usage examples:
+  ///
+  /// ```dart
+  /// // Set the window to appear in front of all normal-level windows:
+  /// WindowManipulator.setLevel(NSWindowLevel.floating);
+  ///
+  /// // Set the window to appear behind all normal-level windows:
+  /// WindowManipulator.setLevel(NSWindowLevel.normal.withOffset(-1));
+  ///
+  /// // Reset the window's level to the default value:
+  /// WindowManipulator.setLevel(NSWindowLevel.normal);
+  /// ```
+  static Future<void> setLevel(NSWindowLevel level) async {
+    await _completer.future;
+    await _methodChannel.invokeMethod('setLevel', {
+      'base': level.baseName,
+      'offset': level.offset,
     });
   }
 }
