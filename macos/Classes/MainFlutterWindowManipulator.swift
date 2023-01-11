@@ -488,4 +488,50 @@ public class MainFlutterWindowManipulator {
         
         self.mainFlutterWindow!.subtitle = subtitle
     }
+    
+    public static func setLevel(_ level: NSWindow.Level) {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.level = level
+    }
+    
+    public static func orderOut() {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.orderOut(nil)
+    }
+    
+    public static func orderBack() {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.orderBack(nil)
+    }
+    
+    
+    public static func orderFront() {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.orderFront(nil)
+    }
+    
+    public static func orderFrontRegardless() {
+        if (self.mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
+        self.mainFlutterWindow!.orderFrontRegardless()
+    }
 }

@@ -1,4 +1,4 @@
-/// Available `NSVisualEffectViewState` states.
+/// Available `NSVisualEffectViewState` values.
 enum NSVisualEffectViewState {
   /// The backdrop should always appear active.
   active,

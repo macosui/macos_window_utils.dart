@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
@@ -331,6 +332,49 @@ class CommandListProvider {
         description: 'Passing an empty string to `setSubtitle` removes the '
             'subtitle.',
         function: () => WindowManipulator.setSubtitle(''),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.floating)',
+        description: 'Sets the window to appear in front of all normal-level '
+            'windows.',
+        function: () => WindowManipulator.setLevel(NSWindowLevel.floating),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.normal.withOffset(-1))',
+        description: 'Sets the window to appear in behind all normal-level '
+            'windows.',
+        function: () =>
+            WindowManipulator.setLevel(NSWindowLevel.normal.withOffset(-1)),
+      ),
+      Command(
+        name: 'setLevel(NSWindowLevel.normal)',
+        description: 'Resets the window\'s level to the default value.',
+        function: () => WindowManipulator.setLevel(NSWindowLevel.normal),
+      ),
+      Command(
+        name: 'orderOut()',
+        description: 'Removes the window from the screen list, which hides the '
+            'window.',
+        function: () => WindowManipulator.orderOut(),
+      ),
+      Command(
+        name: 'orderBack()',
+        description: 'Moves the window to the back of its level in the screen '
+            'list, without changing either the key window or the main window.',
+        function: () => WindowManipulator.orderBack(),
+      ),
+      Command(
+        name: 'orderFront()',
+        description: 'Moves the window to the front of its level in the screen '
+            'list, without changing either the key window or the main window.',
+        function: () => WindowManipulator.orderFront(),
+      ),
+      Command(
+        name: 'orderFrontRegardless()',
+        description: 'Moves the window to the front of its level, even if its '
+            'application isn\'t active, without changing either the key window '
+            'or the main window.',
+        function: () => WindowManipulator.orderFrontRegardless(),
       ),
     ];
   }

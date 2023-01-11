@@ -356,6 +356,33 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
+        case "setLevel":
+            let baseName = args["base"] as! String
+            let offset = args["offset"] as! Int
+            
+            let baseLevel = LevelNameToLevelConverter.getLevelFromName(baseName)
+            let level = NSWindow.Level(baseLevel.rawValue + offset)
+            
+            MainFlutterWindowManipulator.setLevel(level)
+            
+            result(true)
+            
+        case "orderOut":
+            MainFlutterWindowManipulator.orderOut()
+            result(true)
+            
+        case "orderBack":
+            MainFlutterWindowManipulator.orderBack()
+            result(true)
+            
+        case "orderFront":
+            MainFlutterWindowManipulator.orderFront()
+            result(true)
+            
+        case "orderFrontRegardless":
+            MainFlutterWindowManipulator.orderFrontRegardless()
+            result(true)
+            
         default:
             result(FlutterMethodNotImplemented)
             break
