@@ -65,4 +65,6 @@ Command(
 ),
 ```
 
-When you now run the example project, you should see the `toggleFullScreen()` command present in the command list and, if all went well, running the command should toggle the window's fullscreen mode.
+When you now run the example project, you should see the `toggleFullScreen()` command present in the command list and, if all went well, running the command should toggle the window's fullscreen mode:
+
+<img width="670" alt="image" src="https://user-images.githubusercontent.com/86920182/212060633-d1603d35-15c1-4008-ac09-9ae6994d378a.png">
