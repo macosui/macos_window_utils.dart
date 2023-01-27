@@ -38,6 +38,10 @@ public class MacOSWindowUtilsViewController: NSViewController {
 
         flutterViewController.view.frame = self.view.bounds
         flutterViewController.view.autoresizingMask = [.width, .height]
+        
+        // Since Flutter 3.7.0 the FlutterViewController's background is black by default and therefore needs to be set to clear.
+        flutterViewController.backgroundColor = .clear
+        
         self.view.addSubview(flutterViewController.view)
     }
     

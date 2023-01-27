@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/macos_window_utils/macos
 
 SPEC CHECKSUMS:
-  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   macos_window_utils: 933f91f64805e2eb91a5bd057cf97cd097276663
 
 PODFILE CHECKSUM: 500e4707112a5f11963bc198135953cdebb6d50c
