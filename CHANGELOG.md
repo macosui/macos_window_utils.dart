@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Fix incompatibility with Flutter 3.7.0.
+
 ## 1.0.1
 
 - Add `setLevel` method.
