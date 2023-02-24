@@ -9,6 +9,7 @@ import Foundation
 
 public class MainFlutterWindowManipulator {
     private static var mainFlutterWindow: NSWindow?
+    private static var mainFlutterWindowDelegate: FlutterWindowDelegate?
     
     private static func printNotStartedWarning() {
         print("Warning: The MainFlutterWindowManipulator has not been started. Please make sure the macos_window_utils plugin is initialized correctly in your MainFlutterWindow.swift file.")
@@ -16,6 +17,7 @@ public class MainFlutterWindowManipulator {
     
     public static func start(mainFlutterWindow: NSWindow) {
         self.mainFlutterWindow = mainFlutterWindow
+        mainFlutterWindowDelegate = FlutterWindowDelegate.create(window: mainFlutterWindow)
         
         showTitle()
         makeTitlebarOpaque()
