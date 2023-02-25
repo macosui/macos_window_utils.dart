@@ -11,7 +11,7 @@ import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
   static final _methodChannel =
-      const MethodChannel('com.adrian_samoticha/macos_window_utils');
+      const MethodChannel('macos_window_utils/window_manipulator');
   static final _completer = Completer<void>();
 
   /// Initializes the [WindowManipulator] class.

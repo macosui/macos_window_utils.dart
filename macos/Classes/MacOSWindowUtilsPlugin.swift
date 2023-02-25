@@ -10,7 +10,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "com.adrian_samoticha/macos_window_utils", binaryMessenger: registrar.messenger)
+        let channel = FlutterMethodChannel(name: "macos_window_utils/window_manipulator", binaryMessenger: registrar.messenger)
         let instance = MacOSWindowUtilsPlugin(registrar, channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
