@@ -2,17 +2,21 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
+import 'package:macos_window_utils/macos/ns_window_delegate.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 
+import 'ns_window_delegate_handler/ns_window_delegate_handler.dart';
+
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
   static final _windowManipulatorMethodChannel =
       const MethodChannel('macos_window_utils/window_manipulator');
   static final _completer = Completer<void>();
+  static final _nsWindowDelegateHandler = NSWindowDelegateHandler();
 
   /// Initializes the [WindowManipulator] class.
   ///
@@ -558,5 +562,14 @@ class WindowManipulator {
     await _windowManipulatorMethodChannel.invokeMethod('removeFromStyleMask', {
       'styleMask': styleMask.name,
     });
+  }
+
+  /// Adds a [NSWindowDelegate] which can be used to respond to events, such as
+  /// window resizing, moving, exposing, and minimizing.
+  ///
+  /// Returns a [NSWindowDelegateHandle] which can be used to remove the
+  /// delegate from the [delegate]'s [NSWindowDelegateHandler].
+  static NSWindowDelegateHandle addNSWindowDelegate(NSWindowDelegate delegate) {
+    return _nsWindowDelegateHandler.addDelegate(delegate);
   }
 }

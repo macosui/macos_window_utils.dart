@@ -5,7 +5,7 @@ import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos/ns_window_toolbar_style.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
-import 'package:macos_window_utils/window_manipulator.dart';
+import 'package:macos_window_utils/window_manipulator/window_manipulator.dart';
 
 import 'command_list/command.dart';
 

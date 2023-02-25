@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FlutterMacOS
 
 public class MainFlutterWindowManipulator {
     private static var mainFlutterWindow: NSWindow?
@@ -17,12 +18,15 @@ public class MainFlutterWindowManipulator {
     
     public static func start(mainFlutterWindow: NSWindow) {
         self.mainFlutterWindow = mainFlutterWindow
-        mainFlutterWindowDelegate = FlutterWindowDelegate.create(window: mainFlutterWindow)
         
         showTitle()
         makeTitlebarOpaque()
         disableFullSizeContentView()
         setWindowBackgroundColorToDefaultColor()
+    }
+    
+    public static func createFlutterWindowDelegate(methodChannel: FlutterMethodChannel) {
+        mainFlutterWindowDelegate = FlutterWindowDelegate.create(window: mainFlutterWindow!, methodChannel: methodChannel)
     }
     
     public static func hideTitle() {

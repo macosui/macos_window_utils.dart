@@ -4,6 +4,7 @@ import FlutterMacOS
 public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     private var registrar: FlutterPluginRegistrar!;
     private var windowManipulatorChannel: FlutterMethodChannel!
+    private var nsWindowDelegateChannel: FlutterMethodChannel!
     
     private static func printUnsupportedMacOSVersionWarning() {
         print("Warning: This feature is not supported on your macOS version.")
@@ -11,14 +12,17 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let windowManipulatorChannel = FlutterMethodChannel(name: "macos_window_utils/window_manipulator", binaryMessenger: registrar.messenger)
-        let instance = MacOSWindowUtilsPlugin(registrar, windowManipulatorChannel)
+        let nsWindowDelegateChannel = FlutterMethodChannel(name: "macos_window_utils/ns_window_delegate", binaryMessenger: registrar.messenger)
+        
+        let instance = MacOSWindowUtilsPlugin(registrar, windowManipulatorChannel: windowManipulatorChannel, nsWindowDelegateChannel: nsWindowDelegateChannel)
         registrar.addMethodCallDelegate(instance, channel: windowManipulatorChannel)
     }
     
-    public init(_ registrar: FlutterPluginRegistrar, _ channel: FlutterMethodChannel) {
+    public init(_ registrar: FlutterPluginRegistrar, windowManipulatorChannel: FlutterMethodChannel, nsWindowDelegateChannel: FlutterMethodChannel) {
         super.init()
         self.registrar = registrar
-        self.windowManipulatorChannel = channel
+        self.windowManipulatorChannel = windowManipulatorChannel
+        self.nsWindowDelegateChannel = nsWindowDelegateChannel
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -27,7 +31,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         
         switch (methodName) {
         case "initialize":
-            // nothing to do here
+            MainFlutterWindowManipulator.createFlutterWindowDelegate(methodChannel: nsWindowDelegateChannel)
             result(true)
             break
             
