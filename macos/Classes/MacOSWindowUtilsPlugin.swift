@@ -3,22 +3,22 @@ import FlutterMacOS
 
 public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     private var registrar: FlutterPluginRegistrar!;
-    private var channel: FlutterMethodChannel!
+    private var windowManipulatorChannel: FlutterMethodChannel!
     
     private static func printUnsupportedMacOSVersionWarning() {
         print("Warning: This feature is not supported on your macOS version.")
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "macos_window_utils/window_manipulator", binaryMessenger: registrar.messenger)
-        let instance = MacOSWindowUtilsPlugin(registrar, channel)
-        registrar.addMethodCallDelegate(instance, channel: channel)
+        let windowManipulatorChannel = FlutterMethodChannel(name: "macos_window_utils/window_manipulator", binaryMessenger: registrar.messenger)
+        let instance = MacOSWindowUtilsPlugin(registrar, windowManipulatorChannel)
+        registrar.addMethodCallDelegate(instance, channel: windowManipulatorChannel)
     }
     
     public init(_ registrar: FlutterPluginRegistrar, _ channel: FlutterMethodChannel) {
         super.init()
         self.registrar = registrar
-        self.channel = channel
+        self.windowManipulatorChannel = channel
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
