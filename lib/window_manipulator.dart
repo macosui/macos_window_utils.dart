@@ -10,7 +10,7 @@ import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
-  static final _methodChannel =
+  static final _windowManipulatorMethodChannel =
       const MethodChannel('macos_window_utils/window_manipulator');
   static final _completer = Completer<void>();
 
@@ -25,7 +25,7 @@ class WindowManipulator {
   /// }
   /// ```
   static Future<void> initialize() async {
-    await _methodChannel.invokeMethod('initialize');
+    await _windowManipulatorMethodChannel.invokeMethod('initialize');
     _completer.complete();
   }
 
@@ -46,7 +46,7 @@ class WindowManipulator {
   /// ```
   static Future<void> setMaterial(NSVisualEffectViewMaterial material) async {
     await _completer.future;
-    await _methodChannel.invokeMethod(
+    await _windowManipulatorMethodChannel.invokeMethod(
       'setMaterial',
       {'material': material.index},
     );
@@ -54,12 +54,12 @@ class WindowManipulator {
 
   /// Makes the Flutter window fullscreen.
   static Future<void> enterFullscreen() async {
-    await _methodChannel.invokeMethod('enterFullscreen');
+    await _windowManipulatorMethodChannel.invokeMethod('enterFullscreen');
   }
 
   /// Restores the Flutter window back to normal from fullscreen mode.
   static Future<void> exitFullscreen() async {
-    await _methodChannel.invokeMethod('exitFullscreen');
+    await _windowManipulatorMethodChannel.invokeMethod('exitFullscreen');
   }
 
   /// Gets the height of the titlebar.
@@ -70,7 +70,8 @@ class WindowManipulator {
   /// be 0.
   static Future<double> getTitlebarHeight() async {
     await _completer.future;
-    return await _methodChannel.invokeMethod('getTitlebarHeight');
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('getTitlebarHeight');
   }
 
   /// Sets the document to be edited.
@@ -80,19 +81,19 @@ class WindowManipulator {
   /// <img width="78" alt="image" src="https://user-images.githubusercontent.com/86920182/209436903-0a6c1f5a-4ab6-454f-a37d-78a5d699f3df.png">
   static Future<void> setDocumentEdited() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setDocumentEdited');
+    await _windowManipulatorMethodChannel.invokeMethod('setDocumentEdited');
   }
 
   /// Sets the document to be unedited.
   static Future<void> setDocumentUnedited() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setDocumentUnedited');
+    await _windowManipulatorMethodChannel.invokeMethod('setDocumentUnedited');
   }
 
   /// Sets the represented file of the window.
   static Future<void> setRepresentedFilename(String filename) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setRepresentedFile', {
+    await _windowManipulatorMethodChannel.invokeMethod('setRepresentedFile', {
       'filename': filename,
     });
   }
@@ -100,7 +101,7 @@ class WindowManipulator {
   /// Sets the represented URL of the window.
   static Future<void> setRepresentedUrl(String url) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setRepresentedURL', {
+    await _windowManipulatorMethodChannel.invokeMethod('setRepresentedURL', {
       'url': url,
     });
   }
@@ -108,25 +109,26 @@ class WindowManipulator {
   /// Hides the titlebar of the window.
   static Future<void> hideTitle() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('hideTitle');
+    await _windowManipulatorMethodChannel.invokeMethod('hideTitle');
   }
 
   /// Shows the titlebar of the window.
   static Future<void> showTitle() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('showTitle');
+    await _windowManipulatorMethodChannel.invokeMethod('showTitle');
   }
 
   /// Makes the window's titlebar transparent.
   static Future<void> makeTitlebarTransparent() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('makeTitlebarTransparent');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('makeTitlebarTransparent');
   }
 
   /// Makes the window's titlebar opaque.
   static Future<void> makeTitlebarOpaque() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('makeTitlebarOpaque');
+    await _windowManipulatorMethodChannel.invokeMethod('makeTitlebarOpaque');
   }
 
   /// Enables the window's full-size content view.
@@ -136,43 +138,46 @@ class WindowManipulator {
   /// the titlebar transparent.
   static Future<void> enableFullSizeContentView() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('enableFullSizeContentView');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('enableFullSizeContentView');
   }
 
   /// Disables the window's full-size content view.
   static Future<void> disableFullSizeContentView() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('disableFullSizeContentView');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('disableFullSizeContentView');
   }
 
   /// Zooms the window.
   static Future<void> zoomWindow() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('zoomWindow');
+    await _windowManipulatorMethodChannel.invokeMethod('zoomWindow');
   }
 
   /// Unzooms the window.
   static Future<void> unzoomWindow() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('unzoomWindow');
+    await _windowManipulatorMethodChannel.invokeMethod('unzoomWindow');
   }
 
   /// Returns if the window is zoomed.
   static Future<bool> isWindowZoomed() async {
     await _completer.future;
-    return await _methodChannel.invokeMethod('isWindowZoomed');
+    return await _windowManipulatorMethodChannel.invokeMethod('isWindowZoomed');
   }
 
   /// Returns if the window is fullscreened.
   static Future<bool> isWindowFullscreened() async {
     await _completer.future;
-    return await _methodChannel.invokeMethod('isWindowFullscreened');
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('isWindowFullscreened');
   }
 
   /// Hides the window's zoom button.
   static Future<void> hideZoomButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('hideZoomButton');
+    await _windowManipulatorMethodChannel.invokeMethod('hideZoomButton');
   }
 
   /// Shows the window's zoom button.
@@ -180,13 +185,13 @@ class WindowManipulator {
   /// The zoom button is visible by default.
   static Future<void> showZoomButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('showZoomButton');
+    await _windowManipulatorMethodChannel.invokeMethod('showZoomButton');
   }
 
   /// Hides the window's miniaturize button.
   static Future<void> hideMiniaturizeButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('hideMiniaturizeButton');
+    await _windowManipulatorMethodChannel.invokeMethod('hideMiniaturizeButton');
   }
 
   /// Shows the window's miniaturize button.
@@ -194,13 +199,13 @@ class WindowManipulator {
   /// The miniaturize button is visible by default.
   static Future<void> showMiniaturizeButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('showMiniaturizeButton');
+    await _windowManipulatorMethodChannel.invokeMethod('showMiniaturizeButton');
   }
 
   /// Hides the window's close button.
   static Future<void> hideCloseButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('hideCloseButton');
+    await _windowManipulatorMethodChannel.invokeMethod('hideCloseButton');
   }
 
   /// Shows the window's close button.
@@ -208,7 +213,7 @@ class WindowManipulator {
   /// The close button is visible by default.
   static Future<void> showCloseButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('showCloseButton');
+    await _windowManipulatorMethodChannel.invokeMethod('showCloseButton');
   }
 
   /// Enables the window's zoom button.
@@ -216,13 +221,13 @@ class WindowManipulator {
   /// The zoom button is enabled by default.
   static Future<void> enableZoomButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('enableZoomButton');
+    await _windowManipulatorMethodChannel.invokeMethod('enableZoomButton');
   }
 
   /// Disables the window's zoom button.
   static Future<void> disableZoomButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('disableZoomButton');
+    await _windowManipulatorMethodChannel.invokeMethod('disableZoomButton');
   }
 
   /// Enables the window's miniaturize button.
@@ -230,13 +235,15 @@ class WindowManipulator {
   /// The miniaturize button is enabled by default.
   static Future<void> enableMiniaturizeButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('enableMiniaturizeButton');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('enableMiniaturizeButton');
   }
 
   /// Disables the window's miniaturize button.
   static Future<void> disableMiniaturizeButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('disableMiniaturizeButton');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('disableMiniaturizeButton');
   }
 
   /// Enables the window's close button.
@@ -244,25 +251,27 @@ class WindowManipulator {
   /// The close button is enabled by default.
   static Future<void> enableCloseButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('enableCloseButton');
+    await _windowManipulatorMethodChannel.invokeMethod('enableCloseButton');
   }
 
   /// Disables the window's close button.
   static Future<void> disableCloseButton() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('disableCloseButton');
+    await _windowManipulatorMethodChannel.invokeMethod('disableCloseButton');
   }
 
   /// Gets whether the window is currently being resized by the user.
   static Future<bool> isWindowInLiveResize() async {
     await _completer.future;
-    return await _methodChannel.invokeMethod('isWindowInLiveResize');
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('isWindowInLiveResize');
   }
 
   /// Sets the window's alpha value.
   static Future<void> setWindowAlphaValue(double value) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setWindowAlphaValue', <String, dynamic>{
+    await _windowManipulatorMethodChannel
+        .invokeMethod('setWindowAlphaValue', <String, dynamic>{
       'value': value,
     });
   }
@@ -270,7 +279,8 @@ class WindowManipulator {
   /// Gets if the window is visible.
   static Future<bool> isWindowVisible() async {
     await _completer.future;
-    return await _methodChannel.invokeMethod('isWindowVisible');
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('isWindowVisible');
   }
 
   /// Sets the window background color to the default (opaque) window color.
@@ -278,20 +288,22 @@ class WindowManipulator {
   /// This method mainly affects the window's titlebar.
   static Future<void> setWindowBackgroundColorToDefaultColor() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setWindowBackgroundColorToDefaultColor');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('setWindowBackgroundColorToDefaultColor');
   }
 
   /// Sets the window background color to clear.
   static Future<void> setWindowBackgroundColorToClear() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setWindowBackgroundColorToClear');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('setWindowBackgroundColorToClear');
   }
 
   /// Sets the `NSVisualEffectView` state.
   static Future<void> setNSVisualEffectViewState(
       NSVisualEffectViewState state) async {
     await _completer.future;
-    await _methodChannel
+    await _windowManipulatorMethodChannel
         .invokeMethod('setNSVisualEffectViewState', <String, dynamic>{
       'state': state.name,
     });
@@ -302,7 +314,7 @@ class WindowManipulator {
   static Future<int> addVisualEffectSubview(
       VisualEffectSubviewProperties properties) async {
     await _completer.future;
-    return await _methodChannel.invokeMethod(
+    return await _windowManipulatorMethodChannel.invokeMethod(
         'addVisualEffectSubview', properties.toMap());
   }
 
@@ -311,7 +323,7 @@ class WindowManipulator {
       int visualEffectSubviewId,
       VisualEffectSubviewProperties properties) async {
     await _completer.future;
-    await _methodChannel
+    await _windowManipulatorMethodChannel
         .invokeMethod('updateVisualEffectSubviewProperties', <String, dynamic>{
       'visualEffectSubviewId': visualEffectSubviewId,
       ...properties.toMap(),
@@ -322,7 +334,7 @@ class WindowManipulator {
   static Future<void> removeVisualEffectSubview(
       int visualEffectSubviewId) async {
     await _completer.future;
-    await _methodChannel
+    await _windowManipulatorMethodChannel
         .invokeMethod('removeVisualEffectSubview', <String, dynamic>{
       'visualEffectSubviewId': visualEffectSubviewId,
     });
@@ -333,7 +345,7 @@ class WindowManipulator {
     required bool dark,
   }) async {
     await _completer.future;
-    await _methodChannel.invokeMethod(
+    await _windowManipulatorMethodChannel.invokeMethod(
       'overrideMacOSBrightness',
       {
         'dark': dark,
@@ -344,13 +356,13 @@ class WindowManipulator {
   /// Adds a toolbar to the window.
   static Future<void> addToolbar() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('addToolbar');
+    await _windowManipulatorMethodChannel.invokeMethod('addToolbar');
   }
 
   /// Removes the window's toolbar.
   static Future<void> removeToolbar() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('removeToolbar');
+    await _windowManipulatorMethodChannel.invokeMethod('removeToolbar');
   }
 
   /// Sets the window's toolbar style.
@@ -366,7 +378,7 @@ class WindowManipulator {
   static Future<void> setToolbarStyle(
       {required NSWindowToolbarStyle toolbarStyle}) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setToolbarStyle', {
+    await _windowManipulatorMethodChannel.invokeMethod('setToolbarStyle', {
       'toolbarStyle': toolbarStyle.name,
     });
   }
@@ -374,13 +386,13 @@ class WindowManipulator {
   /// Enables the window's shadow.
   static Future<void> enableShadow() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('enableShadow');
+    await _windowManipulatorMethodChannel.invokeMethod('enableShadow');
   }
 
   /// Disables the window's shadow.
   static Future<void> disableShadow() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('disableShadow');
+    await _windowManipulatorMethodChannel.invokeMethod('disableShadow');
   }
 
   /// Invalidates the window's shadow.
@@ -389,7 +401,7 @@ class WindowManipulator {
   /// completeness' sake. Normally, it should not be necessary to use it.
   static Future<void> invalidateShadows() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('invalidateShadows');
+    await _windowManipulatorMethodChannel.invokeMethod('invalidateShadows');
   }
 
   /// Adds an empty mask image to the window's view.
@@ -402,13 +414,13 @@ class WindowManipulator {
   /// and performance issues.
   static Future<void> addEmptyMaskImage() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('addEmptyMaskImage');
+    await _windowManipulatorMethodChannel.invokeMethod('addEmptyMaskImage');
   }
 
   /// Removes the window's mask image.
   static Future<void> removeMaskImage() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('removeMaskImage');
+    await _windowManipulatorMethodChannel.invokeMethod('removeMaskImage');
   }
 
   /// Makes a window fully transparent (with no blur effect).
@@ -438,7 +450,7 @@ class WindowManipulator {
   /// `makeWindowFullyTransparent()`.
   static Future<void> ignoreMouseEvents() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('ignoreMouseEvents');
+    await _windowManipulatorMethodChannel.invokeMethod('ignoreMouseEvents');
   }
 
   /// Makes the window acknowledge mouse events.
@@ -448,7 +460,8 @@ class WindowManipulator {
   /// `makeWindowFullyTransparent()`.
   static Future<void> acknowledgeMouseEvents() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('acknowledgeMouseEvents');
+    await _windowManipulatorMethodChannel
+        .invokeMethod('acknowledgeMouseEvents');
   }
 
   /// Sets the subtitle of the window.
@@ -456,7 +469,7 @@ class WindowManipulator {
   /// To remove the subtitle, pass an empty string to this method.
   static Future<void> setSubtitle(String subtitle) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setSubtitle', {
+    await _windowManipulatorMethodChannel.invokeMethod('setSubtitle', {
       'subtitle': subtitle,
     });
   }
@@ -482,7 +495,7 @@ class WindowManipulator {
   /// ```
   static Future<void> setLevel(NSWindowLevel level) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('setLevel', {
+    await _windowManipulatorMethodChannel.invokeMethod('setLevel', {
       'base': level.baseName,
       'offset': level.offset,
     });
@@ -491,28 +504,28 @@ class WindowManipulator {
   /// Removes the window from the screen list, which hides the window.
   static Future<void> orderOut() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('orderOut');
+    await _windowManipulatorMethodChannel.invokeMethod('orderOut');
   }
 
   /// Moves the window to the back of its level in the screen list, without
   /// changing either the key window or the main window.
   static Future<void> orderBack() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('orderBack');
+    await _windowManipulatorMethodChannel.invokeMethod('orderBack');
   }
 
   /// Moves the window to the front of its level in the screen list, without
   /// changing either the key window or the main window.
   static Future<void> orderFront() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('orderFront');
+    await _windowManipulatorMethodChannel.invokeMethod('orderFront');
   }
 
   /// Moves the window to the front of its level, even if its application isn't
   /// active, without changing either the key window or the main window.
   static Future<void> orderFrontRegardless() async {
     await _completer.future;
-    await _methodChannel.invokeMethod('orderFrontRegardless');
+    await _windowManipulatorMethodChannel.invokeMethod('orderFrontRegardless');
   }
 
   /// Enables a flag that describes the window's current style, such as if it's
@@ -526,7 +539,7 @@ class WindowManipulator {
   /// ```
   static Future<void> insertIntoStyleMask(NSWindowStyleMask styleMask) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('insertIntoStyleMask', {
+    await _windowManipulatorMethodChannel.invokeMethod('insertIntoStyleMask', {
       'styleMask': styleMask.name,
     });
   }
@@ -542,7 +555,7 @@ class WindowManipulator {
   /// ```
   static Future<void> removeFromStyleMask(NSWindowStyleMask styleMask) async {
     await _completer.future;
-    await _methodChannel.invokeMethod('removeFromStyleMask', {
+    await _windowManipulatorMethodChannel.invokeMethod('removeFromStyleMask', {
       'styleMask': styleMask.name,
     });
   }
