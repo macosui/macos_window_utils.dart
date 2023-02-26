@@ -1,8 +1,8 @@
-import 'package:example/main_area/command_list/description_box.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'command.dart';
 import 'command_list_entry.dart';
+import 'description_box.dart';
 export 'command.dart';
 
 class CommandList extends StatelessWidget {
