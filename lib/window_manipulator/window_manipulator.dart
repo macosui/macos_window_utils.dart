@@ -598,7 +598,8 @@ class WindowManipulator {
   /// + If you specify `autoHideMenuBar`, it must be accompanied by either
   ///   `hideDock` or `autoHideDock`.
   /// + If you specify any of `disableProcessSwitching`, `disableForceQuit`,
-  ///   `disableSessionTermination`, or `disableMenuBarTransparency`, it must be accompanied by either `hideDock` or `autoHideDock`.
+  ///   `disableSessionTermination`, or `disableMenuBarTransparency`, it must
+  ///    be accompanied by either `hideDock` or `autoHideDock`.
   /// + `autoHideToolbar` may be used only when both `fullScreen` and
   ///   `autoHideMenuBar` are also set.
   ///
