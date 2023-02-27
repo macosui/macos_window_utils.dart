@@ -574,14 +574,56 @@ class WindowManipulator {
     return _nsWindowDelegateHandler.addDelegate(delegate);
   }
 
-  /// TODO: document this
+  /// Removes the window's full-screen presentation options.
+  ///
+  /// Removing the window's full-screen presentation options returns the
+  /// window's presentation to its default state.
   static void removeFullScreenPresentationOptions() async {
     await _completer.future;
     await _windowManipulatorMethodChannel
         .invokeMethod('removeFullScreenPresentationOptions');
   }
 
-  /// TODO: document this
+  /// Adds a [NSAppPresentationOption] to the widow as a full-screen
+  /// presentation option.
+  ///
+  /// **Note:** The following restrictions on the combination of presentation
+  /// options that can be set simultaneously apply:
+  ///
+  /// + `autoHideDock` and `hideDock` are mutually exclusive: You may specify
+  ///   one or the other, but not both.
+  /// + `autoHideMenuBar` and `hideMenuBar` are mutually exclusive: You may
+  ///   specify one or the other, but not both.
+  /// + If you specify `hideMenuBar`, it must be accompanied by `hideDock`.
+  /// + If you specify `autoHideMenuBar`, it must be accompanied by either
+  ///   `hideDock` or `autoHideDock`.
+  /// + If you specify any of `disableProcessSwitching`, `disableForceQuit`,
+  ///   `disableSessionTermination`, or `disableMenuBarTransparency`, it must be accompanied by either `hideDock` or `autoHideDock`.
+  /// + `autoHideToolbar` may be used only when both `fullScreen` and
+  ///   `autoHideMenuBar` are also set.
+  ///
+  /// When `NSApplication` receives a parameter value that does not conform to
+  /// these requirements, it raises an `invalidArgumentException`.
+  ///
+  /// For this reason, it is recommended to use [NSAppPresentationOptions]
+  /// instead, as [NSAppPresentationOptions] will throw assertion errors when
+  /// used incorrectly:
+  ///
+  /// ```dart
+  /// // Returns normally.
+  /// NSAppPresentationOptions.from({
+  ///   NSAppPresentationOption.autoHideToolbar,
+  ///   NSAppPresentationOption.fullScreen,
+  ///   NSAppPresentationOption.autoHideMenuBar,
+  ///   NSAppPresentationOption.hideDock,
+  /// }).apply();
+  ///
+  /// // Throws assertion error.
+  /// NSAppPresentationOptions.from({
+  ///   NSAppPresentationOption.autoHideDock,
+  ///   NSAppPresentationOption.hideDock
+  /// }).apply();
+  /// ```
   static void addFullScreenPresentationOption(
       NSAppPresentationOption option) async {
     await _completer.future;
