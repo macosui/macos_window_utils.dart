@@ -399,7 +399,9 @@ class CommandListProvider {
       ),
       Command(
         name: 'removeFullScreenPresentationOptions()',
-        description: '', // TODO: add description
+        description: 'Removes the window\'s full-screen presentation options.'
+            'Removing the window\'s full-screen presentation options returns '
+            'the window\'s presentation to its default state.',
         function: () {
           WindowManipulator.removeFullScreenPresentationOptions();
         },
