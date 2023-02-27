@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
 import 'package:macos_window_utils/macos/ns_window_delegate.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
@@ -571,5 +572,20 @@ class WindowManipulator {
   /// delegate from the [delegate]'s [NSWindowDelegateHandler].
   static NSWindowDelegateHandle addNSWindowDelegate(NSWindowDelegate delegate) {
     return _nsWindowDelegateHandler.addDelegate(delegate);
+  }
+
+  /// TODO: document this
+  static void removeFullScreenPresentationOptions() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel
+        .invokeMethod('removeFullScreenPresentationOptions');
+  }
+
+  /// TODO: document this
+  static void addFullScreenPresentationOption(
+      NSAppPresentationOption option) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod(
+        'addFullScreenPresentationOption', {'presentationOption': option.name});
   }
 }

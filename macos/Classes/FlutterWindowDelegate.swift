@@ -10,12 +10,26 @@ import FlutterMacOS
 
 class FlutterWindowDelegate: NSObject, NSWindowDelegate {
     private var methodChannel: FlutterMethodChannel?
+    private var fullScreenPresentationOptions: NSApplication.PresentationOptions?
     
     public static func create(window: NSWindow, methodChannel: FlutterMethodChannel) -> FlutterWindowDelegate {
         let newDelegate = FlutterWindowDelegate()
         newDelegate.methodChannel = methodChannel
         window.delegate = newDelegate
         return newDelegate
+    }
+    
+    public func removeFullScreenPresentationOptions() {
+        fullScreenPresentationOptions = nil
+    }
+    
+    public func addFullScreenPresentationOptions(_ presentationOptions: NSApplication.PresentationOptions) {
+        if (fullScreenPresentationOptions == nil) {
+            fullScreenPresentationOptions = presentationOptions
+            return
+        }
+        
+        fullScreenPresentationOptions!.insert(presentationOptions)
     }
     
     // Managing Sheets
@@ -77,6 +91,10 @@ class FlutterWindowDelegate: NSObject, NSWindowDelegate {
     }
 
     // Managing Full-Screen Presentation
+    
+    func window(_ window: NSWindow, willUseFullScreenPresentationOptions proposedOptions: NSApplication.PresentationOptions = []) -> NSApplication.PresentationOptions {
+        return fullScreenPresentationOptions ?? proposedOptions
+    }
 
     func windowWillEnterFullScreen(_ notification: Notification) {
         methodChannel!.invokeMethod("windowWillEnterFullScreen", arguments: nil)

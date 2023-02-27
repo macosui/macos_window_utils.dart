@@ -401,6 +401,17 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             MainFlutterWindowManipulator.removeFromStyleMask(styleMask)
             result(true)
             
+        case "removeFullScreenPresentationOptions":
+            MainFlutterWindowManipulator.removeFullScreenPresentationOptions()
+            result(true)
+            
+        case "addFullScreenPresentationOption":
+            let presentationOptionName = args["presentationOption"] as! String
+            let presentationOptions = PresentationOptionNameToPresentationOptionsConverter.getPresentationOptionsFromName(name: presentationOptionName)
+            
+            MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!)
+            result(true)
+            
         default:
             result(FlutterMethodNotImplemented)
             break
