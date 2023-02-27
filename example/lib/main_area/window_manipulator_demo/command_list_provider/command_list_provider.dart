@@ -407,150 +407,162 @@ class CommandListProvider {
         },
       ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.autoHideDock)',
-          description:
-              'The dock is normally hidden, but automatically appears when '
-              'moused near.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.autoHideDock);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'autoHideDock)',
+        description:
+            'The dock is normally hidden, but automatically appears when '
+            'moused near.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.autoHideDock);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.hideDock)',
-          description: 'The dock is entirely hidden and disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.hideDock);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'hideDock)',
+        description: 'The dock is entirely hidden and disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.hideDock);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.autoHideMenuBar)',
-          description:
-              'The menu bar is normally hidden, but automatically appears when '
-              'moused near.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.autoHideMenuBar);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'autoHideMenuBar)',
+        description:
+            'The menu bar is normally hidden, but automatically appears when '
+            'moused near.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.autoHideMenuBar);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.hideMenuBar)',
-          description: 'The menu bar is entirely hidden and disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.hideMenuBar);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'hideMenuBar)',
+        description: 'The menu bar is entirely hidden and disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.hideMenuBar);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableAppleMenu)',
-          description: 'All Apple Menu items are disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableAppleMenu);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableAppleMenu)',
+        description: 'All Apple Menu items are disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableAppleMenu);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableProcessSwitching)',
-          description:
-              'The process switching user interface (Command + Tab to cycle '
-              'through apps) is disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableProcessSwitching);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableProcessSwitching)',
+        description:
+            'The process switching user interface (Command + Tab to cycle '
+            'through apps) is disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableProcessSwitching);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableForceQuit)',
-          description:
-              'The force quit panel (displayed by pressing Command + Option + '
-              'Esc) is disabled\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableForceQuit);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableForceQuit)',
+        description:
+            'The force quit panel (displayed by pressing Command + Option + '
+            'Esc) is disabled\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableForceQuit);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableSessionTermination)',
-          description:
-              'The panel that shows the Restart, Shut Down, and Log Out '
-              'options that are displayed as a result of pushing the power key '
-              'is disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableSessionTermination);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableSessionTermination)',
+        description: 'The panel that shows the Restart, Shut Down, and Log Out '
+            'options that are displayed as a result of pushing the power key '
+            'is disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableSessionTermination);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableHideApplication)',
-          description: 'The app’s “Hide” menu item is disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableHideApplication);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableHideApplication)',
+        description: 'The app’s “Hide” menu item is disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableHideApplication);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableMenuBarTransparency)',
-          description: 'The menu bar transparency appearance is disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableMenuBarTransparency);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableMenuBarTransparency)',
+        description: 'The menu bar transparency appearance is disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableMenuBarTransparency);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.fullScreen)',
-          description: 'The app is in fullscreen mode.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.fullScreen);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'fullScreen)',
+        description: 'The app is in fullscreen mode.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.fullScreen);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.autoHideToolbar)',
-          description:
-              'When in fullscreen mode the window toolbar is detached from '
-              'window and hides and shows with autoHidden menuBar.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.autoHideToolbar);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'autoHideToolbar)',
+        description:
+            'When in fullscreen mode the window toolbar is detached from '
+            'window and hides and shows with autoHidden menuBar.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.autoHideToolbar);
+        },
+      ),
       Command(
-          name:
-              'addFullScreenPresentationOption(NSAppPresentationOptions.disableCursorLocationAssistance)',
-          description:
-              'The behavior that allows the user to shake the mouse to locate '
-              'the cursor is disabled.\n\n'
-              '**Warning:** '
-              '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
-          function: () {
-            WindowManipulator.addFullScreenPresentationOption(
-                NSAppPresentationOption.disableCursorLocationAssistance);
-          }),
+        name: 'addFullScreenPresentationOption(NSAppPresentationOptions.'
+            'disableCursorLocationAssistance)',
+        description:
+            'The behavior that allows the user to shake the mouse to locate '
+            'the cursor is disabled.\n\n'
+            '**Warning:** '
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+        function: () {
+          WindowManipulator.addFullScreenPresentationOption(
+              NSAppPresentationOption.disableCursorLocationAssistance);
+        },
+      ),
     ];
   }
 }
