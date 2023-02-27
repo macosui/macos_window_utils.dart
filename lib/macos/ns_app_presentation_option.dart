@@ -1,4 +1,5 @@
-/// TODO: document this
+/// Constants that control the presentation of the app, typically for
+/// fullscreen apps such as games or kiosks.
 enum NSAppPresentationOption {
   /// The dock is normally hidden, but automatically appears when moused near.
   autoHideDock,
