@@ -42,7 +42,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 1', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideDock,
       NSAppPresentationOption.hideDock
     });
@@ -51,7 +51,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 2', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideMenuBar,
       NSAppPresentationOption.hideMenuBar,
       NSAppPresentationOption.hideDock,
@@ -61,7 +61,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 3', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.hideMenuBar,
     });
 
@@ -69,7 +69,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 4', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableProcessSwitching,
     });
 
@@ -77,7 +77,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 5', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableProcessSwitching,
       NSAppPresentationOption.hideDock,
     });
@@ -86,7 +86,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 6', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableProcessSwitching,
       NSAppPresentationOption.autoHideDock,
     });
@@ -95,7 +95,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 7', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableForceQuit,
     });
 
@@ -103,7 +103,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 8', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableSessionTermination,
     });
 
@@ -111,7 +111,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 9', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.disableMenuBarTransparency,
     });
 
@@ -119,7 +119,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 10', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideToolbar,
     });
 
@@ -127,7 +127,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 11', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideToolbar,
       NSAppPresentationOption.fullScreen,
     });
@@ -136,7 +136,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 12', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideToolbar,
       NSAppPresentationOption.autoHideMenuBar,
     });
@@ -145,7 +145,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 13', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideToolbar,
       NSAppPresentationOption.fullScreen,
       NSAppPresentationOption.autoHideMenuBar,
@@ -156,7 +156,7 @@ void main() {
   });
 
   testWidgets('ns app presentation options assertion 14', (tester) async {
-    var options = NSAppPresentationOptions.from({
+    final options = NSAppPresentationOptions.from({
       NSAppPresentationOption.autoHideToolbar,
       NSAppPresentationOption.autoHideMenuBar,
       NSAppPresentationOption.fullScreen,
