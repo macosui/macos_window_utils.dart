@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import 'command_list/command_list.dart';
-import 'command_list_provider.dart';
+import 'command_list_provider/command_list_provider.dart';
 
 class WindowManipulatorDemo extends StatefulWidget {
   const WindowManipulatorDemo({
