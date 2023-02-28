@@ -169,7 +169,9 @@ class _MyDelegate extends NSWindowDelegate {
 }
 ```
 
-This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method in order to respond to it. Then, add an instance of it via the `WindowManipulator.addNSWindowDelegate` method:
+This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method in order to respond to it.
+
+Then, add an instance of it via the `WindowManipulator.addNSWindowDelegate` method:
 
 ```dart
  final delegate = _MyDelegate();
