@@ -4,10 +4,13 @@ import 'package:macos_window_utils/macos/ns_window_delegate.dart';
 
 import 'ns_window_delegate_event_handler.dart';
 
-/// TODO: document this
+/// A [NSWindowDelegate] that adds [NSWindowDelegateEvent]s to a given
+/// [NSWindowDelegateEventHandler] as they occur.
 class EventDelegate extends NSWindowDelegate {
+  /// Creates an [EventDelegate].
   EventDelegate({required this.eventHandler});
 
+  /// The [NSWindowDelegateEventHandler] to add events to.
   final NSWindowDelegateEventHandler eventHandler;
 
   @override
