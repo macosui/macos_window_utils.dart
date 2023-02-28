@@ -411,7 +411,10 @@ class CommandListProvider {
             'The dock is normally hidden, but automatically appears when '
             'moused near.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.autoHideDock),
       ),
@@ -420,7 +423,10 @@ class CommandListProvider {
             'hideDock)',
         description: 'The dock is entirely hidden and disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.hideDock),
       ),
@@ -431,7 +437,10 @@ class CommandListProvider {
             'The menu bar is normally hidden, but automatically appears when '
             'moused near.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.autoHideMenuBar),
       ),
@@ -440,7 +449,10 @@ class CommandListProvider {
             'hideMenuBar)',
         description: 'The menu bar is entirely hidden and disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.hideMenuBar),
       ),
@@ -449,7 +461,10 @@ class CommandListProvider {
             'disableAppleMenu)',
         description: 'All Apple Menu items are disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableAppleMenu),
       ),
@@ -460,7 +475,10 @@ class CommandListProvider {
             'The process switching user interface (Command + Tab to cycle '
             'through apps) is disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableProcessSwitching),
       ),
@@ -471,7 +489,10 @@ class CommandListProvider {
             'The force quit panel (displayed by pressing Command + Option + '
             'Esc) is disabled\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableForceQuit),
       ),
@@ -482,7 +503,10 @@ class CommandListProvider {
             'options that are displayed as a result of pushing the power key '
             'is disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableSessionTermination),
       ),
@@ -491,7 +515,10 @@ class CommandListProvider {
             'disableHideApplication)',
         description: 'The app’s “Hide” menu item is disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableHideApplication),
       ),
@@ -500,7 +527,10 @@ class CommandListProvider {
             'disableMenuBarTransparency)',
         description: 'The menu bar transparency appearance is disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableMenuBarTransparency),
       ),
@@ -509,7 +539,10 @@ class CommandListProvider {
             'fullScreen)',
         description: 'The app is in fullscreen mode.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.fullScreen),
       ),
@@ -520,7 +553,10 @@ class CommandListProvider {
             'When in fullscreen mode the window toolbar is detached from '
             'window and hides and shows with autoHidden menuBar.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.autoHideToolbar),
       ),
@@ -531,7 +567,10 @@ class CommandListProvider {
             'The behavior that allows the user to shake the mouse to locate '
             'the cursor is disabled.\n\n'
             '**Warning:** '
-            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}',
+            '${CommandListProviderConstants.nsApplicationPresentationOptionsOverview}'
+            '\nAdditionally, please note that '
+            '`NSAppPresentationOption.fullScreen` needs to be present as a '
+            'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableCursorLocationAssistance),
       ),
