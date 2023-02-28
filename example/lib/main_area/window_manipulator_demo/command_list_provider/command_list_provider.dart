@@ -399,7 +399,7 @@ class CommandListProvider {
       ),
       Command(
         name: 'removeFullScreenPresentationOptions()',
-        description: 'Removes the window\'s full-screen presentation options.'
+        description: 'Removes the window\'s full-screen presentation options. '
             'Removing the window\'s full-screen presentation options returns '
             'the window\'s presentation to its default state.',
         function: () => WindowManipulator.removeFullScreenPresentationOptions(),
