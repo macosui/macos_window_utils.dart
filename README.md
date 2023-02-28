@@ -33,6 +33,7 @@ and the Flutter guide for
 + Methods and widgets to add, remove, and modify visual effect subviews.
 + Methods to set the window's level as well as reorder the window within its level.
 + Methods to modify the window's style mask.
++ An abstract `NSWindowDelegate` that can be used detect `NSWindow` events, such as window resizing, moving, exposing, and minimizing.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
@@ -151,6 +152,34 @@ Future<void> main() async {
 ```
 
 Afterwards, call any method of the `WindowManipulator` class to manipulate your application's window.
+
+### Using `NSWindowDelegate`
+
+`NSWindowDelegate` can be used to listen to `NSWindow` events, such as window resizing, moving, exposing, and minimizing. To use it, first create a class that extends it:
+
+```dart
+class _MyDelegate extends NSWindowDelegate {
+  @override
+  void windowDidEnterFullScreen() {
+    print('The window has entered fullscreen mode.');
+    
+    super.windowDidEnterFullScreen();
+  }
+}
+```
+
+This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method in order to respond to it. Then, add an instance of it via the `WindowManipulator.addNSWindowDelegate` method:
+
+```dart
+ final delegate = _MyDelegate();
+ final handle = WindowManipulator.addNSWindowDelegate(delegate);
+```
+
+`WindowManipulator.addNSWindowDelegate` returns a `NSWindowDelegateHandle` which can be used to remove this `NSWindowDelegate` again later:
+
+```dart
+handle.removeFromHandler();
+```
 
 ## License
 
