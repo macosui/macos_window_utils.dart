@@ -156,7 +156,20 @@ Afterwards, call any method of the `WindowManipulator` class to manipulate your 
 
 ### Using `NSWindowDelegate`
 
-`NSWindowDelegate` can be used to listen to `NSWindow` events, such as window resizing, moving, exposing, and minimizing. To use it, first create a class that extends it:
+`NSWindowDelegate` can be used to listen to `NSWindow` events, such as window resizing, moving, exposing, and minimizing. To use it, first make sure that `enableWindowDelegate` is set to `true` in your `WindowManipulator.initialize` call:
+
+```dart
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // By default, enableWindowDelegate is set to false to ensure compatibility
+  // with other plugins. Set it to true if you wish to use NSWindowDelegate.
+  await WindowManipulator.initialize(enableWindowDelegate: true);
+  runApp(MyApp());
+}
+```
+
+Afterwards, create a class that extends it:
 
 ```dart
 class _MyDelegate extends NSWindowDelegate {
@@ -208,6 +221,8 @@ final options = NSAppPresentationOptions.from({
 // Apply the options as fullscreen presentation options.
 options.applyAsFullScreenPresentationOptions();
 ```
+
+**Note:** `NSAppPresentationOptions` uses the `NSWindow`'s delegate to change the window's fullscreen presentation options. Therefore, `enableWindowDelegate` needs to be set to `true` in your `WindowManipulator.initialize` call for it to work.
 
 ## License
 
