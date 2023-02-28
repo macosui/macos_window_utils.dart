@@ -115,7 +115,8 @@ class NSAppPresentationOptions {
         'autoHideMenuBar are also set.');
   }
 
-  /// Applies these [NSAppPresentationOptions] to the window.
+  /// Applies these [NSAppPresentationOptions] to as fullscreen presentation
+  /// options.
   ///
   /// These [NSAppPresentationOptions] must include
   /// [NSAppPresentationOption.fullScreen].
