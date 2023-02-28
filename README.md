@@ -34,6 +34,7 @@ and the Flutter guide for
 + Methods to set the window's level as well as reorder the window within its level.
 + Methods to modify the window's style mask.
 + An abstract `NSWindowDelegate` that can be used detect `NSWindow` events, such as window resizing, moving, exposing, and minimizing.
++ An `NSAppPresentationOptions` class that allows you to modify the window's fullscreen presentation options.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
@@ -179,6 +180,31 @@ This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method 
 
 ```dart
 handle.removeFromHandler();
+```
+
+### Using `NSAppPresentationOptions`
+
+Say we would like to automatically hide the toolbar when the window is in fullscreen mode. Using `NSAppPresentationOptions` this can be done as follows:
+
+```dart
+// Create NSAppPresentationOptions instance.
+final options = NSAppPresentationOptions.from({
+  // fullScreen needs to be present as a fullscreen presentation option at all
+  // times.
+  NSAppPresentationOption.fullScreen,
+
+  // Hide the toolbar automatically in fullscreen mode.
+  NSAppPresentationOption.autoHideToolbar,
+
+  // autoHideToolbar must be accompanied by autoHideMenuBar.
+  NSAppPresentationOption.autoHideMenuBar,
+
+  // autoHideMenuBar must be accompanied by either autoHideDock or hideDock.
+  NSAppPresentationOption.autoHideDock,
+});
+
+// Apply the options as fullscreen presentation options.
+options.applyAsFullScreenPresentationOptions();
 ```
 
 ## License
