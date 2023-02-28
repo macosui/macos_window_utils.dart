@@ -134,11 +134,15 @@ class NSAppPresentationOptions {
   ///   be accompanied by either `hideDock` or `autoHideDock`.
   /// + `autoHideToolbar` may be used only when both `fullScreen` and
   ///   `autoHideMenuBar` are also set.
-  void applyAsFullScreenPresentationOptions() {
-    assertRestrictions();
+  ///
+  /// If the [force] flag is true, those assertions are disabled.
+  void applyAsFullScreenPresentationOptions({bool force = false}) {
+    if (!force) {
+      assertRestrictions();
 
-    assert(contains(NSAppPresentationOption.fullScreen),
-        'fullScreen must be set.');
+      assert(contains(NSAppPresentationOption.fullScreen),
+          'fullScreen must be set.');
+    }
 
     WindowManipulator.removeFullScreenPresentationOptions();
     for (final option in options) {
