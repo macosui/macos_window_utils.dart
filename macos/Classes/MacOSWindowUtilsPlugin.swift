@@ -31,7 +31,10 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         
         switch (methodName) {
         case "initialize":
-            MainFlutterWindowManipulator.createFlutterWindowDelegate(methodChannel: nsWindowDelegateChannel)
+            let enableWindowDelegate = args["enableWindowDelegate"] as! Bool
+            if (enableWindowDelegate) {
+                MainFlutterWindowManipulator.createFlutterWindowDelegate(methodChannel: nsWindowDelegateChannel)
+            }
             result(true)
             break
             
@@ -402,15 +405,13 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             
         case "removeFullScreenPresentationOptions":
-            MainFlutterWindowManipulator.removeFullScreenPresentationOptions()
-            result(true)
+            result(MainFlutterWindowManipulator.removeFullScreenPresentationOptions())
             
         case "addFullScreenPresentationOption":
             let presentationOptionName = args["presentationOption"] as! String
             let presentationOptions = PresentationOptionNameToPresentationOptionsConverter.getPresentationOptionsFromName(name: presentationOptionName)
             
-            MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!)
-            result(true)
+            result(MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!))
             
         default:
             result(FlutterMethodNotImplemented)

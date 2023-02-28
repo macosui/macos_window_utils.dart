@@ -6,7 +6,7 @@ import 'package:macos_window_utils/macos_window_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await WindowManipulator.initialize();
+  await WindowManipulator.initialize(enableWindowDelegate: true);
   runApp(const MyApp());
 }
 

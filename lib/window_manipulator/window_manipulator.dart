@@ -29,8 +29,10 @@ class WindowManipulator {
   ///   runApp(MyApp());
   /// }
   /// ```
-  static Future<void> initialize() async {
-    await _windowManipulatorMethodChannel.invokeMethod('initialize');
+  static Future<void> initialize({bool enableWindowDelegate = false}) async {
+    await _windowManipulatorMethodChannel.invokeMethod('initialize', {
+      'enableWindowDelegate': enableWindowDelegate,
+    });
     _completer.complete();
   }
 
@@ -578,10 +580,16 @@ class WindowManipulator {
   ///
   /// Removing the window's full-screen presentation options returns the
   /// window's presentation to its default state.
-  static void removeFullScreenPresentationOptions() async {
+  static Future<void> removeFullScreenPresentationOptions() async {
     await _completer.future;
-    await _windowManipulatorMethodChannel
-        .invokeMethod('removeFullScreenPresentationOptions');
+    final hasSucceeded = await _windowManipulatorMethodChannel
+        .invokeMethod('removeFullScreenPresentationOptions') as bool;
+
+    assert(
+        hasSucceeded,
+        'removeFullScreenPresentationOptions failed. Please make sure that '
+        'the `enableWindowDelegate` parameter is set to true in your '
+        'WindowManipulator.initialize call.');
   }
 
   /// Adds a [NSAppPresentationOption] to the widow as a full-screen
@@ -625,10 +633,17 @@ class WindowManipulator {
   ///   NSAppPresentationOption.hideDock
   /// }).applyAsFullScreenPresentationOptions();
   /// ```
-  static void addFullScreenPresentationOption(
+  static Future<void> addFullScreenPresentationOption(
       NSAppPresentationOption option) async {
     await _completer.future;
-    await _windowManipulatorMethodChannel.invokeMethod(
-        'addFullScreenPresentationOption', {'presentationOption': option.name});
+    final hasSucceeded = await _windowManipulatorMethodChannel.invokeMethod(
+        'addFullScreenPresentationOption',
+        {'presentationOption': option.name}) as bool;
+
+    assert(
+        hasSucceeded,
+        'addFullScreenPresentationOption failed. Please make sure that the '
+        '`enableWindowDelegate` parameter is set to true in your '
+        'WindowManipulator.initialize call.');
   }
 }

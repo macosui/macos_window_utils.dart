@@ -559,11 +559,21 @@ public class MainFlutterWindowManipulator {
         self.mainFlutterWindow!.styleMask.remove(styleMask)
     }
     
-    public static func removeFullScreenPresentationOptions() {
-        mainFlutterWindowDelegate?.removeFullScreenPresentationOptions()
+    public static func removeFullScreenPresentationOptions() -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
+        mainFlutterWindowDelegate!.removeFullScreenPresentationOptions()
+        return true
     }
     
-    public static func addFullScreenPresentationOptions(_ presentationOptions: NSApplication.PresentationOptions) {
+    public static func addFullScreenPresentationOptions(_ presentationOptions: NSApplication.PresentationOptions) -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
         mainFlutterWindowDelegate?.addFullScreenPresentationOptions(presentationOptions)
+        return true
     }
 }
