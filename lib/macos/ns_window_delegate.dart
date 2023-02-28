@@ -3,6 +3,9 @@ import 'dart:ui';
 /// A set of optional methods that a window’s delegate can implement to respond
 /// to events, such as window resizing, moving, exposing, and minimizing.
 ///
+/// Please note that `enableWindowDelegate` needs to be set to true in the
+/// [WindowManipulator.initialize] call for this class to work.
+///
 /// Example:
 /// ```dart
 /// // Class definition.

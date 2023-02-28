@@ -21,11 +21,16 @@ class WindowManipulator {
 
   /// Initializes the [WindowManipulator] class.
   ///
+  /// The [enableWindowDelegate] specifies if the window delegate should be
+  /// enabled. It is required to be `true` in order for
+  /// [NSAppPresentationOptions] or [NSWindowDelegate] to work. It is set to
+  /// `false` by default in order to prevent incompatibility with other plugins.
+  ///
   /// Example:
   /// ```dart
   /// Future<void> main() async {
   ///   WidgetsFlutterBinding.ensureInitialized();
-  ///   await WindowManipulator.initialize();
+  ///   await WindowManipulator.initialize(enableWindowDelegate: true);
   ///   runApp(MyApp());
   /// }
   /// ```

@@ -6,6 +6,9 @@ export 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
 /// Constants that control the presentation of the app, typically for fullscreen
 /// apps such as games or kiosks.
 ///
+/// Please note that `enableWindowDelegate` needs to be set to true in the
+/// [WindowManipulator.initialize] call for this class to work.
+///
 /// Usage example:
 /// ```dart
 /// NSAppPresentationOptions.from({
