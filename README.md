@@ -15,7 +15,7 @@ and the Flutter guide for
 
 ## Features
 
-**macos_window_utils** offers, among other things, the following features:
+**macos_window_utils** provides, among other things, the following features:
 
 + Methods to set the application window's material.
 + Methods to enter/exit fullscreen mode or (un)zoom the window.
