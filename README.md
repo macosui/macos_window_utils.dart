@@ -184,6 +184,59 @@ class _MyDelegate extends NSWindowDelegate {
 
 This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method in order to respond to it.
 
+The following methods are currently supported by `NSWindowDelegate`:
+<details>
+  <summary>Supported methods</summary>
+
+  -  Managing Sheets
+     - `windowWillBeginSheet`
+     - `windowDidEndSheet`
+  -  Sizing Windows
+     - `windowWillResize`
+     - `windowDidResize`
+     - `windowWillStartLiveResize`
+     - `windowDidEndLiveResize`
+  -  Minimizing Windows
+     - `windowWillMiniaturize`
+     - `windowDidMiniaturize`
+     - `windowDidDeminiaturize`
+  -  Zooming Window
+     - `windowWillUseStandardFrame`
+     - `windowShouldZoom`
+  -  Managing Full-Screen Presentation
+     - `windowWillEnterFullScreen`
+     - `windowDidEnterFullScreen`
+     - `windowWillExitFullScreen`
+     - `windowDidExitFullScreen`
+  -  Moving Windows
+     - `windowWillMove`
+     - `windowDidMove`
+     - `windowDidChangeScreen`
+     - `windowDidChangeScreenProfile`
+     - `windowDidChangeBackingProperties`
+  -  Closing Windows
+     - `windowShouldClose`
+     - `windowWillClose`
+  -  Managing Key Status
+     - `windowDidBecomeKey`
+     - `windowDidResignKey`
+  -  Managing Main Status
+     - `windowDidBecomeMain`
+     - `windowDidResignMain`
+  -  Exposing Windows
+     - `windowDidExpose`
+  -  Managing Occlusion State
+     - `windowDidChangeOcclusionState`
+  -  Managing Presentation in Version Browsers
+     - `windowWillEnterVersionBrowser`
+     - `windowDidEnterVersionBrowser`
+     - `windowWillExitVersionBrowser`
+     - `windowDidExitVersionBrowser`
+
+</details>
+
+<br>
+
 Then, add an instance of it via the `WindowManipulator.addNSWindowDelegate` method:
 
 ```dart
