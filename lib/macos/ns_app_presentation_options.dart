@@ -117,6 +117,9 @@ class NSAppPresentationOptions {
 
   /// Applies these [NSAppPresentationOptions] to the window.
   ///
+  /// These [NSAppPresentationOptions] must include
+  /// [NSAppPresentationOption.fullScreen].
+  ///
   /// Throws an assertion error if any of the following restrictions is
   /// violated:
   /// + `autoHideDock` and `hideDock` are mutually exclusive: You may specify
@@ -133,6 +136,9 @@ class NSAppPresentationOptions {
   ///   `autoHideMenuBar` are also set.
   void applyAsFullScreenPresentationOptions() {
     assertRestrictions();
+
+    assert(contains(NSAppPresentationOption.fullScreen),
+        'fullScreen must be set.');
 
     WindowManipulator.removeFullScreenPresentationOptions();
     for (final option in options) {
