@@ -592,7 +592,7 @@ class WindowManipulator {
         'WindowManipulator.initialize call.');
   }
 
-  /// Adds a [NSAppPresentationOption] to the widow as a full-screen
+  /// Adds a [NSAppPresentationOption] to the window as a full-screen
   /// presentation option.
   ///
   /// **Note:** The following restrictions on the combination of presentation
