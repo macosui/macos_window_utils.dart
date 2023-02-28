@@ -2,6 +2,25 @@ import 'dart:ui';
 
 /// A set of optional methods that a window’s delegate can implement to respond
 /// to events, such as window resizing, moving, exposing, and minimizing.
+///
+/// Example:
+/// ```dart
+/// // Class definition.
+/// class _MyDelegate extends NSWindowDelegate {
+///   @override
+///   void windowDidEnterFullScreen() {
+///     print('The window has entered fullscreen mode.');
+///
+///     super.windowDidEnterFullScreen();
+///   }
+/// }
+///
+/// // Adding the delegate.
+/// final delegate = _MyDelegate();
+/// final handle = WindowManipulator.addNSWindowDelegate(delegate);
+/// ...
+/// handle.removeFromHandler();
+/// ```
 abstract class NSWindowDelegate {
   // === Managing Sheets ===
 
