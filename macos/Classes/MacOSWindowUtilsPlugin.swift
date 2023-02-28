@@ -3,22 +3,26 @@ import FlutterMacOS
 
 public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
     private var registrar: FlutterPluginRegistrar!;
-    private var channel: FlutterMethodChannel!
+    private var windowManipulatorChannel: FlutterMethodChannel!
+    private var nsWindowDelegateChannel: FlutterMethodChannel!
     
     private static func printUnsupportedMacOSVersionWarning() {
         print("Warning: This feature is not supported on your macOS version.")
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "com.adrian_samoticha/macos_window_utils", binaryMessenger: registrar.messenger)
-        let instance = MacOSWindowUtilsPlugin(registrar, channel)
-        registrar.addMethodCallDelegate(instance, channel: channel)
+        let windowManipulatorChannel = FlutterMethodChannel(name: "macos_window_utils/window_manipulator", binaryMessenger: registrar.messenger)
+        let nsWindowDelegateChannel = FlutterMethodChannel(name: "macos_window_utils/ns_window_delegate", binaryMessenger: registrar.messenger)
+        
+        let instance = MacOSWindowUtilsPlugin(registrar, windowManipulatorChannel: windowManipulatorChannel, nsWindowDelegateChannel: nsWindowDelegateChannel)
+        registrar.addMethodCallDelegate(instance, channel: windowManipulatorChannel)
     }
     
-    public init(_ registrar: FlutterPluginRegistrar, _ channel: FlutterMethodChannel) {
+    public init(_ registrar: FlutterPluginRegistrar, windowManipulatorChannel: FlutterMethodChannel, nsWindowDelegateChannel: FlutterMethodChannel) {
         super.init()
         self.registrar = registrar
-        self.channel = channel
+        self.windowManipulatorChannel = windowManipulatorChannel
+        self.nsWindowDelegateChannel = nsWindowDelegateChannel
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -27,7 +31,10 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         
         switch (methodName) {
         case "initialize":
-            // nothing to do here
+            let enableWindowDelegate = args["enableWindowDelegate"] as! Bool
+            if (enableWindowDelegate) {
+                MainFlutterWindowManipulator.createFlutterWindowDelegate(methodChannel: nsWindowDelegateChannel)
+            }
             result(true)
             break
             
@@ -396,6 +403,15 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             MainFlutterWindowManipulator.removeFromStyleMask(styleMask)
             result(true)
+            
+        case "removeFullScreenPresentationOptions":
+            result(MainFlutterWindowManipulator.removeFullScreenPresentationOptions())
+            
+        case "addFullScreenPresentationOption":
+            let presentationOptionName = args["presentationOption"] as! String
+            let presentationOptions = PresentationOptionNameToPresentationOptionsConverter.getPresentationOptionsFromName(name: presentationOptionName)
+            
+            result(MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!))
             
         default:
             result(FlutterMethodNotImplemented)

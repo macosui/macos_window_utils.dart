@@ -15,7 +15,7 @@ and the Flutter guide for
 
 ## Features
 
-**macos_window_utils** offers, among other things, the following features:
+**macos_window_utils** provides, among other things, the following features:
 
 + Methods to set the application window's material.
 + Methods to enter/exit fullscreen mode or (un)zoom the window.
@@ -33,6 +33,8 @@ and the Flutter guide for
 + Methods and widgets to add, remove, and modify visual effect subviews.
 + Methods to set the window's level as well as reorder the window within its level.
 + Methods to modify the window's style mask.
++ An abstract `NSWindowDelegate` class that can be used detect `NSWindow` events, such as window resizing, moving, exposing, and minimizing.
++ An `NSAppPresentationOptions` class that allows modifications to the window's fullscreen presentation options.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
@@ -151,6 +153,129 @@ Future<void> main() async {
 ```
 
 Afterwards, call any method of the `WindowManipulator` class to manipulate your application's window.
+
+### Using `NSWindowDelegate`
+
+`NSWindowDelegate` can be used to listen to `NSWindow` events, such as window resizing, moving, exposing, and minimizing. To use it, first make sure that `enableWindowDelegate` is set to `true` in your `WindowManipulator.initialize` call:
+
+```dart
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // By default, enableWindowDelegate is set to false to ensure compatibility
+  // with other plugins. Set it to true if you wish to use NSWindowDelegate.
+  await WindowManipulator.initialize(enableWindowDelegate: true);
+  runApp(MyApp());
+}
+```
+
+Afterwards, create a class that extends it:
+
+```dart
+class _MyDelegate extends NSWindowDelegate {
+  @override
+  void windowDidEnterFullScreen() {
+    print('The window has entered fullscreen mode.');
+    
+    super.windowDidEnterFullScreen();
+  }
+}
+```
+
+This class overrides the `NSWindowDelegate`'s `windowDidEnterFullScreen` method in order to respond to it.
+
+The following methods are currently supported by `NSWindowDelegate`:
+<details>
+  <summary>Supported methods</summary>
+
+  -  Managing Sheets
+     - `windowWillBeginSheet`
+     - `windowDidEndSheet`
+  -  Sizing Windows
+     - `windowWillResize`
+     - `windowDidResize`
+     - `windowWillStartLiveResize`
+     - `windowDidEndLiveResize`
+  -  Minimizing Windows
+     - `windowWillMiniaturize`
+     - `windowDidMiniaturize`
+     - `windowDidDeminiaturize`
+  -  Zooming Window
+     - `windowWillUseStandardFrame`
+     - `windowShouldZoom`
+  -  Managing Full-Screen Presentation
+     - `windowWillEnterFullScreen`
+     - `windowDidEnterFullScreen`
+     - `windowWillExitFullScreen`
+     - `windowDidExitFullScreen`
+  -  Moving Windows
+     - `windowWillMove`
+     - `windowDidMove`
+     - `windowDidChangeScreen`
+     - `windowDidChangeScreenProfile`
+     - `windowDidChangeBackingProperties`
+  -  Closing Windows
+     - `windowShouldClose`
+     - `windowWillClose`
+  -  Managing Key Status
+     - `windowDidBecomeKey`
+     - `windowDidResignKey`
+  -  Managing Main Status
+     - `windowDidBecomeMain`
+     - `windowDidResignMain`
+  -  Exposing Windows
+     - `windowDidExpose`
+  -  Managing Occlusion State
+     - `windowDidChangeOcclusionState`
+  -  Managing Presentation in Version Browsers
+     - `windowWillEnterVersionBrowser`
+     - `windowDidEnterVersionBrowser`
+     - `windowWillExitVersionBrowser`
+     - `windowDidExitVersionBrowser`
+
+</details>
+
+<br>
+
+Then, add an instance of it via the `WindowManipulator.addNSWindowDelegate` method:
+
+```dart
+ final delegate = _MyDelegate();
+ final handle = WindowManipulator.addNSWindowDelegate(delegate);
+```
+
+`WindowManipulator.addNSWindowDelegate` returns a `NSWindowDelegateHandle` which can be used to remove this `NSWindowDelegate` again later:
+
+```dart
+handle.removeFromHandler();
+```
+
+### Using `NSAppPresentationOptions`
+
+Say we would like to automatically hide the toolbar when the window is in fullscreen mode. Using `NSAppPresentationOptions` this can be done as follows:
+
+```dart
+// Create NSAppPresentationOptions instance.
+final options = NSAppPresentationOptions.from({
+  // fullScreen needs to be present as a fullscreen presentation option at all
+  // times.
+  NSAppPresentationOption.fullScreen,
+
+  // Hide the toolbar automatically in fullscreen mode.
+  NSAppPresentationOption.autoHideToolbar,
+
+  // autoHideToolbar must be accompanied by autoHideMenuBar.
+  NSAppPresentationOption.autoHideMenuBar,
+
+  // autoHideMenuBar must be accompanied by either autoHideDock or hideDock.
+  NSAppPresentationOption.autoHideDock,
+});
+
+// Apply the options as fullscreen presentation options.
+options.applyAsFullScreenPresentationOptions();
+```
+
+**Note:** `NSAppPresentationOptions` uses the `NSWindow`'s delegate to change the window's fullscreen presentation options. Therefore, `enableWindowDelegate` needs to be set to `true` in your `WindowManipulator.initialize` call for it to work.
 
 ## License
 

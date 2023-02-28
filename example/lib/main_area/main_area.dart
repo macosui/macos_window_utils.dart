@@ -1,14 +1,11 @@
+import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_demo.dart';
+import 'package:example/main_area/window_manipulator_demo/window_manipulator_demo.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
-
-import 'command_list/command_list.dart';
-import 'command_list_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:macos_ui/macos_ui.dart';
 
 class MainArea extends StatefulWidget {
-  const MainArea({
-    Key? key,
-    required this.setState,
-  }) : super(key: key);
+  const MainArea({super.key, required this.setState});
 
   final void Function(void Function()) setState;
 
@@ -17,88 +14,58 @@ class MainArea extends StatefulWidget {
 }
 
 class _MainAreaState extends State<MainArea> {
-  final FocusNode _focusNode = FocusNode();
-  String _searchTerm = '';
-  int _selectedIndex = 0;
+  final _tabController = MacosTabController(length: 2, initialIndex: 0);
 
-  List<Command> get _filteredCommands => CommandListProvider.getCommands()
-      .where((Command command) =>
-          command.name.toLowerCase().contains(_searchTerm.toLowerCase()))
-      .toList();
+  @override
+  void initState() {
+    _tabController.addListener(() => setState(() {}));
 
-  void _setSelectedIndex(int newIndex) {
-    if (_filteredCommands.isEmpty) {
-      _selectedIndex = 0;
-      return;
-    }
-
-    _selectedIndex = newIndex.clamp(0, _filteredCommands.length - 1);
-  }
-
-  void _addToSelectedIndex(int value) {
-    _setSelectedIndex(_selectedIndex + value);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Focus(
-      focusNode: _focusNode,
-      autofocus: true,
-      onKeyEvent: (FocusNode _, KeyEvent event) {
-        if (event is KeyDownEvent || event is KeyRepeatEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-            setState(() {
-              _addToSelectedIndex(1);
-            });
-
-            return KeyEventResult.handled;
-          }
-
-          if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-            widget.setState(() {
-              _addToSelectedIndex(-1);
-            });
-
-            return KeyEventResult.handled;
-          }
-        }
-
-        if (event is KeyDownEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.enter) {
-            setState(() {
-              final commands = _filteredCommands;
-              final selectedCommand = commands[_selectedIndex];
-              selectedCommand.function();
-            });
-
-            return KeyEventResult.handled;
-          }
-        }
-
-        return KeyEventResult.ignored;
-      },
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CupertinoSearchTextField(
-              onChanged: (value) => setState(() {
-                _setSelectedIndex(0);
-                _searchTerm = value;
-              }),
-            ),
+    return Column(
+      children: [
+        const SizedBox(height: 8.0),
+        _SegmentedControl(
+          tabController: _tabController,
+        ),
+        Expanded(
+          child: IndexedStack(
+            index: _tabController.index,
+            children: [
+              WindowManipulatorDemo(
+                setState: widget.setState,
+              ),
+              const NSWindowDelegateDemo(),
+            ],
           ),
-          Expanded(
-            child: CommandList(
-              selectedIndex: _selectedIndex,
-              commands: _filteredCommands,
-              setIndex: (int newIndex) => setState(() {
-                _setSelectedIndex(newIndex);
-              }),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SegmentedControl extends StatelessWidget {
+  const _SegmentedControl({
+    required this.tabController,
+  });
+
+  final MacosTabController tabController;
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosSegmentedControl(
+      tabs: const [
+        MacosTab(
+          label: 'WindowManipulator demo',
+        ),
+        MacosTab(
+          label: 'NSWindowDelegate demo',
+        ),
+      ],
+      controller: tabController,
     );
   }
 }

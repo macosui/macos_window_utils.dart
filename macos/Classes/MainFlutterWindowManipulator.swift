@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FlutterMacOS
 
 public class MainFlutterWindowManipulator {
     private static var mainFlutterWindow: NSWindow?
+    private static var mainFlutterWindowDelegate: FlutterWindowDelegate?
     
     private static func printNotStartedWarning() {
         print("Warning: The MainFlutterWindowManipulator has not been started. Please make sure the macos_window_utils plugin is initialized correctly in your MainFlutterWindow.swift file.")
@@ -21,6 +23,10 @@ public class MainFlutterWindowManipulator {
         makeTitlebarOpaque()
         disableFullSizeContentView()
         setWindowBackgroundColorToDefaultColor()
+    }
+    
+    public static func createFlutterWindowDelegate(methodChannel: FlutterMethodChannel) {
+        mainFlutterWindowDelegate = FlutterWindowDelegate.create(window: mainFlutterWindow!, methodChannel: methodChannel)
     }
     
     public static func hideTitle() {
@@ -551,5 +557,23 @@ public class MainFlutterWindowManipulator {
         }
         
         self.mainFlutterWindow!.styleMask.remove(styleMask)
+    }
+    
+    public static func removeFullScreenPresentationOptions() -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
+        mainFlutterWindowDelegate!.removeFullScreenPresentationOptions()
+        return true
+    }
+    
+    public static func addFullScreenPresentationOptions(_ presentationOptions: NSApplication.PresentationOptions) -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
+        mainFlutterWindowDelegate?.addFullScreenPresentationOptions(presentationOptions)
+        return true
     }
 }
