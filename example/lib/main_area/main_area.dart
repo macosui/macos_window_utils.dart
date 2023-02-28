@@ -49,7 +49,6 @@ class _MainAreaState extends State<MainArea> {
 
 class _SegmentedControl extends StatelessWidget {
   const _SegmentedControl({
-    super.key,
     required this.tabController,
   });
 
