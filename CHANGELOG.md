@@ -1,3 +1,51 @@
+## 1.1.0
+- Add an abstract `NSWindowDelegate` that can be used to listen to events provided by [NSWindowDelegate](https://developer.apple.com/documentation/appkit/nswindowdelegate) such as window resizing, moving, exposing, and minimizing. The following methods are currently supported:
+  -  Managing Sheets
+     - `windowWillBeginSheet`
+     - `windowDidEndSheet`
+  -  Sizing Windows
+     - `windowWillResize`
+     - `windowDidResize`
+     - `windowWillStartLiveResize`
+     - `windowDidEndLiveResize`
+  -  Minimizing Windows
+     - `windowWillMiniaturize`
+     - `windowDidMiniaturize`
+     - `windowDidDeminiaturize`
+  -  Zooming Window
+     - `windowWillUseStandardFrame`
+     - `windowShouldZoom`
+  -  Managing Full-Screen Presentation
+     - `windowWillEnterFullScreen`
+     - `windowDidEnterFullScreen`
+     - `windowWillExitFullScreen`
+     - `windowDidExitFullScreen`
+  -  Moving Windows
+     - `windowWillMove`
+     - `windowDidMove`
+     - `windowDidChangeScreen`
+     - `windowDidChangeScreenProfile`
+     - `windowDidChangeBackingProperties`
+  -  Closing Windows
+     - `windowShouldClose`
+     - `windowWillClose`
+  -  Managing Key Status
+     - `windowDidBecomeKey`
+     - `windowDidResignKey`
+  -  Managing Main Status
+     - `windowDidBecomeMain`
+     - `windowDidResignMain`
+  -  Exposing Windows
+     - `windowDidExpose`
+  -  Managing Occlusion State
+     - `windowDidChangeOcclusionState`
+  -  Managing Presentation in Version Browsers
+     - `windowWillEnterVersionBrowser`
+     - `windowDidEnterVersionBrowser`
+     - `windowWillExitVersionBrowser`
+     - `windowDidExitVersionBrowser`
+- Add an `NSAppPresentationOptions` class that allows the window's fullscreen presentation options to be modified.
+
 ## 1.0.2
 
 - Fix incompatibility with Flutter 3.7.0.
