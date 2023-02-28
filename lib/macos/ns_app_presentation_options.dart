@@ -13,7 +13,7 @@ export 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
 ///   NSAppPresentationOption.fullScreen,
 ///   NSAppPresentationOption.autoHideMenuBar,
 ///   NSAppPresentationOption.hideDock,
-/// }).apply();
+/// }).applyAsFullScreenPresentationOptions();
 /// ```
 class NSAppPresentationOptions {
   /// The options contained within this object.
@@ -131,7 +131,7 @@ class NSAppPresentationOptions {
   ///   be accompanied by either `hideDock` or `autoHideDock`.
   /// + `autoHideToolbar` may be used only when both `fullScreen` and
   ///   `autoHideMenuBar` are also set.
-  void apply() {
+  void applyAsFullScreenPresentationOptions() {
     assertRestrictions();
 
     WindowManipulator.removeFullScreenPresentationOptions();

@@ -617,13 +617,13 @@ class WindowManipulator {
   ///   NSAppPresentationOption.fullScreen,
   ///   NSAppPresentationOption.autoHideMenuBar,
   ///   NSAppPresentationOption.hideDock,
-  /// }).apply();
+  /// }).applyAsFullScreenPresentationOptions();
   ///
   /// // Throws assertion error.
   /// NSAppPresentationOptions.from({
   ///   NSAppPresentationOption.autoHideDock,
   ///   NSAppPresentationOption.hideDock
-  /// }).apply();
+  /// }).applyAsFullScreenPresentationOptions();
   /// ```
   static void addFullScreenPresentationOption(
       NSAppPresentationOption option) async {
