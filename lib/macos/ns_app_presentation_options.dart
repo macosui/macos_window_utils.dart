@@ -1,5 +1,5 @@
 import 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
-import 'package:macos_window_utils/window_manipulator/window_manipulator.dart';
+import 'package:macos_window_utils/window_manipulator.dart';
 
 export 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
 

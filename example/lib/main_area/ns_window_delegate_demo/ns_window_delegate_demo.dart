@@ -6,7 +6,6 @@ import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_eve
 import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_event_list/ns_window_delegate_event_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
-import 'package:macos_window_utils/window_manipulator/ns_window_delegate_handler/ns_window_delegate_handler.dart';
 
 class NSWindowDelegateDemo extends StatefulWidget {
   const NSWindowDelegateDemo({super.key});

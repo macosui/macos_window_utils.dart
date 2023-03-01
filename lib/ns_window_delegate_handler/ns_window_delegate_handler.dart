@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_window_delegate.dart';
-import 'package:macos_window_utils/window_manipulator/ns_window_delegate_handler/ns_window_delegate_handle.dart';
+import 'package:macos_window_utils/ns_window_delegate_handler/ns_window_delegate_handle.dart';
 
-export 'package:macos_window_utils/window_manipulator/ns_window_delegate_handler/ns_window_delegate_handle.dart';
+export 'package:macos_window_utils/ns_window_delegate_handler/ns_window_delegate_handle.dart';
 
 /// A class that handles [NSWindowDelegate]s and their appropriate method
 /// channel.
