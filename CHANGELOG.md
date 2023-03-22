@@ -1,7 +1,13 @@
+## 1.1.2
+
+- Make macos_window_utils work without modifications to `MainFlutterWindow.swift`.
+
 ## 1.1.1
+
 - Hotfix: Fix accidental breaking change in directory structure in 1.1.0.
 
 ## 1.1.0 (retracted)
+
 - Add an abstract `NSWindowDelegate` that can be used to listen to events provided by [NSWindowDelegate](https://developer.apple.com/documentation/appkit/nswindowdelegate) such as window resizing, moving, exposing, and minimizing. The following methods are currently supported:
   -  Managing Sheets
      - `windowWillBeginSheet`
