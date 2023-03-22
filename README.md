@@ -48,55 +48,9 @@ First, install the package via the following command:
 flutter pub add macos_window_utils
 ```
 
-Afterwards, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `MainFlutterWindow.swift`.
+Afterwards, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `Runner.xcodeproj`.
 
-Insert `import macos_window_utils` at the top of the file.
-Then, replace the code above the `super.awakeFromNib()`-line with the following code:
-
-```swift
-let windowFrame = self.frame
-let macOSWindowUtilsViewController = MacOSWindowUtilsViewController()
-self.contentViewController = macOSWindowUtilsViewController
-self.setFrame(windowFrame, display: true)
-
-/* Initialize the macos_window_utils plugin */
-MainFlutterWindowManipulator.start(mainFlutterWindow: self)
-
-RegisterGeneratedPlugins(registry: macOSWindowUtilsViewController.flutterViewController)
-```
-
-Assuming you're starting with the default configuration, the finished code should look something like this:
-
-```diff
-import Cocoa
-import FlutterMacOS
-+import macos_window_utils
-
-class MainFlutterWindow: NSWindow {
-  override func awakeFromNib() {
--   let flutterViewController = FlutterViewController.init()
--   let windowFrame = self.frame
--   self.contentViewController = flutterViewController
--   self.setFrame(windowFrame, display: true)
-
--   RegisterGeneratedPlugins(registry: flutterViewController)
-    
-+   let windowFrame = self.frame
-+   let macOSWindowUtilsViewController = MacOSWindowUtilsViewController()
-+   self.contentViewController = macOSWindowUtilsViewController
-+   self.setFrame(windowFrame, display: true)
-
-+   /* Initialize the macos_window_utils plugin */
-+   MainFlutterWindowManipulator.start(mainFlutterWindow: self)
-
-+   RegisterGeneratedPlugins(registry: macOSWindowUtilsViewController.flutterViewController)
-
-    super.awakeFromNib()
-  }
-}
-```
-
-Now press ⇧ + ⌘ + O once more and search for `Runner.xcodeproj`. Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.14.6` or above:
+Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.14.6` or above:
 
 ```podspec
 platform :osx, '10.14.6'
