@@ -16,8 +16,28 @@ public class MainFlutterWindowManipulator {
         print("Warning: The MainFlutterWindowManipulator has not been started. Please make sure the macos_window_utils plugin is initialized correctly in your MainFlutterWindow.swift file.")
     }
     
-    public static func start(mainFlutterWindow: NSWindow) {
+    private static func configureMainFlutterWindow(_ mainFlutterWindow: NSWindow) {
+        let windowFrame = mainFlutterWindow.frame
+        let flutterViewController = mainFlutterWindow.contentViewController as! FlutterViewController
+        let macOSWindowUtilsViewController = MacOSWindowUtilsViewController(flutterViewController: flutterViewController) // new
+        mainFlutterWindow.contentViewController = macOSWindowUtilsViewController // new
+        mainFlutterWindow.setFrame(windowFrame, display: true)
+    }
+    
+    public static func start(mainFlutterWindow: NSWindow?) {
+        let isProvidedWindow = mainFlutterWindow != nil
+        let mainFlutterWindow = mainFlutterWindow ?? NSApp.windows.first
+        
+        if (mainFlutterWindow == nil) {
+            printNotStartedWarning()
+            return
+        }
+        
         self.mainFlutterWindow = mainFlutterWindow
+        
+        if (!isProvidedWindow) {
+            configureMainFlutterWindow(mainFlutterWindow!)
+        }
         
         showTitle()
         makeTitlebarOpaque()
@@ -26,13 +46,16 @@ public class MainFlutterWindowManipulator {
     }
     
     public static func createFlutterWindowDelegate(methodChannel: FlutterMethodChannel) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
         mainFlutterWindowDelegate = FlutterWindowDelegate.create(window: mainFlutterWindow!, methodChannel: methodChannel)
     }
     
     public static func hideTitle() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.titleVisibility = NSWindow.TitleVisibility.hidden
@@ -40,8 +63,7 @@ public class MainFlutterWindowManipulator {
     
     public static func showTitle() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.titleVisibility = NSWindow.TitleVisibility.visible
@@ -49,8 +71,7 @@ public class MainFlutterWindowManipulator {
     
     public static func makeTitlebarTransparent() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.titlebarAppearsTransparent = true
@@ -58,8 +79,7 @@ public class MainFlutterWindowManipulator {
     
     public static func makeTitlebarOpaque() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.titlebarAppearsTransparent = false
@@ -67,8 +87,7 @@ public class MainFlutterWindowManipulator {
     
     public static func enableFullSizeContentView() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.styleMask.insert(.fullSizeContentView)
@@ -76,8 +95,7 @@ public class MainFlutterWindowManipulator {
     
     public static func disableFullSizeContentView() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.styleMask.remove(.fullSizeContentView)
@@ -85,8 +103,7 @@ public class MainFlutterWindowManipulator {
     
     public static func zoomWindow() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.setIsZoomed(true)
@@ -94,8 +111,7 @@ public class MainFlutterWindowManipulator {
     
     public static func unzoomWindow() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.setIsZoomed(false)
@@ -112,8 +128,7 @@ public class MainFlutterWindowManipulator {
     
     public static func enterFullscreen() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         if (!isWindowFullscreened()) {
@@ -123,8 +138,7 @@ public class MainFlutterWindowManipulator {
     
     public static func exitFullscreen() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         if (isWindowFullscreened()) {
@@ -144,8 +158,7 @@ public class MainFlutterWindowManipulator {
     
     public static func hideZoomButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.zoomButton)!.isHidden = true
@@ -153,8 +166,7 @@ public class MainFlutterWindowManipulator {
     
     public static func showZoomButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.zoomButton)!.isHidden = false
@@ -162,8 +174,7 @@ public class MainFlutterWindowManipulator {
     
     public static func hideMiniaturizeButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.miniaturizeButton)!.isHidden = true
@@ -171,8 +182,7 @@ public class MainFlutterWindowManipulator {
     
     public static func showMiniaturizeButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.miniaturizeButton)!.isHidden = false
@@ -180,8 +190,7 @@ public class MainFlutterWindowManipulator {
     
     public static func hideCloseButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.closeButton)!.isHidden = true
@@ -189,8 +198,7 @@ public class MainFlutterWindowManipulator {
     
     public static func showCloseButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.closeButton)!.isHidden = false
@@ -198,8 +206,7 @@ public class MainFlutterWindowManipulator {
     
     public static func enableZoomButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.zoomButton)!.isEnabled = true
@@ -207,8 +214,7 @@ public class MainFlutterWindowManipulator {
 
     public static func disableZoomButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.zoomButton)!.isEnabled = false
@@ -216,8 +222,7 @@ public class MainFlutterWindowManipulator {
 
     public static func enableMiniaturizeButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.miniaturizeButton)!.isEnabled = true
@@ -225,8 +230,7 @@ public class MainFlutterWindowManipulator {
 
     public static func disableMiniaturizeButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.miniaturizeButton)!.isEnabled = false
@@ -234,8 +238,7 @@ public class MainFlutterWindowManipulator {
 
     public static func enableCloseButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.closeButton)!.isEnabled = true
@@ -243,8 +246,7 @@ public class MainFlutterWindowManipulator {
 
     public static func disableCloseButton() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.standardWindowButton(.closeButton)!.isEnabled = false
@@ -252,8 +254,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setDocumentEdited() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.isDocumentEdited = true
@@ -261,8 +262,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setDocumentUnedited() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.isDocumentEdited = false
@@ -270,8 +270,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setRepresentedFilename(filename: String) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.representedFilename = filename
@@ -279,8 +278,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setRepresentedURL(url: String) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.representedURL = URL(string: url)
@@ -297,8 +295,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setWindowAlphaValue(alphaValue: CGFloat) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.alphaValue = alphaValue
@@ -315,8 +312,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setWindowBackgroundColorToDefaultColor() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.backgroundColor = .windowBackgroundColor
@@ -324,8 +320,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setWindowBackgroundColorToClear() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.backgroundColor = .clear
@@ -333,8 +328,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setNSVisualEffectViewState(state: NSVisualEffectView.State) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
@@ -344,8 +338,7 @@ public class MainFlutterWindowManipulator {
     @available(macOS 10.14, *)
     public static func setAppearance(dark: Bool) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.contentView?.superview?.appearance = NSAppearance(named: dark ? .darkAqua : .aqua)
@@ -356,8 +349,7 @@ public class MainFlutterWindowManipulator {
     @available(macOS 10.14, *)
     public static func setMaterial(material: NSVisualEffectView.Material) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
@@ -367,6 +359,10 @@ public class MainFlutterWindowManipulator {
     }
     
     public static func getTitlebarHeight() -> CGFloat {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
         let windowFrameHeight = (self.mainFlutterWindow!.contentView?.frame.height)!
         let contentLayoutRectHeight = self.mainFlutterWindow!.contentLayoutRect.height
         let fullSizeContentViewNoContentAreaHeight = windowFrameHeight - contentLayoutRectHeight
@@ -374,24 +370,35 @@ public class MainFlutterWindowManipulator {
     }
     
     public static func addVisualEffectSubview(_ visualEffectSubview: VisualEffectSubview) -> UInt {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
         let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
         return macOSWindowUtilsViewController.addVisualEffectSubview(visualEffectSubview)
     }
     
     public static func getVisualEffectSubview(_ subviewId: UInt) -> VisualEffectSubview? {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
         let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
         return macOSWindowUtilsViewController.getVisualEffectSubview(subviewId)
     }
     
     public static func removeVisualEffectSubview(_ subviewId: UInt) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
         let macOSWindowUtilsViewController = self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController;
         macOSWindowUtilsViewController.removeVisualEffectSubview(subviewId)
     }
     
     public static func addToolbar() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         if #available(macOS 10.13, *) {
@@ -403,8 +410,7 @@ public class MainFlutterWindowManipulator {
     
     public static func removeToolbar() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.toolbar = nil
@@ -413,8 +419,7 @@ public class MainFlutterWindowManipulator {
     @available(macOS 11.0, *)
     public static func setToolbarStyle(toolbarStyle: NSWindow.ToolbarStyle) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.toolbarStyle = toolbarStyle
@@ -422,8 +427,7 @@ public class MainFlutterWindowManipulator {
     
     public static func enableShadow() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.hasShadow = true
@@ -431,8 +435,7 @@ public class MainFlutterWindowManipulator {
     
     public static func disableShadow() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.hasShadow = false
@@ -440,8 +443,7 @@ public class MainFlutterWindowManipulator {
     
     public static func invalidateShadows() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.invalidateShadow()
@@ -449,8 +451,7 @@ public class MainFlutterWindowManipulator {
     
     public static func addEmptyMaskImage() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
@@ -459,8 +460,7 @@ public class MainFlutterWindowManipulator {
     
     public static func removeMaskImage() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         let macOSWindowUtilsViewController = self.mainFlutterWindow!.contentViewController as! MacOSWindowUtilsViewController;
@@ -469,8 +469,7 @@ public class MainFlutterWindowManipulator {
     
     public static func ignoreMouseEvents() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.ignoresMouseEvents = true
@@ -478,8 +477,7 @@ public class MainFlutterWindowManipulator {
     
     public static func acknowledgeMouseEvents() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.ignoresMouseEvents = false
@@ -488,8 +486,7 @@ public class MainFlutterWindowManipulator {
     @available(macOS 11.0, *)
     public static func setSubtitle(_ subtitle: String) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.subtitle = subtitle
@@ -497,8 +494,7 @@ public class MainFlutterWindowManipulator {
     
     public static func setLevel(_ level: NSWindow.Level) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.level = level
@@ -506,8 +502,7 @@ public class MainFlutterWindowManipulator {
     
     public static func orderOut() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.orderOut(nil)
@@ -515,8 +510,7 @@ public class MainFlutterWindowManipulator {
     
     public static func orderBack() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.orderBack(nil)
@@ -525,8 +519,7 @@ public class MainFlutterWindowManipulator {
     
     public static func orderFront() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.orderFront(nil)
@@ -534,8 +527,7 @@ public class MainFlutterWindowManipulator {
     
     public static func orderFrontRegardless() {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.orderFrontRegardless()
@@ -543,8 +535,7 @@ public class MainFlutterWindowManipulator {
     
     public static func insertIntoStyleMask(_ styleMask: NSWindow.StyleMask) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.styleMask.insert(styleMask)
@@ -552,8 +543,7 @@ public class MainFlutterWindowManipulator {
     
     public static func removeFromStyleMask(_ styleMask: NSWindow.StyleMask) {
         if (self.mainFlutterWindow == nil) {
-            printNotStartedWarning()
-            return
+            start(mainFlutterWindow: nil)
         }
         
         self.mainFlutterWindow!.styleMask.remove(styleMask)

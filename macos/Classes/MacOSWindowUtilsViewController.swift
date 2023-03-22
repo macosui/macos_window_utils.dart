@@ -9,10 +9,12 @@ import Foundation
 import FlutterMacOS
 
 public class MacOSWindowUtilsViewController: NSViewController {
-    public let flutterViewController = FlutterViewController()
+    public var flutterViewController = FlutterViewController()
     private var visualEffectSubviewRegistry = VisualEffectSubviewRegistry()
 
-    public init() {
+    public init(flutterViewController: FlutterViewController? = nil) {
+        self.flutterViewController = flutterViewController ?? self.flutterViewController
+        
         super.init(nibName: nil, bundle: nil)
     }
 
