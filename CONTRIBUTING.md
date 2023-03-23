@@ -44,8 +44,7 @@ Of course, the `toggleFullScreen` method of the `MainFlutterWindowManipulator` c
 ```swift
 public static func toggleFullScreen() {
     if (self.mainFlutterWindow == nil) {
-        printNotStartedWarning()
-        return
+        start(mainFlutterWindow: nil)
     }
 
     self.mainFlutterWindow!.toggleFullScreen(nil)
