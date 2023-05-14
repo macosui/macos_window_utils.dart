@@ -9,11 +9,11 @@ import Foundation
 import FlutterMacOS
 
 public class MacOSWindowUtilsViewController: NSViewController {
-    public var flutterViewController = FlutterViewController()
+    public var flutterViewController : FlutterViewController? = nil;
     private var visualEffectSubviewRegistry = VisualEffectSubviewRegistry()
 
     public init(flutterViewController: FlutterViewController? = nil) {
-        self.flutterViewController = flutterViewController ?? self.flutterViewController
+        self.flutterViewController = flutterViewController ?? FlutterViewController()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,19 +36,19 @@ public class MacOSWindowUtilsViewController: NSViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addChild(flutterViewController)
+        self.addChild(flutterViewController!)
 
-        flutterViewController.view.frame = self.view.bounds
-        flutterViewController.view.autoresizingMask = [.width, .height]
+        flutterViewController!.view.frame = self.view.bounds
+        flutterViewController!.view.autoresizingMask = [.width, .height]
         
         // Since Flutter 3.7.0 the FlutterViewController's background is black by default and therefore needs to be set to clear.
-        flutterViewController.backgroundColor = .clear
+        flutterViewController!.backgroundColor = .clear
         
-        self.view.addSubview(flutterViewController.view)
+        self.view.addSubview(flutterViewController!.view)
     }
     
     public func addVisualEffectSubview(_ visualEffectSubview: VisualEffectSubview) -> UInt {
-        self.view.addSubview(visualEffectSubview, positioned: .below, relativeTo: flutterViewController.view)
+        self.view.addSubview(visualEffectSubview, positioned: .below, relativeTo: flutterViewController!.view)
         return visualEffectSubviewRegistry.registerSubview(visualEffectSubview)
     }
     
