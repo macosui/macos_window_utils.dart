@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    _brightness = WidgetsBinding.instance.window.platformBrightness;
+    _brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
     super.initState();
   }
 
@@ -37,7 +37,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void didChangePlatformBrightness() {
     if (mounted) {
       setState(() {
-        _brightness = WidgetsBinding.instance.window.platformBrightness;
+        _brightness =
+            WidgetsBinding.instance.platformDispatcher.platformBrightness;
       });
     }
 
