@@ -2,7 +2,6 @@ import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_dem
 import 'package:example/main_area/window_manipulator_demo/window_manipulator_demo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:macos_ui/macos_ui.dart';
 
 class MainArea extends StatefulWidget {
   const MainArea({super.key, required this.setState});
@@ -14,14 +13,7 @@ class MainArea extends StatefulWidget {
 }
 
 class _MainAreaState extends State<MainArea> {
-  final _tabController = MacosTabController(length: 2, initialIndex: 0);
-
-  @override
-  void initState() {
-    _tabController.addListener(() => setState(() {}));
-
-    super.initState();
-  }
+  int? currentTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +21,14 @@ class _MainAreaState extends State<MainArea> {
       children: [
         const SizedBox(height: 8.0),
         _SegmentedControl(
-          tabController: _tabController,
+          currentTabIndex: currentTabIndex,
+          onTabIndexChanged: (newIndex) => setState(() {
+            currentTabIndex = newIndex;
+          }),
         ),
         Expanded(
           child: IndexedStack(
-            index: _tabController.index,
+            index: currentTabIndex,
             children: [
               WindowManipulatorDemo(
                 setState: widget.setState,
@@ -49,23 +44,32 @@ class _MainAreaState extends State<MainArea> {
 
 class _SegmentedControl extends StatelessWidget {
   const _SegmentedControl({
-    required this.tabController,
+    required this.currentTabIndex,
+    required this.onTabIndexChanged,
   });
 
-  final MacosTabController tabController;
+  final int? currentTabIndex;
+  final void Function(int?) onTabIndexChanged;
 
   @override
   Widget build(BuildContext context) {
-    return MacosSegmentedControl(
-      tabs: const [
-        MacosTab(
-          label: 'WindowManipulator demo',
+    return CupertinoSlidingSegmentedControl(
+      groupValue: currentTabIndex,
+      onValueChanged: onTabIndexChanged,
+      children: const {
+        0: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            'WindowManipulator demo',
+          ),
         ),
-        MacosTab(
-          label: 'NSWindowDelegate demo',
+        1: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            'NSWindowDelegate demo',
+          ),
         ),
-      ],
-      controller: tabController,
+      },
     );
   }
 }
