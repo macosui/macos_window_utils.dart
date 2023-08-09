@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Fix typo in README.
+- Add `isMainWindow` getter to WindowManipulator.
+
 ## 1.1.3
 
 - Fix multiple `FlutterViewController`s being created, which prevented the apps from exiting properly on Flutter 3.10.

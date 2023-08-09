@@ -566,4 +566,12 @@ public class MainFlutterWindowManipulator {
         mainFlutterWindowDelegate?.addFullScreenPresentationOptions(presentationOptions)
         return true
     }
+    
+    public static func isMainWindow() -> Bool {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        return self.mainFlutterWindow!.isMainWindow
+    }
 }

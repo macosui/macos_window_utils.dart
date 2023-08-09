@@ -651,4 +651,9 @@ class WindowManipulator {
         '`enableWindowDelegate` parameter is set to true in your '
         'WindowManipulator.initialize call.');
   }
+
+  static Future<bool> isMainWindow() async {
+    await _completer.future;
+    return await _windowManipulatorMethodChannel.invokeMethod('isMainWindow');
+  }
 }

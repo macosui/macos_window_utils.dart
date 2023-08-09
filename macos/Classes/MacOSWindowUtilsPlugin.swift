@@ -413,6 +413,10 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             result(MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!))
             
+        case "isMainWindow":
+            let isMainWindow = MainFlutterWindowManipulator.isMainWindow()
+            result(isMainWindow)
+            
         default:
             result(FlutterMethodNotImplemented)
             break
