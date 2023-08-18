@@ -10,6 +10,7 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
+English | [简体中文](README_zh.md)
 
 **macos_window_utils** is a Flutter package that provides a set of methods for modifying the `NSWindow` of a Flutter application on macOS. With this package, you can easily customize the appearance and behavior of your app's window, including the title bar, transparency effects, shadow, and more.
 
