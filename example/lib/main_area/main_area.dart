@@ -1,7 +1,6 @@
 import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_demo.dart';
 import 'package:example/main_area/window_manipulator_demo/window_manipulator_demo.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class MainArea extends StatefulWidget {
   const MainArea({super.key, required this.setState});
