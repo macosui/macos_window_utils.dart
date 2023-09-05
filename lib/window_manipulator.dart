@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:macos_window_utils/macos/ns_app_presentation_option.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_state.dart';
+import 'package:macos_window_utils/macos/ns_window_button_type.dart';
 import 'package:macos_window_utils/macos/ns_window_delegate.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
@@ -655,5 +656,42 @@ class WindowManipulator {
   static Future<bool> isMainWindow() async {
     await _completer.future;
     return await _windowManipulatorMethodChannel.invokeMethod('isMainWindow');
+  }
+
+  /// Overrides the standard window button position of type [buttonType].
+  ///
+  /// If [offset] is null, resets the button position to the default.
+  ///
+  /// Usage example:
+  /// ```dart
+  /// WindowManipulator.overrideStandardWindowButtonPosition(
+  ///       buttonType: NSWindowButtonType.closeButton,
+  ///       offset: const Offset(20, 20));
+  /// // Moves close button 20 pixels to the right and down.
+  /// ```
+  static Future<bool> overrideStandardWindowButtonPosition(
+      {required NSWindowButtonType buttonType, required Offset? offset}) async {
+    await _completer.future;
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('overrideStandardWindowButtonPosition', {
+      'buttonType': buttonType.name,
+      'offsetX': offset?.dx,
+      'offsetY': offset?.dy,
+    });
+  }
+
+  /// Gets the position of the standard window button of type [buttonType].
+  ///
+  /// **Note:** The y position is measured as the distance from the bottom of
+  /// the window’s title bar.
+  static Future<Rect> getStandardWindowButtonPosition(
+      {required NSWindowButtonType buttonType}) async {
+    await _completer.future;
+    final map = await _windowManipulatorMethodChannel
+        .invokeMethod('getStandardWindowButtonPosition', {
+      'buttonType': buttonType.name,
+    });
+
+    return Offset(map['x'], map['y']) & Size(map['width'], map['height']);
   }
 }
