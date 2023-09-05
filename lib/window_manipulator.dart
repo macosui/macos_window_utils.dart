@@ -653,6 +653,7 @@ class WindowManipulator {
         'WindowManipulator.initialize call.');
   }
 
+  /// Returns whether the window is the main window.
   static Future<bool> isMainWindow() async {
     await _completer.future;
     return await _windowManipulatorMethodChannel.invokeMethod('isMainWindow');
