@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Add `overrideStandardWindowButtonPosition` and `getStandardWindowButtonPosition` to `WindowManipulator` to allow getting and setting the position of standard window buttons.
+
 ## 1.2.0
 
 - Fix typo in README.
