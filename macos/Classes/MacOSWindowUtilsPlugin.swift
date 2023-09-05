@@ -417,6 +417,31 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             let isMainWindow = MainFlutterWindowManipulator.isMainWindow()
             result(isMainWindow)
             
+        case "overrideStandardWindowButtonPosition":
+            let buttonTypeName = args["buttonType"] as! String
+            let offsetX = args["offsetX"] as? NSNumber
+            let offsetY = args["offsetY"] as? NSNumber
+            
+            let buttonType = ButtonTypeNameToButtonTypeConverter.getButtonTypeFromName(name: buttonTypeName)!
+            
+            let offset = offsetX != nil && offsetY != nil ? CGPoint(x: offsetX!.doubleValue, y: offsetY!.doubleValue) : nil
+            
+            MainFlutterWindowManipulator.overrideStandardWindowButtonPosition(buttonType: buttonType, offset: offset)
+            result(true)
+            
+        case "getStandardWindowButtonPosition":
+            let buttonTypeName = args["buttonType"] as! String
+            
+            let buttonType = ButtonTypeNameToButtonTypeConverter.getButtonTypeFromName(name: buttonTypeName)!
+            let rect = MainFlutterWindowManipulator.getStandardWindowButtonPosition(buttonType: buttonType)
+            let dictionary = [
+                "x": rect!.minX,
+                "y": rect!.minY,
+                "width": rect!.width,
+                "height": rect!.height
+            ]
+            result(dictionary)
+            
         default:
             result(FlutterMethodNotImplemented)
             break

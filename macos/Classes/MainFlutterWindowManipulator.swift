@@ -574,4 +574,74 @@ public class MainFlutterWindowManipulator {
         
         return self.mainFlutterWindow!.isMainWindow
     }
+    
+    public static func overrideStandardWindowButtonPosition(buttonType: NSWindow.ButtonType, offset: CGPoint?) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        let standardWindowButton = mainFlutterWindow!.standardWindowButton(buttonType)
+        
+        if (standardWindowButton != nil) {
+            standardWindowButton!.translatesAutoresizingMaskIntoConstraints = false
+            
+            let superview = standardWindowButton!.superview!
+            
+            // remove previously added constraints
+            var toBeRemoved = superview.constraints
+            toBeRemoved.removeAll(where: { constraint in
+                return (constraint.firstItem as? NSButton) != standardWindowButton
+            })
+            superview.removeConstraints(toBeRemoved)
+            
+            if (offset == nil) {
+                standardWindowButton!.translatesAutoresizingMaskIntoConstraints = true
+                
+                // The button’s position does not get updated until the window’s size gets changed.
+                // This is a somewhat dirty hack to force the button’s position to get updated by slightly changing the window’s
+                // size and immediately changing it back.
+                // If anyone knows of a better solution, feel free to open an issue or a PR. :)
+                let originalFrameSize = mainFlutterWindow!.frame.size;
+                let modifiedFrameSize = CGSize(width: originalFrameSize.width + 1, height: originalFrameSize.height + 1)
+                let frameOrigin = mainFlutterWindow!.frame.origin
+                mainFlutterWindow!.setFrame(NSRect(origin: frameOrigin, size: modifiedFrameSize), display: true)
+                mainFlutterWindow!.setFrame(NSRect(origin: frameOrigin, size: originalFrameSize), display: true)
+                
+                return
+            }
+            
+            superview.addConstraint(NSLayoutConstraint.init(
+                item: standardWindowButton!,
+                attribute: NSLayoutConstraint.Attribute.left,
+                relatedBy: NSLayoutConstraint.Relation.equal,
+                toItem: superview,
+                attribute: NSLayoutConstraint.Attribute.left,
+                multiplier: 1,
+                constant: offset!.x
+            ))
+            superview.addConstraint(NSLayoutConstraint.init(
+                item: standardWindowButton!,
+                attribute: NSLayoutConstraint.Attribute.top,
+                relatedBy: NSLayoutConstraint.Relation.equal,
+                toItem: superview,
+                attribute: NSLayoutConstraint.Attribute.top,
+                multiplier: 1,
+                constant: offset!.y
+            ))
+        }
+    }
+    
+    public static func getStandardWindowButtonPosition(buttonType: NSWindow.ButtonType) -> NSRect? {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        let standardWindowButton = mainFlutterWindow!.standardWindowButton(buttonType)
+        
+        if (standardWindowButton == nil) {
+            return nil
+        }
+        
+        return standardWindowButton!.frame
+    }
 }
