@@ -373,22 +373,27 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             MainFlutterWindowManipulator.setLevel(level)
             
             result(true)
+            break
             
         case "orderOut":
             MainFlutterWindowManipulator.orderOut()
             result(true)
+            break
             
         case "orderBack":
             MainFlutterWindowManipulator.orderBack()
             result(true)
+            break
             
         case "orderFront":
             MainFlutterWindowManipulator.orderFront()
             result(true)
+            break
             
         case "orderFrontRegardless":
             MainFlutterWindowManipulator.orderFrontRegardless()
             result(true)
+            break
             
         case "insertIntoStyleMask":
             let styleMaskName = args["styleMask"] as! String
@@ -396,6 +401,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             MainFlutterWindowManipulator.insertIntoStyleMask(styleMask)
             result(true)
+            break
             
         case "removeFromStyleMask":
             let styleMaskName = args["styleMask"] as! String
@@ -403,19 +409,23 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             MainFlutterWindowManipulator.removeFromStyleMask(styleMask)
             result(true)
+            break
             
         case "removeFullScreenPresentationOptions":
             result(MainFlutterWindowManipulator.removeFullScreenPresentationOptions())
+            break
             
         case "addFullScreenPresentationOption":
             let presentationOptionName = args["presentationOption"] as! String
             let presentationOptions = PresentationOptionNameToPresentationOptionsConverter.getPresentationOptionsFromName(name: presentationOptionName)
             
             result(MainFlutterWindowManipulator.addFullScreenPresentationOptions(presentationOptions!))
+            break
             
         case "isMainWindow":
             let isMainWindow = MainFlutterWindowManipulator.isMainWindow()
             result(isMainWindow)
+            break
             
         case "overrideStandardWindowButtonPosition":
             let buttonTypeName = args["buttonType"] as! String
@@ -428,6 +438,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
             MainFlutterWindowManipulator.overrideStandardWindowButtonPosition(buttonType: buttonType, offset: offset)
             result(true)
+            break
             
         case "getStandardWindowButtonPosition":
             let buttonTypeName = args["buttonType"] as! String
@@ -441,6 +452,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
                 "height": rect!.height
             ]
             result(dictionary)
+            break
             
         default:
             result(FlutterMethodNotImplemented)
