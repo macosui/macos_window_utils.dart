@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:example/main_area/window_manipulator_demo/command_list_provider/command_list_provider_constants.dart';
+import 'package:flutter/foundation.dart';
+import 'package:macos_window_utils/macos/ns_window_button_type.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
@@ -569,6 +572,40 @@ class CommandListProvider {
             'full-screen presentation option.',
         function: () => WindowManipulator.addFullScreenPresentationOption(
             NSAppPresentationOption.disableCursorLocationAssistance),
+      ),
+      Command(
+        name: 'overrideStandardWindowButtonPosition(buttonType: '
+            'NSWindowButtonType.closeButton, offset: const Offset(10, 10))',
+        description: 'Moves the close button to position 10, 10.',
+        function: () => WindowManipulator.overrideStandardWindowButtonPosition(
+            buttonType: NSWindowButtonType.closeButton,
+            offset: const Offset(10, 10)),
+      ),
+      Command(
+        name: 'overrideStandardWindowButtonPosition(buttonType: '
+            'NSWindowButtonType.closeButton, offset: const Offset(20, 20))',
+        description: 'Moves the close button to position 20, 20.',
+        function: () => WindowManipulator.overrideStandardWindowButtonPosition(
+            buttonType: NSWindowButtonType.closeButton,
+            offset: const Offset(20, 20)),
+      ),
+      Command(
+        name: 'overrideStandardWindowButtonPosition(buttonType: '
+            'NSWindowButtonType.closeButton, offset: null)',
+        description: 'Returns the close button to its default position.',
+        function: () => WindowManipulator.overrideStandardWindowButtonPosition(
+            buttonType: NSWindowButtonType.closeButton, offset: null),
+      ),
+      Command(
+        name: 'WindowManipulator.getStandardWindowButtonPosition(buttonType: '
+            'NSWindowButtonType.closeButton)',
+        description: 'Prints the position of the close button.\n\n'
+            '**Note:** The y position is measured as the distance from the '
+            'bottom of the window’s title bar.',
+        function: () async => debugPrint(
+            (await WindowManipulator.getStandardWindowButtonPosition(
+                    buttonType: NSWindowButtonType.closeButton))
+                .toString()),
       ),
     ];
   }
