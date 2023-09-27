@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Add methods to retrieve or manipulate the window’s size and position.
+
 ## 1.3.0
 
 - Add `overrideStandardWindowButtonPosition` and `getStandardWindowButtonPosition` to `WindowManipulator` to allow getting and setting the position of standard window buttons.

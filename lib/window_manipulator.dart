@@ -20,6 +20,9 @@ class WindowManipulator {
   static final _completer = Completer<void>();
   static final _nsWindowDelegateHandler = NSWindowDelegateHandler();
 
+  /// This constructor is private to prevent direct instantiation.
+  WindowManipulator._();
+
   /// Initializes the [WindowManipulator] class.
   ///
   /// The [enableWindowDelegate] specifies if the window delegate should be
@@ -694,5 +697,49 @@ class WindowManipulator {
     });
 
     return Offset(map['x'], map['y']) & Size(map['width'], map['height']);
+  }
+
+  /// Sets the window’s location to the center of the screen.
+  ///
+  /// The window is placed exactly in the center horizontally and somewhat above
+  /// center vertically. Such a placement carries a certain visual immediacy and
+  /// importance.
+  ///
+  /// You typically use this method to place a window—most likely an alert
+  /// dialog—where the user can’t miss it.
+  static Future<void> centerWindow() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('centerWindow');
+  }
+
+  /// Returns the window’s window’s frame rectangle in screen coordinates,
+  /// including the title bar.
+  ///
+  /// Keep in mind that the y-coordinate returned is measured from the *bottom*
+  /// of the screen.
+  static Future<Rect> getWindowFrame() async {
+    await _completer.future;
+    final map =
+        await _windowManipulatorMethodChannel.invokeMethod('getWindowFrame');
+
+    return Offset(map['x'], map['y']) & Size(map['width'], map['height']);
+  }
+
+  /// Sets the window’s frame rectangle in screen coordinates, including the
+  /// title bar.
+  ///
+  /// Optionally, the window frame can be animated to the new position.
+  ///
+  /// Keep in mind that the y-coordinate returned is measured from the *bottom*
+  /// of the screen.
+  static Future<void> setWindowFrame(Rect frame, {bool animate = false}) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('setWindowFrame', {
+      'x': frame.left,
+      'y': frame.top,
+      'width': frame.width,
+      'height': frame.height,
+      'animate': animate,
+    });
   }
 }

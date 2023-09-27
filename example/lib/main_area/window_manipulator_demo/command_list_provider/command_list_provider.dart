@@ -607,6 +607,35 @@ class CommandListProvider {
                     buttonType: NSWindowButtonType.closeButton))
                 .toString()),
       ),
+      Command(
+        name: 'WindowManipulator.centerWindow()',
+        description: 'Sets the window’s location to the center of the screen.'
+            '\n\nThe window is placed exactly in the center horizontally and '
+            'somewhat above center vertically. Such a placement carries a '
+            'certain visual immediacy and importance.\n\n'
+            'You typically use this method to place a window—most likely an '
+            'alert dialog—where the user can’t miss it.',
+        function: () => WindowManipulator.centerWindow(),
+      ),
+      Command(
+        name: 'WindowManipulator.getWindowFrame()',
+        description: 'Returns the window’s window’s frame rectangle in screen '
+            'coordinates, including the title bar.\n\n'
+            'Keep in mind that the y-coordinate returned is measured from the '
+            '*bottom* of the screen.',
+        function: () async =>
+            debugPrint((await WindowManipulator.getWindowFrame()).toString()),
+      ),
+      Command(
+        name: 'WindowManipulator.setWindowFrame('
+            'const Offset(64, 32) & const Size(512, 512),'
+            'animate: true)',
+        description: 'Sets the window’s frame rectangle in screen coordinates, '
+            'including the title bar.',
+        function: () => WindowManipulator.setWindowFrame(
+            const Offset(64, 32) & const Size(512, 512),
+            animate: true),
+      ),
     ];
   }
 }

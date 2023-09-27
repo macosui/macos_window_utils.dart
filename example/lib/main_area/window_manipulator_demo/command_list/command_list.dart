@@ -1,3 +1,4 @@
+import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'command.dart';
@@ -41,24 +42,32 @@ class CommandList extends StatelessWidget {
   }
 
   Widget _buildScrollView() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: commands
-            .asMap()
-            .map((int index, Command command) {
-              final widget = CommandListEntry(
-                index: index,
-                selectedIndex: selectedIndex,
-                command: command,
-                select: () => setIndex(index),
-              );
+    return UiElementColorBuilder(
+      uiElementColorContainerInstanceProvider:
+          OwnedUiElementColorContainerInstanceProvider(),
+      builder: (context, colorContainer) {
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: commands
+                .asMap()
+                .map((int index, Command command) {
+                  final widget = CommandListEntry(
+                    index: index,
+                    selectedIndex: selectedIndex,
+                    command: command,
+                    select: () => setIndex(index),
+                    selectedColor:
+                        colorContainer.selectedContentBackgroundColor,
+                  );
 
-              return MapEntry(index, widget);
-            })
-            .values
-            .toList(),
-      ),
+                  return MapEntry(index, widget);
+                })
+                .values
+                .toList(),
+          ),
+        );
+      },
     );
   }
 }
