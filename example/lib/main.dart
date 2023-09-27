@@ -1,3 +1,4 @@
+import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:example/main_area/main_area.dart';
 import 'package:example/sidebar_content.dart';
 import 'package:example/util/transparent_sidebar_and_content.dart';
@@ -90,12 +91,20 @@ class _MyHomePageState extends State<MyHomePage> {
             middle: const Text('macos_window_utils demo'),
             leading: CupertinoButton(
               padding: EdgeInsets.zero,
-              child: const Icon(
-                CupertinoIcons.sidebar_left,
+              child: UiElementColorBuilder(
+                  uiElementColorContainerInstanceProvider:
+                      OwnedUiElementColorContainerInstanceProvider(),
+                  builder: (context, colorContainer) {
+                    return Icon(
+                      CupertinoIcons.sidebar_left,
+                      color: colorContainer.controlAccentColor,
+                    );
+                  }),
+              onPressed: () => setState(
+                () {
+                  _isSidebarOpen = !_isSidebarOpen;
+                },
               ),
-              onPressed: () => setState(() {
-                _isSidebarOpen = !_isSidebarOpen;
-              }),
             ),
           ),
           child: DefaultTextStyle(
