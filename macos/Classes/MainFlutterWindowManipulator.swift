@@ -652,4 +652,20 @@ public class MainFlutterWindowManipulator {
         
         mainFlutterWindow!.center()
     }
+    
+    public static func getWindowFrame() -> NSRect {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        return mainFlutterWindow!.frame
+    }
+    
+    public static func setWindowFrame(newFrame: NSRect, animate: Bool) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow!.setFrame(newFrame, display: true, animate: animate)
+    }
 }

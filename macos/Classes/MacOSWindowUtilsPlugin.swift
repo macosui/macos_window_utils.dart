@@ -459,6 +459,31 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
+        case "getWindowFrame":
+            let windowFrame = MainFlutterWindowManipulator.getWindowFrame()
+            let dictionary = [
+                "x": windowFrame.minX,
+                "y": windowFrame.minY,
+                "width": windowFrame.width,
+                "height": windowFrame.height
+            ]
+            result(dictionary)
+            break
+            
+        case "setWindowFrame":
+            let x = args["x"] as! NSNumber
+            let y = args["y"] as! NSNumber
+            let width = args["width"] as! NSNumber
+            let height = args["height"] as! NSNumber
+            let animate = args["animate"] as! Bool
+            
+            let newFrame = NSRect(origin: CGPoint(x: x.doubleValue, y: y.doubleValue), size: CGSize(width: width.doubleValue, height: height.doubleValue))
+            
+            MainFlutterWindowManipulator.setWindowFrame(newFrame: newFrame, animate: animate)
+            
+            result(true)
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break
