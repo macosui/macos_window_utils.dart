@@ -695,4 +695,17 @@ class WindowManipulator {
 
     return Offset(map['x'], map['y']) & Size(map['width'], map['height']);
   }
+
+  /// Sets the window’s location to the center of the screen.
+  ///
+  /// The window is placed exactly in the center horizontally and somewhat above
+  /// center vertically. Such a placement carries a certain visual immediacy and
+  /// importance.
+  ///
+  /// You typically use this method to place a window—most likely an alert
+  /// dialog—where the user can’t miss it.
+  static Future<void> centerWindow() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('centerWindow');
+  }
 }
