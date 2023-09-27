@@ -20,6 +20,9 @@ class WindowManipulator {
   static final _completer = Completer<void>();
   static final _nsWindowDelegateHandler = NSWindowDelegateHandler();
 
+  /// This constructor is private to prevent direct instantiation.
+  WindowManipulator._();
+
   /// Initializes the [WindowManipulator] class.
   ///
   /// The [enableWindowDelegate] specifies if the window delegate should be
