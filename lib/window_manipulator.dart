@@ -711,4 +711,35 @@ class WindowManipulator {
     await _completer.future;
     await _windowManipulatorMethodChannel.invokeMethod('centerWindow');
   }
+
+  /// Returns the window’s window’s frame rectangle in screen coordinates,
+  /// including the title bar.
+  ///
+  /// Keep in mind that the y-coordinate returned is measured from the *bottom*
+  /// of the screen.
+  static Future<Rect> getWindowFrame() async {
+    await _completer.future;
+    final map =
+        await _windowManipulatorMethodChannel.invokeMethod('getWindowFrame');
+
+    return Offset(map['x'], map['y']) & Size(map['width'], map['height']);
+  }
+
+  /// Sets the window’s frame rectangle in screen coordinates, including the
+  /// title bar.
+  ///
+  /// Optionally, the window frame can be animated to the new position.
+  ///
+  /// Keep in mind that the y-coordinate returned is measured from the *bottom*
+  /// of the screen.
+  static Future<void> setWindowFrame(Rect frame, {bool animate = false}) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('setWindowFrame', {
+      'x': frame.left,
+      'y': frame.top,
+      'width': frame.width,
+      'height': frame.height,
+      'animate': animate,
+    });
+  }
 }
