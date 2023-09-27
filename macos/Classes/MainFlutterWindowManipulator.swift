@@ -644,4 +644,12 @@ public class MainFlutterWindowManipulator {
         
         return standardWindowButton!.frame
     }
+    
+    public static func centerWindow() {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow!.center()
+    }
 }

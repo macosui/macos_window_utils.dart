@@ -454,6 +454,11 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(dictionary)
             break
             
+        case "centerWindow":
+            MainFlutterWindowManipulator.centerWindow()
+            result(true)
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break
