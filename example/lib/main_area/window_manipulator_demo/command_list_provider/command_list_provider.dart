@@ -607,6 +607,16 @@ class CommandListProvider {
                     buttonType: NSWindowButtonType.closeButton))
                 .toString()),
       ),
+      Command(
+        name: 'WindowManipulator.centerWindow()',
+        description: 'Sets the window’s location to the center of the screen.'
+            '\n\nThe window is placed exactly in the center horizontally and '
+            'somewhat above center vertically. Such a placement carries a '
+            'certain visual immediacy and importance.\n\n'
+            'You typically use this method to place a window—most likely an '
+            'alert dialog—where the user can’t miss it.',
+        function: () => WindowManipulator.centerWindow(),
+      ),
     ];
   }
 }
