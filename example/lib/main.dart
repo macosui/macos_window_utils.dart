@@ -62,7 +62,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           ),
         ),
       ),
-      home: const MyHomePage(),
+      home: Container(
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(0, 0, 0, 1.0),
+          backgroundBlendMode: BlendMode.clear,
+        ),
+        child: const MyHomePage(),
+      ),
     );
   }
 }
