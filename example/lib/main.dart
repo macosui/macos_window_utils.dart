@@ -62,12 +62,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           ),
         ),
       ),
-      home: Container(
-        decoration: const BoxDecoration(
+      home: const DecoratedBox(
+        decoration: BoxDecoration(
           color: Color.fromRGBO(0, 0, 0, 1.0),
           backgroundBlendMode: BlendMode.clear,
         ),
-        child: const MyHomePage(),
+        child: MyHomePage(),
       ),
     );
   }
