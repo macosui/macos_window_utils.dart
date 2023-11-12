@@ -402,9 +402,10 @@ public class MainFlutterWindowManipulator {
         }
         
         if #available(macOS 10.13, *) {
-            let newToolbar = NSToolbar()
-
-            self.mainFlutterWindow!.toolbar = newToolbar
+          let customToolbar = BlockingToolbar(flutterView: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController)
+            customToolbar.showsBaselineSeparator = false
+            customToolbar.delegate = customToolbar
+            self.mainFlutterWindow!.toolbar = customToolbar
         }
     }
     
