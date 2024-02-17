@@ -745,6 +745,8 @@ class WindowManipulator {
 
   /// Prevents the window from being closed by the user.
   ///
+  /// Requires the window delegate to be enabled.
+  ///
   /// The window will still be closable programmatically by calling
   /// [closeWindow].
   static Future<void> preventWindowClosure() async {
@@ -760,6 +762,8 @@ class WindowManipulator {
   }
 
   /// Allows the window to be closed by the user.
+  ///
+  /// Requires the window delegate to be enabled.
   static Future<void> allowWindowClosure() async {
     await _completer.future;
     final hasSucceeded = await _windowManipulatorMethodChannel
