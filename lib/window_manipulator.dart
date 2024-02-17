@@ -754,7 +754,7 @@ class WindowManipulator {
 
     assert(
         hasSucceeded,
-        'removeFullScreenPresentationOptions failed. Please make sure that '
+        'preventWindowClosure failed. Please make sure that '
         'the `enableWindowDelegate` parameter is set to true in your '
         'WindowManipulator.initialize call.');
   }
@@ -767,7 +767,7 @@ class WindowManipulator {
 
     assert(
         hasSucceeded,
-        'removeFullScreenPresentationOptions failed. Please make sure that '
+        'allowWindowClosure failed. Please make sure that '
         'the `enableWindowDelegate` parameter is set to true in your '
         'WindowManipulator.initialize call.');
   }
