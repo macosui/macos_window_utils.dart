@@ -484,6 +484,28 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
+        case "preventWindowClosure":
+            result(MainFlutterWindowManipulator.preventWindowClosure())
+            break
+            
+        case "allowWindowClosure":
+            result(MainFlutterWindowManipulator.allowWindowClosure())
+            break
+            
+        case "isWindowClosureAllowed":
+            result(MainFlutterWindowManipulator.isWindowClosureAllowed())
+            break
+            
+        case "closeWindow":
+            MainFlutterWindowManipulator.closeWindow()
+            result(true)
+            break
+            
+        case "performClose":
+            MainFlutterWindowManipulator.performClose()
+            result(true)
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break
