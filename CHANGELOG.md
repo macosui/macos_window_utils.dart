@@ -1,3 +1,12 @@
+## 1.5.0
+
+- Add the following window methods:
+  - `preventWindowClosure`
+  - `allowWindowClosure`
+  - `isWindowClosureAllowed`
+  - `closeWindow`
+  - `performClose`
+
 ## 1.4.0
 
 - Add methods to retrieve or manipulate the window’s size and position.
