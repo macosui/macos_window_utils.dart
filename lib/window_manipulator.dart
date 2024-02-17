@@ -742,4 +742,50 @@ class WindowManipulator {
       'animate': animate,
     });
   }
+
+  /// Prevents the window from being closed by the user.
+  ///
+  /// The window will still be closable programmatically by calling
+  /// [closeWindow].
+  static Future<bool> preventWindowClosure() async {
+    await _completer.future;
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('preventWindowClosure');
+  }
+
+  /// Allows the window to be closed by the user.
+  static Future<bool> allowWindowClosure() async {
+    await _completer.future;
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('allowWindowClosure');
+  }
+
+  /// Returns whether the window can be closed by the user.
+  static Future<bool> isWindowClosureAllowed() async {
+    await _completer.future;
+    return await _windowManipulatorMethodChannel
+        .invokeMethod('isWindowClosureAllowed');
+  }
+
+  /// Removes the window from the screen.
+  ///
+  /// The close method differs in two important ways from the [performClose]
+  /// method:
+  /// + It does not attempt to send a [NSWindowDelegate.windowShouldClose]
+  ///   message to its delegates.
+  /// + It does not simulate the user clicking the close button by momentarily
+  ///   highlighting the button.
+  ///
+  /// Use [performClose] if you need these features.
+  static Future<void> closeWindow() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('closeWindow');
+  }
+
+  /// Simulates the user clicking the close button by momentarily highlighting
+  /// the button and then closing the window.
+  static Future<void> performClose() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('performClose');
+  }
 }
