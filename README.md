@@ -37,6 +37,7 @@ English | [简体中文](README_zh.md)
 + An abstract `NSWindowDelegate` class that can be used to detect `NSWindow` events, such as window resizing, moving, exposing, and minimizing.
 + An `NSAppPresentationOptions` class that allows modifications to the window's fullscreen presentation options.
 + Methods to get and set the positions of the window’s standard window buttons (such as the close, miniaturize, and zoom buttons).
++ Methods to control whether the window should be closable by the user, as well as methods to close the window programmatically.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
@@ -50,7 +51,7 @@ First, install the package via the following command:
 flutter pub add macos_window_utils
 ```
 
-Afterwards, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `Runner.xcodeproj`.
+Afterward, open the `macos/Runner.xcworkspace` folder of your project using Xcode, press ⇧ + ⌘ + O and search for `Runner.xcodeproj`.
 
 Go to `Info` > `Deployment Target` and set the `macOS Deployment Target` to `10.14.6` or above. Then, open your project's `Podfile` (if it doesn't show up in Xcode, you can find it in your project's `macos` directory via VS Code) and set the minimum deployment version in the first line to `10.14.6` or above:
 
