@@ -773,16 +773,10 @@ class WindowManipulator {
   }
 
   /// Returns whether the window can be closed by the user.
-  static Future<void> isWindowClosureAllowed() async {
+  static Future<bool> isWindowClosureAllowed() async {
     await _completer.future;
-    final hasSucceeded = await _windowManipulatorMethodChannel
+    return await _windowManipulatorMethodChannel
         .invokeMethod('isWindowClosureAllowed');
-
-    assert(
-        hasSucceeded,
-        'removeFullScreenPresentationOptions failed. Please make sure that '
-        'the `enableWindowDelegate` parameter is set to true in your '
-        'WindowManipulator.initialize call.');
   }
 
   /// Removes the window from the screen.
