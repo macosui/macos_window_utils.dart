@@ -31,13 +31,12 @@ class TransparentMacOSSidebar extends StatelessWidget {
   /// )
   /// ```
   const TransparentMacOSSidebar(
-      {Key? key,
+      {super.key,
       this.alphaValue = 1.0,
       this.material = NSVisualEffectViewMaterial.sidebar,
       this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.resizeEventRelay,
-      required this.child})
-      : super(key: key);
+      required this.child});
 
   @override
   Widget build(BuildContext context) {

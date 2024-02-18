@@ -53,7 +53,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
   /// [VisualEffectSubviewContainerResizeEventRelay] through which its update
   /// behavior can be controlled manually.
   const VisualEffectSubviewContainer(
-      {Key? key,
+      {super.key,
       required this.child,
       this.alphaValue = 1.0,
       this.cornerRadius,
@@ -61,8 +61,7 @@ class VisualEffectSubviewContainer extends StatefulWidget {
       required this.material,
       this.state = NSVisualEffectViewState.followsWindowActiveState,
       this.padding = EdgeInsets.zero,
-      this.resizeEventRelay})
-      : super(key: key);
+      this.resizeEventRelay});
 
   @override
   State<VisualEffectSubviewContainer> createState() =>

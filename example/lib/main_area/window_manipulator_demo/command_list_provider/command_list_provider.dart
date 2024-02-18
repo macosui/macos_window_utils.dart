@@ -636,6 +636,43 @@ class CommandListProvider {
             const Offset(64, 32) & const Size(512, 512),
             animate: true),
       ),
+      Command(
+        name: 'WindowManipulator.preventWindowClosure()',
+        description: 'Prevents the window from being closed by the user.\n\n'
+            'The window will still be closable programmatically by calling '
+            '`closeWindow`.',
+        function: () => WindowManipulator.preventWindowClosure(),
+      ),
+      Command(
+        name: 'WindowManipulator.allowWindowClosure()',
+        description: 'Allows the window to be closed by the user.',
+        function: () => WindowManipulator.allowWindowClosure(),
+      ),
+      Command(
+        name: 'WindowManipulator.isWindowClosureAllowed()',
+        description: 'Returns whether the window can be closed by the user.',
+        function: () async => debugPrint(
+            (await WindowManipulator.isWindowClosureAllowed()).toString()),
+      ),
+      Command(
+        name: 'WindowManipulator.closeWindow()',
+        description: 'Removes the window from the screen. \n\n'
+            'The close method differs in two important ways from the '
+            '`performClose` method:\n'
+            '  + It does not attempt to send a '
+            '`NSWindowDelegate.windowShouldClose` '
+            'message to its delegates.\n'
+            '+ It does not simulate the user clicking the close button by '
+            'momentarily highlighting the button.\n\n'
+            'Use `performClose` if you need these features.',
+        function: () => WindowManipulator.closeWindow(),
+      ),
+      Command(
+        name: 'WindowManipulator.performClose()',
+        description: 'Simulates the user clicking the close button by '
+            'momentarily highlighting the button and then closing the window.',
+        function: () => WindowManipulator.performClose(),
+      ),
     ];
   }
 }

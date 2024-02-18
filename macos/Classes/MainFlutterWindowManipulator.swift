@@ -668,4 +668,46 @@ public class MainFlutterWindowManipulator {
         
         mainFlutterWindow!.setFrame(newFrame, display: true, animate: animate)
     }
+    
+    public static func preventWindowClosure() -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
+        mainFlutterWindowDelegate!.windowShouldCloseReturnValue = false
+        return true
+    }
+    
+    public static func allowWindowClosure() -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return false
+        }
+        
+        mainFlutterWindowDelegate!.windowShouldCloseReturnValue = true
+        return true
+    }
+    
+    public static func isWindowClosureAllowed() -> Bool {
+        if (mainFlutterWindowDelegate == nil) {
+            return true
+        }
+        
+        return mainFlutterWindowDelegate!.windowShouldCloseReturnValue
+    }
+    
+    public static func closeWindow() {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow?.close()
+    }
+    
+    public static func performClose() {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow?.performClose(nil)
+    }
 }
