@@ -3,10 +3,12 @@ import 'dart:ui';
 
 import 'package:example/main_area/window_manipulator_demo/command_list_provider/command_list_provider_constants.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:macos_window_utils/macos/ns_window_button_type.dart';
 import 'package:macos_window_utils/macos/ns_window_level.dart';
 import 'package:macos_window_utils/macos/ns_window_style_mask.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
+import 'package:macos_window_utils/toolbars/toolbars.dart';
 
 import '../command_list/command.dart';
 
@@ -201,6 +203,35 @@ class CommandListProvider {
       Command(
         name: 'addToolbar()',
         function: () => WindowManipulator.addToolbar(),
+      ),
+      Command(
+        name: 'addToolbar(toolbar: const BlockingToolbar())',
+        description: 'Adds a blocking toolbar to the window.\n\nBlocking '
+            'toolbars contain an area that stops double clicks from zooming the'
+            'window, thus allowing for the placement of buttons that can be '
+            'clicked repeatedly.\n\nSetting the `blockingAreaDebugColor` to an '
+            'easily visible color can be useful for debugging purposes:\n\n'
+            '![image](https://github.com/user-attachments/assets/984c4dc7-f3ea-4b38-ba65-9e611982d32c)'
+            'You may wish to hide the native title to extend the blocking '
+            'area:\n\n'
+            '![image](https://github.com/user-attachments/assets/62e16d4a-1e4d-4c4d-9f1b-f731d08e0b1c)',
+        function: () =>
+            WindowManipulator.addToolbar(toolbar: const BlockingToolbar()),
+      ),
+      Command(
+        name:
+            'addToolbar(toolbar: const BlockingToolbar(blockingAreaDebugColor: Colors.red))',
+        description: 'Adds a blocking toolbar to the window.\n\nBlocking '
+            'toolbars contain an area that stops double clicks from zooming the'
+            'window, thus allowing for the placement of buttons that can be '
+            'clicked repeatedly.\n\nSetting the `blockingAreaDebugColor` to an '
+            'easily visible color can be useful for debugging purposes:\n\n'
+            '![image](https://github.com/user-attachments/assets/984c4dc7-f3ea-4b38-ba65-9e611982d32c)'
+            'You may wish to hide the native title to extend the blocking '
+            'area:\n\n'
+            '![image](https://github.com/user-attachments/assets/62e16d4a-1e4d-4c4d-9f1b-f731d08e0b1c)',
+        function: () => WindowManipulator.addToolbar(
+            toolbar: const BlockingToolbar(blockingAreaDebugColor: Colors.red)),
       ),
       Command(
         name: 'removeToolbar()',

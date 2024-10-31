@@ -283,7 +283,9 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             break
             
         case "addToolbar":
-            MainFlutterWindowManipulator.addToolbar()
+            let toolbarName = args["toolbarName"] as! String
+            let toolbarArguments = args["toolbarArguments"] as! [String: String]
+            MainFlutterWindowManipulator.addToolbar(toolbarName: toolbarName, toolbarArguments: toolbarArguments)
             
             result(true)
             break

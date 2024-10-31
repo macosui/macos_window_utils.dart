@@ -396,15 +396,29 @@ public class MainFlutterWindowManipulator {
         macOSWindowUtilsViewController.removeVisualEffectSubview(subviewId)
     }
     
-    public static func addToolbar() {
+    public static func addToolbar(toolbarName: String, toolbarArguments: [String: String]) {
         if (self.mainFlutterWindow == nil) {
             start(mainFlutterWindow: nil)
         }
         
         if #available(macOS 10.13, *) {
+          switch (toolbarName) {
+          case "DefaultToolbar":
             let newToolbar = NSToolbar()
-
+            
             self.mainFlutterWindow!.toolbar = newToolbar
+            
+          case "BlockingToolbar":
+            let blockingAreaDebugColor = NSColor.colorFromRGBAString(toolbarArguments["blockingAreaDebugColor"]!)
+            
+            let customToolbar = BlockingToolbar(flutterView: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController, blockingAreaDebugColor: blockingAreaDebugColor)
+            customToolbar.showsBaselineSeparator = false
+            customToolbar.delegate = customToolbar
+            self.mainFlutterWindow!.toolbar = customToolbar
+            
+          default:
+            print("Unknown toolbar name: \(toolbarName)")
+          }
         }
     }
     
