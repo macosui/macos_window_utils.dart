@@ -1,6 +1,14 @@
-## 1.5.0
+## 1.6.0
 
 - Add support for a blocking toolbar, that is, a special kind of toolbar that blocks double clicks from the user and allows for UI elements to be placed inside a blocked area (thanks to @cbenhagen and @Andre-lbc).
+
+## 1.5.0
+- Add the following window methods:
+  - `preventWindowClosure`
+  - `allowWindowClosure`
+  - `isWindowClosureAllowed`
+  - `closeWindow`
+  - `performClose`
 
 ## 1.4.0
 
