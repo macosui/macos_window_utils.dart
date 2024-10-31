@@ -10,9 +10,12 @@ import FlutterMacOS
 
 class BlockingToolbar: NSToolbar, NSToolbarDelegate {
   let flutterView: FlutterViewController
+  
+  let blockingAreaDebugColor: NSColor?
 
-  init(flutterView: FlutterViewController) {
+  init(flutterView: FlutterViewController, blockingAreaDebugColor: NSColor?) {
       self.flutterView = flutterView
+      self.blockingAreaDebugColor = blockingAreaDebugColor
       super.init(identifier: "BlockingToolbar")
   }
 
@@ -32,6 +35,10 @@ class BlockingToolbar: NSToolbar, NSToolbarDelegate {
       view.widthAnchor.constraint(lessThanOrEqualToConstant: 100000).isActive = true
       view.widthAnchor.constraint(greaterThanOrEqualToConstant: 1).isActive = true
       item.view = view
+      if (blockingAreaDebugColor != nil) {
+        view.wantsLayer = true
+        view.layer?.backgroundColor = blockingAreaDebugColor!.cgColor
+      }
       return item
     }
     return nil

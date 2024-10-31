@@ -12,6 +12,7 @@ import 'package:macos_window_utils/macos/visual_effect_view_properties.dart';
 import 'package:macos_window_utils/macos/ns_visual_effect_view_material.dart';
 
 import 'ns_window_delegate_handler/ns_window_delegate_handler.dart';
+import 'toolbars/toolbars.dart';
 
 /// Class that provides methods to manipulate the application's window.
 class WindowManipulator {
@@ -370,9 +371,39 @@ class WindowManipulator {
   }
 
   /// Adds a toolbar to the window.
-  static Future<void> addToolbar() async {
+  ///
+  /// By default, the added toolbar is a [DefaultToolbar].
+  ///
+  /// A [BlockingToolbar] can be added like this:
+  ///
+  /// ```dart
+  /// WindowManipulator.addToolbar(
+  ///   toolbar: const BlockingToolbar(blockingAreaDebugColor: Colors.red)),
+  /// );
+  /// ```
+  ///
+  /// Blocking toolbars contain an area that stops double clicks from zooming the
+  /// window, thus allowing for the placement of buttons that can be clicked
+  /// repeatedly.
+  ///
+  /// Setting the `blockingAreaDebugColor` to an easily visible color can be
+  /// useful for debugging purposes:
+  ///
+  /// ![image](https://github.com/user-attachments/assets/984c4dc7-f3ea-4b38-ba65-9e611982d32c)
+  ///
+  /// You may wish to hide the native title to extend the blocking area:
+  ///
+  /// ![image](https://github.com/user-attachments/assets/62e16d4a-1e4d-4c4d-9f1b-f731d08e0b1c)
+  static Future<void> addToolbar(
+      {Toolbar toolbar = const DefaultToolbar()}) async {
     await _completer.future;
-    await _windowManipulatorMethodChannel.invokeMethod('addToolbar');
+    await _windowManipulatorMethodChannel.invokeMethod(
+      'addToolbar',
+      {
+        'toolbarName': toolbar.getName(),
+        'toolbarArguments': toolbar.getArguments(),
+      },
+    );
   }
 
   /// Removes the window's toolbar.
