@@ -1,3 +1,7 @@
+## 1.6.1
+
+- Add instructions on how to setup macos_window_utils for macOS Monterey and earlier versions.
+
 ## 1.6.0
 
 - Add support for a blocking toolbar, that is, a special kind of toolbar that blocks double clicks from the user and allows for UI elements to be placed inside a blocked area (thanks to @cbenhagen and @Andre-lbc).
