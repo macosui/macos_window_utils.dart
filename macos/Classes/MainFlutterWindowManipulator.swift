@@ -406,6 +406,12 @@ public class MainFlutterWindowManipulator {
           case "DefaultToolbar":
             let newToolbar = NSToolbar()
             
+            newToolbar.allowsUserCustomization = false
+            newToolbar.allowsExtensionItems = false
+            if #available(macOS 15.0, *) {
+              newToolbar.allowsDisplayModeCustomization = false
+            }
+            
             self.mainFlutterWindow!.toolbar = newToolbar
             
           case "BlockingToolbar":
@@ -414,6 +420,13 @@ public class MainFlutterWindowManipulator {
             let customToolbar = BlockingToolbar(flutterView: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController, blockingAreaDebugColor: blockingAreaDebugColor)
             customToolbar.showsBaselineSeparator = false
             customToolbar.delegate = customToolbar
+            
+            customToolbar.allowsUserCustomization = false
+            customToolbar.allowsExtensionItems = false
+            if #available(macOS 15.0, *) {
+              customToolbar.allowsDisplayModeCustomization = false
+            }
+            
             self.mainFlutterWindow!.toolbar = customToolbar
             
           default:
