@@ -50,6 +50,12 @@ class NSWindowDelegateHandler {
           }
           return null;
 
+        case "windowShouldMiniaturize":
+          for (final delegate in delegates.values) {
+            delegate.windowShouldMiniaturize();
+          }
+          return null;
+
         case "windowWillMiniaturize":
           for (final delegate in delegates.values) {
             delegate.windowWillMiniaturize();

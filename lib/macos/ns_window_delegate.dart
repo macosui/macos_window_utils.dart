@@ -51,6 +51,9 @@ abstract class NSWindowDelegate {
 
   // === Minimizing Windows ===
 
+  /// Tells the delegate that the window should minimize
+  void windowShouldMiniaturize() {}
+
   /// Tells the delegate that the window is about to be minimized.
   void windowWillMiniaturize() {}
 

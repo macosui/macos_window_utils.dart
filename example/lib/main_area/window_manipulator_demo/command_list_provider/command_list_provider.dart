@@ -107,6 +107,11 @@ class CommandListProvider {
         function: () => WindowManipulator.showZoomButton(),
       ),
       Command(
+        name: 'miniaturizeWindow()',
+        description: 'Minimizes the window into the task bar.',
+        function: () => WindowManipulator.miniaturizeWindow(),
+      ),
+      Command(
         name: 'hideMiniaturizeButton()',
         function: () => WindowManipulator.hideMiniaturizeButton(),
       ),

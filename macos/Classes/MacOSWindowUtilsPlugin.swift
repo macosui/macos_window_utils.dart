@@ -160,6 +160,11 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
 
+        case "miniaturizeWindow":
+            MainFlutterWindowManipulator.miniaturizeWindow()
+            result(true)
+            break
+
         case "hideMiniaturizeButton":
             MainFlutterWindowManipulator.hideMiniaturizeButton()
             result(true)

@@ -205,6 +205,12 @@ class WindowManipulator {
     await _windowManipulatorMethodChannel.invokeMethod('showZoomButton');
   }
 
+  /// Minimizes the current window into the task bar.
+  static Future<void> miniaturizeWindow() async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('miniaturizeWindow');
+  }
+
   /// Hides the window's miniaturize button.
   static Future<void> hideMiniaturizeButton() async {
     await _completer.future;
