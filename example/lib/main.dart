@@ -1,6 +1,7 @@
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:example/main_area/main_area.dart';
 import 'package:example/sidebar_content.dart';
+import 'package:example/toolbar_passthrough_demo/tab_example.dart';
 import 'package:example/util/transparent_sidebar_and_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
@@ -83,6 +84,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool _isSidebarOpen = false;
 
+  bool _isToolbarPassthroughEnabled = true;
+
   @override
   Widget build(BuildContext context) {
     return TransparentSidebarAndContent(
@@ -92,9 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SidebarContent(),
       ),
       child: TitlebarSafeArea(
+        isEnabled: !_isToolbarPassthroughEnabled,
         child: CupertinoPageScaffold(
           navigationBar: CupertinoNavigationBar(
-            middle: const Text('macos_window_utils demo'),
+            middle: _isToolbarPassthroughEnabled
+                ? const TabExample()
+                : const Text('macos_window_utils demo'),
             leading: CupertinoButton(
               padding: EdgeInsets.zero,
               child: UiElementColorBuilder(

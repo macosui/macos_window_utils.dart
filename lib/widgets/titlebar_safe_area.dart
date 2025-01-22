@@ -40,6 +40,9 @@ class _MacOSTitlebarSafeAreaState extends State<_MacOSTitlebarSafeArea> {
 class TitlebarSafeArea extends StatelessWidget {
   final Widget child;
 
+  /// Whether the safe area is enabled.
+  final bool isEnabled;
+
   /// A widget that provides a safe area for its child.
   ///
   /// The safe area is the area of the window that is not covered by the
@@ -53,11 +56,16 @@ class TitlebarSafeArea extends StatelessWidget {
   ///  child: Text('Hello World'),
   /// )
   /// ```
-  const TitlebarSafeArea({super.key, required this.child});
+  const TitlebarSafeArea({
+    super.key,
+    required this.child,
+    this.isEnabled = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (!Platform.isMacOS) return child;
+    if (!isEnabled) return child;
 
     return _MacOSTitlebarSafeArea(child: child);
   }
