@@ -11,6 +11,7 @@ import FlutterMacOS
 public class MainFlutterWindowManipulator {
     private static var mainFlutterWindow: NSWindow?
     private static var mainFlutterWindowDelegate: FlutterWindowDelegate?
+    private static var passthroughViewHandler: PassthroughViewHandler = PassthroughViewHandler.create()
     
     private static func printNotStartedWarning() {
         print("Warning: The MainFlutterWindowManipulator has not been started. Please make sure the macos_window_utils plugin is initialized correctly in your MainFlutterWindow.swift file.")
@@ -43,6 +44,7 @@ public class MainFlutterWindowManipulator {
         makeTitlebarOpaque()
         disableFullSizeContentView()
         setWindowBackgroundColorToDefaultColor()
+        passthroughViewHandler.start(mainFlutterWindow: self.mainFlutterWindow!)
     }
     
     public static func createFlutterWindowDelegate(methodChannel: FlutterMethodChannel) {
@@ -736,5 +738,21 @@ public class MainFlutterWindowManipulator {
         }
         
         mainFlutterWindow?.performClose(nil)
+    }
+    
+    public static func updateToolbarPassthroughView(id: String, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, enableDebugLayers: Bool) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        passthroughViewHandler.updateToolbarPassthroughView(id: id, x: x, y: y, width: width, height: height, enableDebugLayers: enableDebugLayers, flutterViewController: self.mainFlutterWindow!.contentViewController!)
+    }
+    
+    public static func removeToolbarPassthroughView(id: String) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        passthroughViewHandler.removeToolbarPassthroughView(id: id)
     }
 }

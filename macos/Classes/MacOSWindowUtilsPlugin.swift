@@ -508,6 +508,25 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
+        case "updateToolbarPassthroughView":
+            let id = args["id"] as! String
+            let x = args["x"] as! CGFloat
+            let y = args["y"] as! CGFloat
+            let width = args["width"] as! CGFloat
+            let height = args["height"] as! CGFloat
+            let enableDebugLayers = args["enableDebugLayers"] as! Bool
+            
+            MainFlutterWindowManipulator.updateToolbarPassthroughView(id: id, x: x, y: y, width: width, height: height, enableDebugLayers: enableDebugLayers)
+            result(true)
+            break
+            
+        case "removeToolbarPassthroughView":
+            let id = args["id"] as! String
+            
+            MainFlutterWindowManipulator.removeToolbarPassthroughView(id: id)
+            result(true)
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break
