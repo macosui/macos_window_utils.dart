@@ -85,8 +85,20 @@ class _DraggableState extends State<_Draggable> {
       onHorizontalDragEnd: (details) => setState(() {
         _xOffset = 0;
       }),
-      child: Transform.translate(
-        offset: Offset(_xOffset, 0.0),
+      onHorizontalDragCancel: () => setState(() {
+        _xOffset = 0;
+      }),
+      child: TweenAnimationBuilder(
+        duration:
+            _xOffset == 0 ? const Duration(milliseconds: 300) : Duration.zero,
+        curve: Curves.ease,
+        tween: Tween<double>(begin: _xOffset, end: _xOffset),
+        builder: (context, value, child) {
+          return Transform.translate(
+            offset: Offset(value, 0.0),
+            child: child,
+          );
+        },
         child: widget.child,
       ),
     );
