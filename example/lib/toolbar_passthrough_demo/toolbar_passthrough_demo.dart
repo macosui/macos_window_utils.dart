@@ -1,11 +1,7 @@
-import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:example/generic_widgets/button.dart';
 import 'package:example/global_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:gradient_borders/gradient_borders.dart';
 
 class ToolbarPassthroughDemo extends StatefulWidget {
   const ToolbarPassthroughDemo({super.key});
