@@ -35,6 +35,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             if (enableWindowDelegate) {
                 MainFlutterWindowManipulator.createFlutterWindowDelegate(methodChannel: nsWindowDelegateChannel)
             }
+            MainFlutterWindowManipulator.reset()
             result(true)
             break
             

@@ -22,6 +22,9 @@ class PassthroughViewHandler {
     self.mainFlutterWindow = mainFlutterWindow
     
     // Clean up necessary for flutter hot restart
+    for entry in self.toolbarPassthroughViews {
+      self.removeToolbarPassthroughView(id: entry.key)
+    }
     self.toolbarPassthroughViews.removeAll()
     self.toolbarPassthroughContainer = nil
     

@@ -47,6 +47,10 @@ public class MainFlutterWindowManipulator {
         passthroughViewHandler.start(mainFlutterWindow: self.mainFlutterWindow!)
     }
     
+    public static func reset() {
+        passthroughViewHandler.start(mainFlutterWindow: self.mainFlutterWindow!)
+    }
+    
     public static func createFlutterWindowDelegate(methodChannel: FlutterMethodChannel) {
         if (self.mainFlutterWindow == nil) {
             start(mainFlutterWindow: nil)
