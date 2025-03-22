@@ -42,7 +42,7 @@ English | [简体中文](README_zh.md)
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
-<img width="857" alt="screenshot of example project" src="https://user-images.githubusercontent.com/86920182/209587744-b21f2cd1-07a4-43ee-99c8-7cce1d89482d.png">
+<img width="855" alt="Screenshot of Example Project" src="https://github.com/user-attachments/assets/32b58d27-6285-45a2-b79d-39bf49013a8f" />
 
 ## Getting started
 
