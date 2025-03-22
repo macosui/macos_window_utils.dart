@@ -745,7 +745,7 @@ public class MainFlutterWindowManipulator {
             start(mainFlutterWindow: nil)
         }
         
-        passthroughViewHandler.updateToolbarPassthroughView(id: id, x: x, y: y, width: width, height: height, enableDebugLayers: enableDebugLayers, flutterViewController: self.mainFlutterWindow!.contentViewController!)
+        passthroughViewHandler.updateToolbarPassthroughView(id: id, x: x, y: y, width: width, height: height, enableDebugLayers: enableDebugLayers, flutterViewController: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController)
     }
     
     public static func removeToolbarPassthroughView(id: String) {
