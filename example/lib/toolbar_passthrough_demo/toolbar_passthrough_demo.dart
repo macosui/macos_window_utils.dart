@@ -45,9 +45,17 @@ native window behavior.
             constraints: const BoxConstraints(maxWidth: 800),
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: MarkdownBody(data: markdownDescription),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MarkdownBody(
+                    data: markdownDescription,
+                    styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+                    styleSheet: MarkdownStyleSheet(
+                      code: const TextStyle(
+                        backgroundColor: Color.fromRGBO(128, 128, 128, 0.4),
+                      ),
+                    ),
+                  ),
                 ),
                 const Divider(),
                 StreamBuilder<Object>(
@@ -110,6 +118,7 @@ native window behavior.
                         'lifecycle of the app. Disabling them during runtime '
                         'will result in unexpected behavior. It is recommended '
                         'to restart the app before toggling the debug layers.',
+                    styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
                   ),
                 ),
               ],
