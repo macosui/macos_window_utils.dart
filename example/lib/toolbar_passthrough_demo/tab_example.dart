@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:example/global_state.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
 import 'package:macos_window_utils/widgets/macos_toolbar_passthrough.dart';
@@ -114,19 +118,33 @@ class _Tab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var brightness =
+        SchedulerBinding.instance.platformDispatcher.platformBrightness;
+    bool isDark = brightness == Brightness.dark;
+
     return Container(
       width: 128,
       height: 32,
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(220, 220, 220, 1.0),
+        color: isDark
+            ? const Color.fromRGBO(90, 90, 90, 1.0)
+            : const Color.fromRGBO(220, 220, 220, 1.0),
         borderRadius: BorderRadius.circular(4),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(25, 25, 25, 0.4),
-            blurRadius: 1,
-            offset: Offset(0, 1),
-          ),
-        ],
+        boxShadow: isDark
+            ? const [
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                ),
+              ]
+            : const [
+                BoxShadow(
+                  color: Color.fromRGBO(25, 25, 25, 0.4),
+                  blurRadius: 1,
+                  offset: Offset(0, 1),
+                ),
+              ],
       ),
       child: Align(
         alignment: Alignment.centerLeft,
@@ -134,8 +152,10 @@ class _Tab extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             'Tab ${index + 1}',
-            style: const TextStyle(
-              color: Color.fromRGBO(0, 0, 0, 0.5),
+            style: TextStyle(
+              color: isDark
+                  ? const Color.fromRGBO(255, 255, 255, 0.67)
+                  : const Color.fromRGBO(0, 0, 0, 0.5),
               fontSize: 12,
             ),
           ),
