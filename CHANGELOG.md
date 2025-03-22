@@ -1,3 +1,6 @@
+## 1.7.0
+- Add `MacosToolbarPassthrough` to allow for the creation of so-called “passthrough views” on the toolbar that relay mouse events to the Flutter application (thanks to [@Andre-lbc](https://github.com/Andre-lbc) and [@adiletcool](https://github.com/adiletcool)).
+
 ## 1.6.1
 
 - Add instructions on how to setup macos_window_utils for macOS Monterey and earlier versions.

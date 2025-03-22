@@ -628,7 +628,7 @@ class CommandListProvider {
             buttonType: NSWindowButtonType.closeButton, offset: null),
       ),
       Command(
-        name: 'WindowManipulator.getStandardWindowButtonPosition(buttonType: '
+        name: 'getStandardWindowButtonPosition(buttonType: '
             'NSWindowButtonType.closeButton)',
         description: 'Prints the position of the close button.\n\n'
             '**Note:** The y position is measured as the distance from the '
@@ -639,7 +639,7 @@ class CommandListProvider {
                 .toString()),
       ),
       Command(
-        name: 'WindowManipulator.centerWindow()',
+        name: 'centerWindow()',
         description: 'Sets the window’s location to the center of the screen.'
             '\n\nThe window is placed exactly in the center horizontally and '
             'somewhat above center vertically. Such a placement carries a '
@@ -649,7 +649,7 @@ class CommandListProvider {
         function: () => WindowManipulator.centerWindow(),
       ),
       Command(
-        name: 'WindowManipulator.getWindowFrame()',
+        name: 'getWindowFrame()',
         description: 'Returns the window’s window’s frame rectangle in screen '
             'coordinates, including the title bar.\n\n'
             'Keep in mind that the y-coordinate returned is measured from the '
@@ -658,7 +658,7 @@ class CommandListProvider {
             debugPrint((await WindowManipulator.getWindowFrame()).toString()),
       ),
       Command(
-        name: 'WindowManipulator.setWindowFrame('
+        name: 'setWindowFrame('
             'const Offset(64, 32) & const Size(512, 512),'
             'animate: true)',
         description: 'Sets the window’s frame rectangle in screen coordinates, '
@@ -668,25 +668,25 @@ class CommandListProvider {
             animate: true),
       ),
       Command(
-        name: 'WindowManipulator.preventWindowClosure()',
+        name: 'preventWindowClosure()',
         description: 'Prevents the window from being closed by the user.\n\n'
             'The window will still be closable programmatically by calling '
             '`closeWindow`.',
         function: () => WindowManipulator.preventWindowClosure(),
       ),
       Command(
-        name: 'WindowManipulator.allowWindowClosure()',
+        name: 'allowWindowClosure()',
         description: 'Allows the window to be closed by the user.',
         function: () => WindowManipulator.allowWindowClosure(),
       ),
       Command(
-        name: 'WindowManipulator.isWindowClosureAllowed()',
+        name: 'isWindowClosureAllowed()',
         description: 'Returns whether the window can be closed by the user.',
         function: () async => debugPrint(
             (await WindowManipulator.isWindowClosureAllowed()).toString()),
       ),
       Command(
-        name: 'WindowManipulator.closeWindow()',
+        name: 'closeWindow()',
         description: 'Removes the window from the screen. \n\n'
             'The close method differs in two important ways from the '
             '`performClose` method:\n'
@@ -699,7 +699,7 @@ class CommandListProvider {
         function: () => WindowManipulator.closeWindow(),
       ),
       Command(
-        name: 'WindowManipulator.performClose()',
+        name: 'performClose()',
         description: 'Simulates the user clicking the close button by '
             'momentarily highlighting the button and then closing the window.',
         function: () => WindowManipulator.performClose(),

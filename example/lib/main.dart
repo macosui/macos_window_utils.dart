@@ -1,6 +1,8 @@
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
+import 'package:example/global_state.dart';
 import 'package:example/main_area/main_area.dart';
 import 'package:example/sidebar_content.dart';
+import 'package:example/toolbar_passthrough_demo/tab_example.dart';
 import 'package:example/util/transparent_sidebar_and_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
@@ -85,44 +87,54 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return TransparentSidebarAndContent(
-      isOpen: _isSidebarOpen,
-      width: 280.0,
-      sidebarBuilder: () => const TitlebarSafeArea(
-        child: SidebarContent(),
-      ),
-      child: TitlebarSafeArea(
-        child: CupertinoPageScaffold(
-          navigationBar: CupertinoNavigationBar(
-            middle: const Text('macos_window_utils demo'),
-            leading: CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: UiElementColorBuilder(
-                  uiElementColorContainerInstanceProvider:
-                      OwnedUiElementColorContainerInstanceProvider(),
-                  builder: (context, colorContainer) {
-                    return Icon(
-                      CupertinoIcons.sidebar_left,
-                      color: colorContainer.controlAccentColor,
-                    );
-                  }),
-              onPressed: () => setState(
-                () {
-                  _isSidebarOpen = !_isSidebarOpen;
-                },
+    return StreamBuilder<Object>(
+        stream: GlobalState.instance.stream,
+        builder: (context, snapshot) {
+          return TransparentSidebarAndContent(
+            isOpen: _isSidebarOpen,
+            width: 280.0,
+            sidebarBuilder: () => const TitlebarSafeArea(
+              child: SidebarContent(),
+            ),
+            child: TitlebarSafeArea(
+              isEnabled: !GlobalState.instance.isTabExampleEnabled,
+              child: CupertinoPageScaffold(
+                navigationBar: CupertinoNavigationBar(
+                  middle: GlobalState.instance.isTabExampleEnabled
+                      ? const Padding(
+                          padding: EdgeInsets.only(left: 52.0),
+                          child: TabExample(),
+                        )
+                      : const Text('macos_window_utils demo'),
+                  leading: GlobalState.instance.isTabExampleEnabled
+                      ? const SizedBox()
+                      : CupertinoButton(
+                          padding: EdgeInsets.zero,
+                          child: UiElementColorBuilder(
+                              uiElementColorContainerInstanceProvider:
+                                  OwnedUiElementColorContainerInstanceProvider(),
+                              builder: (context, colorContainer) {
+                                return Icon(
+                                  CupertinoIcons.sidebar_left,
+                                  color: colorContainer.controlAccentColor,
+                                );
+                              }),
+                          onPressed: () => setState(
+                            () => _isSidebarOpen = !_isSidebarOpen,
+                          ),
+                        ),
+                ),
+                child: DefaultTextStyle(
+                  style: CupertinoTheme.of(context).textTheme.textStyle,
+                  child: SafeArea(
+                    child: MainArea(
+                      setState: setState,
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-          child: DefaultTextStyle(
-            style: CupertinoTheme.of(context).textTheme.textStyle,
-            child: SafeArea(
-              child: MainArea(
-                setState: setState,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+          );
+        });
   }
 }

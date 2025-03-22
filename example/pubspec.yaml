@@ -48,6 +48,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_markdown: ^0.6.13
   appkit_ui_element_colors: ^1.0.0
+  gradient_borders: ^1.0.1
 
 dev_dependencies:
   flutter_test:

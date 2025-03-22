@@ -2,11 +2,11 @@ name: macos_window_utils
 description:
   macos_window_utils is a Flutter package that provides a set of methods for
   modifying the NSWindow of a Flutter application on macOS.
-version: 1.6.1
+version: 1.7.0
 repository: https://github.com/Adrian-Samoticha/macos_window_utils.dart
 
 environment:
-  sdk: '>=2.18.5 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=3.7.0"
 
 dependencies:
