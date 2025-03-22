@@ -37,7 +37,7 @@ directory. Make note of how the example listens to the `ScrollController` and
 calls `MacosToolbarPassthroughScope.maybeNotifyChangesOf(context);` when the
 scroll position changes to make sure the passthrough views are updated.
 
-After the Tab Example has been enabled, you can see a number of tabs appear in
+After the Tab Example has been enabled, you will see a number of tabs appear in
 the toolbar. The tabs can be clicked and dragged without affecting the native
 toolbar. Double clicking or dragging the area outside of any tabs will trigger
 native window behavior.
