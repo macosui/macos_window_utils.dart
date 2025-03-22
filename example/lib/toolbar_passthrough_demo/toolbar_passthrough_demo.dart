@@ -11,8 +11,6 @@ class ToolbarPassthroughDemo extends StatefulWidget {
 }
 
 class _ToolbarPassthroughDemoState extends State<ToolbarPassthroughDemo> {
-  bool _enableDebugLayers = true;
-
   @override
   Widget build(BuildContext context) {
     const markdownDescription = '''
