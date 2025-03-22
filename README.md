@@ -38,6 +38,7 @@ English | [简体中文](README_zh.md)
 + An `NSAppPresentationOptions` class that allows modifications to the window's fullscreen presentation options.
 + Methods to get and set the positions of the window’s standard window buttons (such as the close, miniaturize, and zoom buttons).
 + Methods to control whether the window should be closable by the user, as well as methods to close the window programmatically.
++ Widgets to enable passthrough views in the toolbar that pass mouse events (such as clicking or dragging) to the Flutter application.
 
 Additionally, the package ships with an example project that showcases the plugin's features via an intuitive searchable user interface:
 
