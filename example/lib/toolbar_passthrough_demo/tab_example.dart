@@ -1,3 +1,4 @@
+import 'package:example/global_state.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:macos_window_utils/macos_window_utils.dart';
@@ -45,7 +46,8 @@ class _TabExampleState extends State<TabExample> {
               return Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: MacosToolbarPassthrough(
-                  enableDebugLayers: true,
+                  enableDebugLayers: GlobalState
+                      .instance.enableDebugLayersForToolbarPassthroughViews,
                   child: _Draggable(
                     child: _Tab(index: i),
                   ),
