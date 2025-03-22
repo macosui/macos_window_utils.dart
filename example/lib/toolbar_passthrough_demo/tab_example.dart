@@ -11,6 +11,10 @@ class TabExample extends StatefulWidget {
 }
 
 class _TabExampleState extends State<TabExample> {
+  // In order to update the passthrough views when the scroll position changes,
+  // we need to define a scroll controller and listen to it.
+  final _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -19,6 +23,14 @@ class _TabExampleState extends State<TabExample> {
     WindowManipulator.enableFullSizeContentView();
     WindowManipulator.makeTitlebarTransparent();
     WindowManipulator.hideTitle();
+
+    // When the scroll position changes, we need to notify the passthrough views
+    // to update their position.
+    _scrollController.addListener(() {
+      setState(() {
+        MacosToolbarPassthroughScope.maybeNotifyChangesOf(context);
+      });
+    });
   }
 
   @override
@@ -26,6 +38,7 @@ class _TabExampleState extends State<TabExample> {
     return SizedBox.expand(
       child: MacosToolbarPassthroughScope(
         child: SingleChildScrollView(
+          controller: _scrollController,
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(4, (i) {
