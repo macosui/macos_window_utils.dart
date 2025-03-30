@@ -48,6 +48,11 @@ public class MainFlutterWindowManipulator {
     }
     
     public static func reset() {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+            return;
+        }
+        
         passthroughViewHandler.start(mainFlutterWindow: self.mainFlutterWindow!)
     }
     
