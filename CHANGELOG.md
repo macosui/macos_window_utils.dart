@@ -1,3 +1,6 @@
+## 1.7.1
+- Fix nil being found when unwrapping an Optional value when `reset` is called before `start` in `MainFlutterWindowManipulator.swift`.
+
 ## 1.7.0
 - Add `MacosToolbarPassthrough` to allow for the creation of so-called “passthrough views” on the toolbar that relay mouse events to the Flutter application (thanks to [@Andre-lbc](https://github.com/Andre-lbc) and [@adiletcool](https://github.com/adiletcool)).
 
