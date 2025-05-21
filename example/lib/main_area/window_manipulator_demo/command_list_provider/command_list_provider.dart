@@ -107,6 +107,12 @@ class CommandListProvider {
         function: () => WindowManipulator.showZoomButton(),
       ),
       Command(
+        name: 'miniaturizeWindow()',
+        description: 'Removes the window from the screen list and displays the '
+            'minimized window in the Dock.',
+        function: () => WindowManipulator.miniaturizeWindow(),
+      ),
+      Command(
         name: 'hideMiniaturizeButton()',
         function: () => WindowManipulator.hideMiniaturizeButton(),
       ),

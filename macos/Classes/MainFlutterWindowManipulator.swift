@@ -182,7 +182,15 @@ public class MainFlutterWindowManipulator {
         
         self.mainFlutterWindow!.standardWindowButton(.zoomButton)!.isHidden = false
     }
-    
+
+    public static func miniaturizeWindow() {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow?.miniaturize(nil)
+    }
+
     public static func hideMiniaturizeButton() {
         if (self.mainFlutterWindow == nil) {
             start(mainFlutterWindow: nil)

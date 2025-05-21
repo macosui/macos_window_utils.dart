@@ -62,6 +62,14 @@ class EventDelegate extends NSWindowDelegate {
   }
 
   @override
+  void windowShouldMiniaturize() {
+    final event = NSWindowDelegateEvent(name: 'windowShouldMiniaturize');
+    eventHandler.addEvent(event);
+
+    super.windowShouldMiniaturize();
+  }
+
+  @override
   void windowWillMiniaturize() {
     final event = NSWindowDelegateEvent(name: 'windowWillMiniaturize');
     eventHandler.addEvent(event);

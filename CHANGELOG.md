@@ -1,3 +1,6 @@
+## 1.8.0
+- Add `miniaturizeWindow` method (thanks [@parkerhutchinson](https://github.com/parkerhutchinson)).
+
 ## 1.7.1
 - Fix nil being found when unwrapping an Optional value when `reset` is called before `start` in `MainFlutterWindowManipulator.swift`.
 

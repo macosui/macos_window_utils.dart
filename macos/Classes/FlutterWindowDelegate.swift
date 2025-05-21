@@ -12,6 +12,7 @@ class FlutterWindowDelegate: NSObject, NSWindowDelegate {
     private var methodChannel: FlutterMethodChannel?
     private var fullScreenPresentationOptions: NSApplication.PresentationOptions?
     public var windowShouldCloseReturnValue: Bool = true
+    public var windowShouldMiniaturizeReturnValue: Bool = true
     
     public static func create(window: NSWindow, methodChannel: FlutterMethodChannel) -> FlutterWindowDelegate {
         let newDelegate = FlutterWindowDelegate()
@@ -64,6 +65,12 @@ class FlutterWindowDelegate: NSObject, NSWindowDelegate {
     }
 
     // Minimizing Windows
+
+    func windowShouldMiniaturize(_ sender: NSWindow) -> Bool {
+        methodChannel!.invokeMethod("windowShouldMiniaturize", arguments: nil)
+        
+        return windowShouldMiniaturizeReturnValue
+    }
 
     func windowWillMiniaturize(_ notification: Notification) {
         methodChannel!.invokeMethod("windowWillMiniaturize", arguments: nil)
