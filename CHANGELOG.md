@@ -1,3 +1,7 @@
+## 1.7.0
+
+- Add `miniaturizeWindow` method (thanks [@parkerhutchinson](https://github.com/parkerhutchinson)).
+
 ## 1.6.1
 
 - Add instructions on how to setup macos_window_utils for macOS Monterey and earlier versions.
