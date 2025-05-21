@@ -108,7 +108,8 @@ class CommandListProvider {
       ),
       Command(
         name: 'miniaturizeWindow()',
-        description: 'Minimizes the window into the task bar.',
+        description: 'Removes the window from the screen list and displays the '
+            'minimized window in the Dock.',
         function: () => WindowManipulator.miniaturizeWindow(),
       ),
       Command(
