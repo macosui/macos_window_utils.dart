@@ -1,5 +1,6 @@
 import 'package:example/main_area/ns_window_delegate_demo/ns_window_delegate_demo.dart';
 import 'package:example/main_area/window_manipulator_demo/window_manipulator_demo.dart';
+import 'package:example/toolbar_passthrough_demo/toolbar_passthrough_demo.dart';
 import 'package:flutter/cupertino.dart';
 
 class MainArea extends StatefulWidget {
@@ -33,6 +34,7 @@ class _MainAreaState extends State<MainArea> {
                 setState: widget.setState,
               ),
               const NSWindowDelegateDemo(),
+              const ToolbarPassthroughDemo(),
             ],
           ),
         ),
@@ -52,23 +54,32 @@ class _SegmentedControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoSlidingSegmentedControl(
-      groupValue: currentTabIndex,
-      onValueChanged: onTabIndexChanged,
-      children: const {
-        0: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            'WindowManipulator demo',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CupertinoSlidingSegmentedControl(
+        groupValue: currentTabIndex,
+        onValueChanged: onTabIndexChanged,
+        children: const {
+          0: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+            child: Text(
+              'WindowManipulator demo',
+            ),
           ),
-        ),
-        1: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            'NSWindowDelegate demo',
+          1: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+            child: Text(
+              'NSWindowDelegate demo',
+            ),
           ),
-        ),
-      },
+          2: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+            child: Text(
+              'MacosToolbarPassthrough demo',
+            ),
+          ),
+        },
+      ),
     );
   }
 }

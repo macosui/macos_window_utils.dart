@@ -841,4 +841,38 @@ class WindowManipulator {
     await _completer.future;
     await _windowManipulatorMethodChannel.invokeMethod('performClose');
   }
+
+  // TODO: document this
+  static Future<void> updateToolbarPassthroughView({
+    required String id,
+    required double x,
+    required double y,
+    required double width,
+    required double height,
+    required bool enableDebugLayers,
+  }) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod(
+      'updateToolbarPassthroughView',
+      {
+        'id': id,
+        'x': x,
+        'y': y,
+        'width': width,
+        'height': height,
+        'enableDebugLayers': enableDebugLayers,
+      },
+    );
+  }
+
+  // TODO: document this
+  static Future<void> removeToolbarPassthroughView({required String id}) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod(
+      'removeToolbarPassthroughView',
+      {
+        'id': id,
+      },
+    );
+  }
 }
