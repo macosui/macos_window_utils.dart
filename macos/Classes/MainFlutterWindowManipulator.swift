@@ -420,38 +420,44 @@ public class MainFlutterWindowManipulator {
             start(mainFlutterWindow: nil)
         }
         
+#if compiler(>=4.2)
         if #available(macOS 10.13, *) {
-          switch (toolbarName) {
-          case "DefaultToolbar":
-            let newToolbar = NSToolbar()
-            
-            newToolbar.allowsUserCustomization = false
-            newToolbar.allowsExtensionItems = false
-            if #available(macOS 15.0, *) {
-              newToolbar.allowsDisplayModeCustomization = false
+            switch (toolbarName) {
+            case "DefaultToolbar":
+                let newToolbar = NSToolbar()
+                
+                newToolbar.allowsUserCustomization = false
+                newToolbar.allowsExtensionItems = false
+#if compiler(>=6.1)
+                if #available(macOS 15.0, *) {
+                    newToolbar.allowsDisplayModeCustomization = false
+                }
+#endif
+                
+                self.mainFlutterWindow!.toolbar = newToolbar
+                
+            case "BlockingToolbar":
+                let blockingAreaDebugColor = NSColor.colorFromRGBAString(toolbarArguments["blockingAreaDebugColor"]!)
+                
+                let customToolbar = BlockingToolbar(flutterView: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController, blockingAreaDebugColor: blockingAreaDebugColor)
+                customToolbar.showsBaselineSeparator = false
+                customToolbar.delegate = customToolbar
+                
+                customToolbar.allowsUserCustomization = false
+                customToolbar.allowsExtensionItems = false
+#if compiler(>=6.1)
+                if #available(macOS 15.0, *) {
+                    customToolbar.allowsDisplayModeCustomization = false
+                }
+#endif
+                
+                self.mainFlutterWindow!.toolbar = customToolbar
+                
+            default:
+                print("Unknown toolbar name: \(toolbarName)")
             }
-            
-            self.mainFlutterWindow!.toolbar = newToolbar
-            
-          case "BlockingToolbar":
-            let blockingAreaDebugColor = NSColor.colorFromRGBAString(toolbarArguments["blockingAreaDebugColor"]!)
-            
-            let customToolbar = BlockingToolbar(flutterView: (self.mainFlutterWindow?.contentViewController as! MacOSWindowUtilsViewController).flutterViewController, blockingAreaDebugColor: blockingAreaDebugColor)
-            customToolbar.showsBaselineSeparator = false
-            customToolbar.delegate = customToolbar
-            
-            customToolbar.allowsUserCustomization = false
-            customToolbar.allowsExtensionItems = false
-            if #available(macOS 15.0, *) {
-              customToolbar.allowsDisplayModeCustomization = false
-            }
-            
-            self.mainFlutterWindow!.toolbar = customToolbar
-            
-          default:
-            print("Unknown toolbar name: \(toolbarName)")
-          }
         }
+#endif
     }
     
     public static func removeToolbar() {

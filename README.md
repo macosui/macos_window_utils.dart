@@ -235,7 +235,7 @@ options.applyAsFullScreenPresentationOptions();
 
 **Note:** `NSAppPresentationOptions` uses the `NSWindow`'s delegate to change the window's fullscreen presentation options. Therefore, `enableWindowDelegate` needs to be set to `true` in your `WindowManipulator.initialize` call for it to work.
 
-## Older macOS versions
+## Developing for older macOS versions
 
 If you’re targeting older macOS versions (Monterey and earlier), it is necessary to perform the following steps to make the macos_window_utils plugin work correctly:
 
@@ -286,6 +286,12 @@ class MainFlutterWindow: NSWindow {
   }
 }
 ```
+
+## Developing on older macOS versions
+
+If you’re developing on an outdated macOS system you are likely using an outdated version of the Swift compiler as well. Support for outdated Swift compiler versions is currently provided on a best-effort basis. Unfortunately, Apple provides limited tools and resources to aid with this. Therefore, if you encounter any issues, feel free to open an issue on GitHub and I will try to help you out.
+
+That said, keep in mind that if you’re compiling your app with an outdated Swift compiler, any features that rely on APIs that are not available in your version of the Swift compiler will not work, even if your app is run on a newer macOS version. To provide the best experience for your users, it is recommended to always use the latest version of Xcode and the Swift compiler.
 
 ## License
 

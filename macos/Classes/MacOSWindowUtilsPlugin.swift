@@ -40,6 +40,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             break
             
         case "setMaterial":
+#if compiler(>=5.0)
             if #available(macOS 10.14, *) {
                 let materialID = args["material"] as! NSNumber
                 let material = MaterialIDToMaterialConverter.getMaterialFromMaterialID(effectID: materialID)
@@ -48,6 +49,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }
+#endif
             result(true)
             break
             
@@ -62,6 +64,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             break
             
         case "overrideMacOSBrightness":
+#if compiler(>=5.0)
             if #available(macOS 10.14, *) {
                 let dark = args["dark"] as! Bool
                 
@@ -69,6 +72,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }
+#endif
             result(true)
             break
             
@@ -255,12 +259,14 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             let visualEffectSubview = VisualEffectSubview()
             let visualEffectSubviewId = MainFlutterWindowManipulator.addVisualEffectSubview(visualEffectSubview)
             
+#if compiler(>=5.0)
             if #available(macOS 10.14, *) {
                 let properties = VisualEffectSubviewProperties.fromArgs(args)
                 properties.applyToVisualEffectSubview(visualEffectSubview)
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }
+#endif
             
             result(visualEffectSubviewId)
             break
@@ -270,12 +276,14 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             let visualEffectSubview = MainFlutterWindowManipulator.getVisualEffectSubview(visualEffectSubviewId)
             
             if (visualEffectSubview != nil) {
+#if compiler(>=5.0)
                 if #available(macOS 10.14, *) {
                     let properties = VisualEffectSubviewProperties.fromArgs(args)
                     properties.applyToVisualEffectSubview(visualEffectSubview!)
                 } else {
                     MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
                 }
+#endif
             }
             
             result(visualEffectSubview != nil)
@@ -305,6 +313,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
         case "setToolbarStyle":
             let toolbarStyleName = args["toolbarStyle"] as! String
             
+#if compiler(>=5.4)
             if #available(macOS 11.0, *) {
                 let toolbarStyle = ToolbarStyleNameToEnumConverter.getToolbarStyleFromName(name: toolbarStyleName)
                 
@@ -314,6 +323,7 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }
+#endif
             
             result(true)
             break
@@ -362,11 +372,13 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             
         case "setSubtitle":
             let subtitle = args["subtitle"] as! String
+#if compiler(>=5.4)
             if #available(macOS 11.0, *) {
                 MainFlutterWindowManipulator.setSubtitle(subtitle)
             } else {
                 MacOSWindowUtilsPlugin.printUnsupportedMacOSVersionWarning()
             }
+#endif
 
             result(true)
             break
