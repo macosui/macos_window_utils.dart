@@ -30,9 +30,11 @@ public class MacOSWindowUtilsViewController: NSViewController {
         newVisualEffectView.autoresizingMask = [.width, .height]
         newVisualEffectView.blendingMode = .behindWindow
         newVisualEffectView.state = .followsWindowActiveState
+#if compiler(>=5.0)
         if #available(macOS 10.14, *) {
             newVisualEffectView.material = .windowBackground
         }
+#endif
         self.view = newVisualEffectView
     }
 
