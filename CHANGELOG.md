@@ -1,3 +1,6 @@
+## 1.8.1
+- Provide support for older Swift compiler versions.
+
 ## 1.8.0
 - Add `miniaturizeWindow` method (thanks [@parkerhutchinson](https://github.com/parkerhutchinson)).
 
