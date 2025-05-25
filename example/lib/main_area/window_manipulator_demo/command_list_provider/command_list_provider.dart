@@ -710,6 +710,16 @@ class CommandListProvider {
             'momentarily highlighting the button and then closing the window.',
         function: () => WindowManipulator.performClose(),
       ),
+      Command(
+        name: 'setWindowMinSize()',
+        description: 'Sets the minimum window size to 480x320.',
+        function: () => WindowManipulator.setWindowMinSize(const Size(480, 320)),
+      ),
+      Command(
+        name: 'setWindowMaxSize()',
+        description: 'Sets the maximum window size to 960x640.',
+        function: () => WindowManipulator.setWindowMaxSize(const Size(960, 640)),
+      ),
     ];
   }
 }

@@ -875,4 +875,22 @@ class WindowManipulator {
       },
     );
   }
+
+  /// Sets the minimum size for the window
+  static Future<void> setWindowMinSize(Size size) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('setWindowMinSize', {
+      'width': size.width,
+      'height': size.height,
+    });
+  }
+
+  /// Sets the maximum size for the window
+  static Future<void> setWindowMaxSize(Size size) async {
+    await _completer.future;
+    await _windowManipulatorMethodChannel.invokeMethod('setWindowMaxSize', {
+      'width': size.width,
+      'height': size.height,
+    });
+  }
 }
