@@ -778,4 +778,20 @@ public class MainFlutterWindowManipulator {
         
         passthroughViewHandler.removeToolbarPassthroughView(id: id)
     }
+
+    public static func setWindowMinSize(width: CGFloat, height: CGFloat) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+
+        mainFlutterWindow!.minSize = NSMakeSize(width, height)
+    }
+
+    public static func setWindowMaxSize(width: CGFloat, height: CGFloat) {
+        if (self.mainFlutterWindow == nil) {
+            start(mainFlutterWindow: nil)
+        }
+        
+        mainFlutterWindow!.maxSize = NSMakeSize(width, height)
+    }
 }

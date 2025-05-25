@@ -544,7 +544,23 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             MainFlutterWindowManipulator.removeToolbarPassthroughView(id: id)
             result(true)
             break
+
+        case "setWindowMinSize":
+            let width = args["width"] as! CGFloat
+            let height = args["height"] as! CGFloat
             
+            MainFlutterWindowManipulator.setWindowMinSize(width: width, height: height)
+            result(true)
+            break
+
+        case "setWindowMaxSize":
+            let width = args["width"] as! CGFloat
+            let height = args["height"] as! CGFloat
+            
+            MainFlutterWindowManipulator.setWindowMaxSize(width: width, height: height)
+            result(true)
+            break
+
         default:
             result(FlutterMethodNotImplemented)
             break
