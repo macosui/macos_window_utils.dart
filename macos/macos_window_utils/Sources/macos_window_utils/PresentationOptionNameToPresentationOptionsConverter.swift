@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class PresentationOptionNameToPresentationOptionsConverter {
     public static func getPresentationOptionsFromName(name: String) -> NSApplication.PresentationOptions? {

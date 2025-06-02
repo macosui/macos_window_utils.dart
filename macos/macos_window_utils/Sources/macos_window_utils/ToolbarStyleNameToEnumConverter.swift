@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class ToolbarStyleNameToEnumConverter {
     @available(macOS 11.0, *)

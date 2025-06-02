@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class LevelNameToLevelConverter {
     public static func getLevelFromName(_ name: String) -> NSWindow.Level {

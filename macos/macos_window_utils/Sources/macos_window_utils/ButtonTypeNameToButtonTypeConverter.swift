@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class ButtonTypeNameToButtonTypeConverter {
     public static func getButtonTypeFromName(name: String) -> NSWindow.ButtonType? {
