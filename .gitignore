@@ -10,3 +10,7 @@ build/
 pubspec.lock
 .vscode/settings.json
 .idea/workspace.xml
+
+# Swift package manager
+.build/
+.swiftpm/
