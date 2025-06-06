@@ -842,7 +842,15 @@ class WindowManipulator {
     await _windowManipulatorMethodChannel.invokeMethod('performClose');
   }
 
-  // TODO: document this
+  /// Updates the toolbar passthrough view with the specified parameters.
+  ///
+  /// The [id] parameter uniquely identifies the passthrough view.
+  /// The [x] and [y] parameters specify the position of the view.
+  /// The [width] and [height] parameters define the size of the view.
+  /// The [enableDebugLayers] parameter enables visual debugging layers if set
+  /// to true. Note that [enableDebugLayers] is meant to stay constant during
+  /// life lifetime of the app. Changing its state during runtime may lead to
+  /// unexpected behavior.
   static Future<void> updateToolbarPassthroughView({
     required String id,
     required double x,
@@ -865,7 +873,7 @@ class WindowManipulator {
     );
   }
 
-  // TODO: document this
+  /// Removes the toolbar passthrough view with the specified [id].
   static Future<void> removeToolbarPassthroughView({required String id}) async {
     await _completer.future;
     await _windowManipulatorMethodChannel.invokeMethod(
