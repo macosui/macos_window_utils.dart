@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 public class MaterialIDToMaterialConverter {
     @available(macOS 10.14, *)

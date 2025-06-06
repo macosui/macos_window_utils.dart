@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class StyleMaskNameToStyleMaskConverter {
     public static func getStyleMaskFromName(_ name: String) -> NSWindow.StyleMask {

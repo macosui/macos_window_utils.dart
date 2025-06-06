@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
 	s.author           = { 'Adrian Samoticha' => 'adrian@samoticha.de' }
 	s.source           = { :git => 'https://github.com/Adrian-Samoticha/macos_window_utils.dart.git',
 	                       :tag => s.version.to_s }
-	s.source_files     = 'Classes/**/*'
+	s.source_files = 'macos_window_utils/Sources/macos_window_utils/**/*.swift'
+	s.resource_bundles = {'macos_window_utils_privacy' => ['macos_window_utils/Sources/macos_window_utils/Resources/PrivacyInfo.xcprivacy']}
 	s.dependency 'FlutterMacOS'
   
 	s.platform = :osx, '10.14.6'

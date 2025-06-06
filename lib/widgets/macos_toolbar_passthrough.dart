@@ -19,7 +19,6 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:macos_window_utils/window_manipulator.dart';
 
 const _debounceDuration = Duration(milliseconds: 10);

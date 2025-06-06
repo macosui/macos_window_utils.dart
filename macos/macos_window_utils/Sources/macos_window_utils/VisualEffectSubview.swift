@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 public class VisualEffectSubview: NSVisualEffectView {
     public override func hitTest(_ point: NSPoint) -> NSView? {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 /// This class holds properties that can be applied to a VisualEffectSubview.
 @available(macOS 10.14, *)
