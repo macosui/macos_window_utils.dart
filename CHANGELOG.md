@@ -1,5 +1,6 @@
 ## 1.8.2
 - Add support for Swift Package Manager. (Thanks to [@EchoEllet](https://github.com/EchoEllet)!)
+- Migrate away from deprecated interfaces.
 
 ## 1.8.1
 - Provide support for older Swift compiler versions.
