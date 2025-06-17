@@ -27,7 +27,7 @@ class DescriptionBox extends StatelessWidget {
             child: Text(
               'This command has no description.',
               textAlign: TextAlign.center,
-              textScaleFactor: 0.8,
+              textScaler: TextScaler.linear(0.8),
               style: TextStyle(
                 fontStyle: FontStyle.italic,
               ),

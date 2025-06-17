@@ -37,7 +37,7 @@ class BlockingToolbar extends Toolbar {
     return {
       "blockingAreaDebugColor": blockingAreaDebugColor == null
           ? ""
-          : "${blockingAreaDebugColor!.red},${blockingAreaDebugColor!.green},${blockingAreaDebugColor!.blue},${blockingAreaDebugColor!.alpha}",
+          : "${(blockingAreaDebugColor!.r * 255.0).round()},${(blockingAreaDebugColor!.g * 255.0).round()},${(blockingAreaDebugColor!.b * 255.0).round()},${(blockingAreaDebugColor!.a * 255.0).round()}",
     };
   }
 }
