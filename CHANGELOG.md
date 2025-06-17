@@ -1,3 +1,7 @@
+## 1.8.4
+- Migrate away from deprecated interfaces.
+- Set Flutter version constraint to `">=3.27.0"`.
+
 ## 1.8.3
 - Undo the migration away from deprecated interfaces, as it caused incompatibilities with older Flutter versions.
 
