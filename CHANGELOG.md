@@ -1,3 +1,6 @@
+## 1.8.3
+- Undo the migration away from deprecated interfaces, as it caused incompatibilities with older Flutter versions.
+
 ## 1.8.2
 - Add support for Swift Package Manager. (Thanks to [@EchoEllet](https://github.com/EchoEllet)!)
 - Migrate away from deprecated interfaces.
