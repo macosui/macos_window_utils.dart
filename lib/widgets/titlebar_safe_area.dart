@@ -19,7 +19,7 @@ class _MacOSTitlebarSafeAreaState extends State<_MacOSTitlebarSafeArea> {
   /// Updates the height of the titlebar, if necessary.
   Future<void> _updateTitlebarHeight() async {
     final newTitlebarHeight = await WindowManipulator.getTitlebarHeight();
-    if (_titlebarHeight != newTitlebarHeight) {
+    if (_titlebarHeight != newTitlebarHeight && newTitlebarHeight >= 0) {
       setState(() {
         _titlebarHeight = newTitlebarHeight;
       });
