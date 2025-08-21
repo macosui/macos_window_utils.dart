@@ -709,14 +709,16 @@ class CommandListProvider {
         function: () => WindowManipulator.performClose(),
       ),
       Command(
-        name: 'setWindowMinSize()',
+        name: 'setWindowMinSize(const Size(480, 320))',
         description: 'Sets the minimum window size to 480x320.',
-        function: () => WindowManipulator.setWindowMinSize(const Size(480, 320)),
+        function: () =>
+            WindowManipulator.setWindowMinSize(const Size(480, 320)),
       ),
       Command(
-        name: 'setWindowMaxSize()',
+        name: 'setWindowMaxSize(const Size(960, 640))',
         description: 'Sets the maximum window size to 960x640.',
-        function: () => WindowManipulator.setWindowMaxSize(const Size(960, 640)),
+        function: () =>
+            WindowManipulator.setWindowMaxSize(const Size(960, 640)),
       ),
     ];
   }
