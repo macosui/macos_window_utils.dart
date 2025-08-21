@@ -1,3 +1,6 @@
+# 1.8.5
+- Prevent `_titlebarHeight` from being set to a negative value when drag resizing the window (thanks to [@CodeEagle](https://github.com/CodeEagle)).
+
 ## 1.8.4
 - Migrate away from deprecated interfaces.
 - Set Flutter version constraint to `">=3.27.0"`.
