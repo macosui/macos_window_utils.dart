@@ -1,3 +1,6 @@
+# 1.9.0
+- Add `setWindowMinSize` and `setWindowMaxSize` methods to `WindowManipulator` to allow setting the minimum and maximum window size (thanks to [@defuncart](https://github.com/defuncart)).
+
 # 1.8.5
 - Prevent `_titlebarHeight` from being set to a negative value when drag resizing the window (thanks to [@CodeEagle](https://github.com/CodeEagle)).
 
